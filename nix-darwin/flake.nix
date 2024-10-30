@@ -42,6 +42,7 @@
           casks = [
             "aerospace"
             "raycast"
+            "marta"
           ];
           onActivation.cleanup = "zap";
         };
