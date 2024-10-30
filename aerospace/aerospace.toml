@@ -85,3 +85,7 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'org.yanex.marta'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.torusknot.SourceTreeNotMAS'
+run = ['layout floating']
