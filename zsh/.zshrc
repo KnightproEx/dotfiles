@@ -1,7 +1,7 @@
+export BAT_THEME=Catppuccin-Mocha
 export FZF_DEFAULT_COMMAND="fd -H --strip-cwd-prefix -E .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -t d -H --strip-cwd-prefix -E .git"
-export BAT_THEME=Catppuccin-Mocha
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
@@ -9,6 +9,8 @@ export FZF_DEFAULT_OPTS=" \
 --color=selected-bg:#45475a \
 --multi"
 
+export NIX_CONF_DIR=$HOME/.config/nix
+export PATH=/run/current-system/sw/bin:$PATH
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
@@ -24,6 +26,10 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
