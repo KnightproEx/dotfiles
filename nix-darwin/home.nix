@@ -11,17 +11,17 @@
       "/run/current-system/sw/bin"
       "$HOME/.nix-profile/bin"
     ];
-    file = {
-      ".zshrc".source = ~/dotfiles/zsh/.zshrc;
-      ".config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh".source = ~/dotfiles/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh;
-      ".config/aerospace".source = ~/dotfiles/aerospace;
-      ".config/bat".source = ~/dotfiles/bat;
-      ".config/nix".source = ~/dotfiles/nix;
-      ".config/nvim".source = ~/dotfiles/nvim;
-      ".config/p10k".source = ~/dotfiles/p10k;
-      ".config/raycast".source = ~/dotfiles/raycast;
-      ".config/tmux".source = ~/dotfiles/tmux;
-      ".config/wezterm".source = ~/dotfiles/wezterm;
+    file = with config.lib.file; {
+      ".zshrc".source = mkOutOfStoreSymlink ~/dotfiles/zsh/.zshrc;
+      ".config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh".source = mkOutOfStoreSymlink ~/dotfiles/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh;
+      ".config/aerospace".source = mkOutOfStoreSymlink ~/dotfiles/aerospace;
+      ".config/bat".source = mkOutOfStoreSymlink ~/dotfiles/bat;
+      ".config/nix".source = mkOutOfStoreSymlink ~/dotfiles/nix;
+      ".config/nvim".source = mkOutOfStoreSymlink ~/dotfiles/nvim;
+      ".config/p10k".source = mkOutOfStoreSymlink ~/dotfiles/p10k;
+      ".config/raycast".source = mkOutOfStoreSymlink ~/dotfiles/raycast;
+      ".config/tmux".source = mkOutOfStoreSymlink ~/dotfiles/tmux;
+      ".config/wezterm".source = mkOutOfStoreSymlink ~/dotfiles/wezterm;
     };
   };
 
