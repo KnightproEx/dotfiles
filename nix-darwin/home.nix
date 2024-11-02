@@ -2,8 +2,8 @@
 
 {
   home = {
-    username = "fmt";
-    homeDirectory = "/Users/fmt";
+    username = "bh";
+    homeDirectory = "/Users/bh";
     stateVersion = "23.05";
     packages = [ ];
     sessionVariables = { };

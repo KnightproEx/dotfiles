@@ -11,13 +11,17 @@ return {
 		"/bin/zsh",
 		"--login",
 		"-c",
-		[[
+		[=[
 				if command -v tmux >/dev/null 2>&1; then
-					tmux attach || tmux new;
+          if [[ $(tmux ls | grep -v attached | wc -l | awk '{$1=$1};1') == 0 ]]; then
+            tmux new;
+          else
+            tmux attach | tmux new;
+          fi
 				else
 					exec zsh;
 				fi
-			]],
+			]=],
 	},
 	color_scheme = "Catppuccin Mocha",
 	front_end = "WebGpu",

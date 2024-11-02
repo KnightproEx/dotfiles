@@ -12,15 +12,28 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+    nikitabobko-tap = {
+      url = "github:nikitabobko/homebrew-tap";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, nikitabobko-tap }:
     let
       configuration = { pkgs, config, ... }: {
         environment.systemPackages = with pkgs;
           [
-            # arc-browser
-            # vscode
+            arc-browser
+            vscode
+            discord
             wezterm
             neovim
             tmux
@@ -35,14 +48,19 @@
             zoxide
             ripgrep
             nixpkgs-fmt
+            jankyborders
           ];
 
         homebrew = {
           enable = true;
           casks = [
-            "aerospace"
+            "nikitabobko/tap/aerospace"
             "raycast"
             "marta"
+            "messenger"
+            "whatsapp"
+            "sourcetree"
+            "displaylink"
           ];
           onActivation.cleanup = "zap";
         };
@@ -92,9 +110,9 @@
           hostPlatform = "aarch64-darwin";
         };
 
-        users.users.fmt = {
-          name = "fmt";
-          home = "/Users/fmt";
+        users.users.bh = {
+          name = "bh";
+          home = "/Users/bh";
         };
       };
     in
@@ -106,15 +124,21 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.fmt = import ./home.nix;
+            home-manager.users.bh = import ./home.nix;
           }
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
-              user = "fmt";
+              user = "bh";
               autoMigrate = true;
+              taps = {
+                # "homebrew/homebrew-core" = homebrew-core;
+                # "homebrew/homebrew-cask" = homebrew-cask;
+                # "nikitabobko/tap" = nikitabobko-tap;
+              };
+              # mutableTaps = false;
             };
           }
         ];
