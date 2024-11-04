@@ -91,7 +91,10 @@
           configurationRevision = self.rev or self.dirtyRev or null;
           stateVersion = 5;
           defaults = {
-            dock.autohide = true;
+            dock = {
+              autohide = true;
+              show-recents = false;
+            };
           };
         };
 
