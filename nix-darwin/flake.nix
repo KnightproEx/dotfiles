@@ -12,34 +12,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
-    nikitabobko-tap = {
-      url = "github:nikitabobko/homebrew-tap";
-      flake = false;
-    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew, homebrew-core, homebrew-cask, nikitabobko-tap }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nix-homebrew }:
     let
       configuration = { pkgs, config, ... }: {
         environment.systemPackages = with pkgs;
           [
+            # gui
             arc-browser
-            vscode
             discord
+            vscode
             wezterm
-            neovim
-            tmux
+            postman
+
+            # dev
             nodejs_22
             bun
-            ngrok
+
+            # cli
+            neovim
+            tmux
             mkalias
             bat
             fd
@@ -47,23 +40,39 @@
             fzf
             zoxide
             ripgrep
+            ngrok
+
+            # formatter
             nixpkgs-fmt
+
+            # other
             jankyborders
-            postman
           ];
 
         homebrew = {
           enable = true;
+          brews = [
+            # dev
+            "appium"
+          ];
           casks = [
+            # productivity
             "nikitabobko/tap/aerospace"
             "raycast"
             "marta"
+
+            # messaging
             "messenger"
             "whatsapp"
-            "sourcetree"
-            "displaylink"
+
+            # config
             "logi-options+"
+            "displaylink"
+
+            # dev
             "docker"
+            "sourcetree"
+            "appium-inspector"
           ];
           onActivation.cleanup = "zap";
         };
@@ -139,12 +148,6 @@
               enableRosetta = true;
               user = "bh";
               autoMigrate = true;
-              taps = {
-                # "homebrew/homebrew-core" = homebrew-core;
-                # "homebrew/homebrew-cask" = homebrew-cask;
-                # "nikitabobko/tap" = nikitabobko-tap;
-              };
-              # mutableTaps = false;
             };
           }
         ];
