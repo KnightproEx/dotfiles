@@ -49,6 +49,7 @@
             ripgrep
             nixpkgs-fmt
             jankyborders
+            postman
           ];
 
         homebrew = {
@@ -61,6 +62,8 @@
             "whatsapp"
             "sourcetree"
             "displaylink"
+            "logi-options+"
+            "docker"
           ];
           onActivation.cleanup = "zap";
         };
