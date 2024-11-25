@@ -43,6 +43,6 @@ return {
 			"<cmd>Telescope grep_string<cr>",
 			{ desc = "[Telescope] find string under cursor in cwd" }
 		)
-		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
+		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "[Telescope] Find todos" })
 	end,
 }

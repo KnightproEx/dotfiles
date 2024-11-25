@@ -21,6 +21,10 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
 			completion = {
 				completeopt = "menu,menuone,preview,noselect",
 			},
@@ -36,7 +40,7 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<M-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			}),
 
 			sources = cmp.config.sources({
@@ -48,7 +52,7 @@ return {
 
 			formatting = {
 				format = lspkind.cmp_format({
-					maxwidth = 50,
+					-- maxwidth = 50,
 					ellipsis_char = "...",
 				}),
 			},

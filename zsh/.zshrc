@@ -19,6 +19,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH="/Users/fmt/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/Users/fmt/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/development/flutter/bin:$PATH
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -26,10 +27,6 @@ HISTFILE=$HOME/.zhistory
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
-
-if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-fi
 
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -75,9 +72,11 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 setopt hist_verify
 
+# Key bindings
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
+# Aliases
 alias ls="eza --icons=always"
 alias cd="z"
 alias cat="bat"
@@ -93,3 +92,5 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd -t d -H -E .git . "$1"
 }
+export PATH="/Users/bh/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/Users/bh/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
