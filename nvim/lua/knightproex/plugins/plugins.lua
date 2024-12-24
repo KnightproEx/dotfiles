@@ -1,6 +1,7 @@
 return {
 	"nvim-lua/plenary.nvim",
 	"christoomey/vim-tmux-navigator",
+
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -28,6 +29,7 @@ return {
 			vim.cmd.colorscheme("catppuccin-mocha")
 		end,
 	},
+
 	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
@@ -56,20 +58,23 @@ return {
 			vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
 		end,
 	},
+
 	{
 		"stevearc/dressing.nvim",
 		event = "VeryLazy",
 	},
+
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 	},
+
 	{
 		"kylechui/nvim-surround",
-		event = { "BufReadPre", "BufNewFile" },
-		version = "*",
+		event = "VeryLazy",
 		config = true,
 	},
+
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -78,6 +83,7 @@ return {
 			require("ibl").setup()
 		end,
 	},
+
 	{
 		"numToStr/Comment.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -94,12 +100,13 @@ return {
 			})
 		end,
 	},
+
 	{
 		"windwp/nvim-autopairs",
 		event = { "InsertEnter" },
-		dependencies = {
-			"hrsh7th/nvim-cmp",
-		},
+		-- dependencies = {
+		-- 	"saghen/blink.cmp",
+		-- },
 		config = function()
 			local autopairs = require("nvim-autopairs")
 
@@ -111,12 +118,13 @@ return {
 				},
 			})
 
-			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-			local cmp = require("cmp")
-
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+			-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+			-- local cmp = require("cmp")
+			--
+			-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 		end,
 	},
+
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -132,6 +140,9 @@ return {
 					section_separators = "",
 				},
 				sections = {
+					lualine_c = {
+						{ "filename", path = 1 },
+					},
 					lualine_x = {
 						{
 							lazy_status.updates,
@@ -144,6 +155,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"rmagatti/auto-session",
 		config = function()
@@ -157,11 +169,6 @@ return {
 				auto_session_suppress_dirs = { "~/", "~/Downloads", "~/Documents", "~/Desktop/" },
 				post_restore_cmds = { change_nvim_tree_dir, "NvimTreeOpen" },
 			})
-
-			local keymap = vim.keymap
-
-			keymap.set("n", "<leader>wr", "<cmd>SessionRestore<CR>", { desc = "Restore session for cwd" })
-			keymap.set("n", "<leader>ws", "<cmd>SessionSave<CR>", { desc = "Save session for auto session root dir" })
 		end,
 	},
 }

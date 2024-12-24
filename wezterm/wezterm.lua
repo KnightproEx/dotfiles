@@ -26,10 +26,10 @@ return {
 	color_scheme = "Catppuccin Mocha",
 	front_end = "WebGpu",
 	window_padding = {
-		top = 15,
+		top = 10,
 		bottom = 0,
-		left = 2,
-		right = 2,
+		left = 5,
+		right = 5,
 	},
 	max_fps = 120,
 	window_close_confirmation = "NeverPrompt",

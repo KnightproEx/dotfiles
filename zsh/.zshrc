@@ -22,23 +22,34 @@ export PHP_INI_SCAN_DIR="/Users/fmt/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/development/flutter/bin:$PATH
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+# History
 HISTFILE=$HOME/.zhistory
 HISTSIZE=5000
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_find_no_dups
+setopt hist_verify
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
-source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-
+# Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
+source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -50,39 +61,34 @@ zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0
-zstyle ':fzf-tab:complete:__zoxide_z:*' popup-pad 30 0
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+# zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' popup-min-size 60 8
 zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-[[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+# Prompt
+# [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/omp.json)"
+fi
 
-setopt appendhistory
-setopt sharehistory
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_find_no_dups
-setopt hist_verify
-
-# Key bindings
+# Key Bindings
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 
 # Aliases
 alias ls="eza --icons=always"
-alias cd="z"
 alias cat="bat"
+alias nvchad="NVIM_APPNAME=nvchad nvim"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 
 _fzf_compgen_path() {

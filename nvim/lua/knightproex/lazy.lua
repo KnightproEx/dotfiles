@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -9,12 +10,14 @@ if not vim.loop.fs_stat(lazypath) then
 		lazypath,
 	})
 end
+
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "knightproex.plugins" },
 	{ import = "knightproex.plugins.lsp" },
 }, {
+	install = { colorscheme = { "catppuccin" } },
 	checker = {
 		enabled = true,
 		notify = false,

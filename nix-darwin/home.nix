@@ -18,10 +18,12 @@
       ".config/bat".source = mkOutOfStoreSymlink ~/dotfiles/bat;
       ".config/nix".source = mkOutOfStoreSymlink ~/dotfiles/nix;
       ".config/nvim".source = mkOutOfStoreSymlink ~/dotfiles/nvim;
+      ".config/oh-my-posh".source = mkOutOfStoreSymlink ~/dotfiles/oh-my-posh;
       ".config/p10k".source = mkOutOfStoreSymlink ~/dotfiles/p10k;
       ".config/raycast".source = mkOutOfStoreSymlink ~/dotfiles/raycast;
       ".config/tmux".source = mkOutOfStoreSymlink ~/dotfiles/tmux;
       ".config/wezterm".source = mkOutOfStoreSymlink ~/dotfiles/wezterm;
+      ".config/sketchybar".source = mkOutOfStoreSymlink ~/dotfiles/sketchybar;
     };
   };
 

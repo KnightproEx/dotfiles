@@ -1,3 +1,5 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
@@ -6,6 +8,7 @@ local o = vim.o
 o.timeout = true
 o.timeoutlen = 500
 o.laststatus = 3
+o.cursorline = true
 
 opt.relativenumber = false
 opt.number = true

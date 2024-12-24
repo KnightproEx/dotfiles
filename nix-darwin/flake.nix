@@ -39,7 +39,8 @@
             bun
             cargo
             pnpm
-            nginx
+            bacon
+            dotnet-sdk_8
 
             # CLI
             neovim
@@ -51,7 +52,10 @@
             fzf
             zoxide
             ripgrep
+            oh-my-posh
+            jankyborders
             ngrok
+            sketchybar
 
             # LSP
             nixd
@@ -60,16 +64,20 @@
             nixfmt-rfc-style
             rustfmt
 
-            # Other
-            jankyborders
+            # Compiler
+            rustc
           ];
 
           homebrew = {
             enable = true;
+            taps = [
+              "homebrew/services"
+            ];
             brews = [
               # dev
               "appium"
               "php"
+              "nginx"
             ];
             casks = [
               # productivity
@@ -92,6 +100,9 @@
               "mysqlworkbench"
               "orbstack"
               "android-studio"
+
+              # font
+              "font-sf-pro"
             ];
             onActivation = {
               cleanup = "zap";
@@ -100,7 +111,10 @@
             };
           };
 
-          fonts.packages = [ ];
+          fonts.packages = with pkgs; [
+            # (nerdfonts.override { fonts = [ "Hack" ]; })
+            sketchybar-app-font
+          ];
 
           security.pam.enableSudoTouchIdAuth = true;
 
@@ -137,6 +151,7 @@
                 InitialKeyRepeat = 20;
                 ApplePressAndHoldEnabled = false;
                 NSWindowShouldDragOnGesture = true;
+                NSAutomaticWindowAnimationsEnabled = false;
               };
             };
           };
@@ -146,7 +161,6 @@
           home-manager.backupFileExtension = "backup";
 
           nix = {
-            # settings.experimental-features = "nix-command flakes";
             configureBuildUsers = true;
             useDaemon = true;
           };
@@ -178,7 +192,6 @@
               enable = true;
               enableRosetta = true;
               user = "bh";
-              # autoMigrate = true;
             };
           }
         ];

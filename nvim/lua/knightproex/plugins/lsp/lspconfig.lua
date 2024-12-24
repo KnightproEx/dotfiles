@@ -2,16 +2,21 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim" },
+		{ "saghen/blink.cmp" },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local util = require("lspconfig.util")
 		local keymap = vim.keymap
+
+		vim.diagnostic.config({
+			float = { border = "rounded" },
+		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -59,7 +64,8 @@ return {
 			end,
 		})
 
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		-- local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 
 		for type, icon in pairs(signs) do
@@ -76,51 +82,13 @@ return {
 				},
 			},
 		})
-		lspconfig["yamlls"].setup({
-			settings = {
-				yaml = {
-					schemas = {
-						["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
-							"**/docker-compose.yml",
-							"**/docker-compose.yaml",
-							"**/docker-compose.*.yml",
-							"**/docker-compose.*.yaml",
-							"**/compose.yml",
-							"**/compose.yaml",
-							"**/compose.*.yml",
-							"**/compose.*.yaml",
-						},
-						["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-					},
-				},
-			},
-		})
+
 		mason_lspconfig.setup_handlers({
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
-			-- ["graphql"] = function()
-			-- 	lspconfig["graphql"].setup({
-			-- 		capabilities = capabilities,
-			-- 		filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-			-- 	})
-			-- end,
-			-- ["emmet_ls"] = function()
-			-- 	lspconfig["emmet_ls"].setup({
-			-- 		capabilities = capabilities,
-			-- 		filetypes = {
-			-- 			"html",
-			-- 			"typescriptreact",
-			-- 			"javascriptreact",
-			-- 			"css",
-			-- 			"sass",
-			-- 			"scss",
-			-- 			"less",
-			-- 		},
-			-- 	})
-			-- end,
 			["rust_analyzer"] = function()
 				return true
 			end,
@@ -132,6 +100,27 @@ return {
 							or util.find_node_modules_ancestor(fname)
 							or util.find_git_ancestor(fname)
 					end,
+				})
+			end,
+			["yamlls"] = function()
+				lspconfig["yamlls"].setup({
+					settings = {
+						yaml = {
+							schemas = {
+								["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+									"**/docker-compose.yml",
+									"**/docker-compose.yaml",
+									"**/docker-compose.*.yml",
+									"**/docker-compose.*.yaml",
+									"**/compose.yml",
+									"**/compose.yaml",
+									"**/compose.*.yml",
+									"**/compose.*.yaml",
+								},
+								["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+							},
+						},
+					},
 				})
 			end,
 			["lua_ls"] = function()
@@ -147,6 +136,33 @@ return {
 							},
 							telemetry = { enable = false },
 						},
+					},
+				})
+			end,
+			["ts_ls"] = function()
+				lspconfig["ts_ls"].setup({
+					handlers = {
+						["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
+							if result.diagnostics == nil then
+								return
+							end
+
+							local idx = 1
+							while idx <= #result.diagnostics do
+								local entry = result.diagnostics[idx]
+								local formatter = require("format-ts-errors")[entry.code]
+
+								entry.message = formatter and formatter(entry.message) or entry.message
+
+								if entry.code == 80001 then
+									table.remove(result.diagnostics, idx)
+								else
+									idx = idx + 1
+								end
+							end
+
+							vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+						end,
 					},
 				})
 			end,
