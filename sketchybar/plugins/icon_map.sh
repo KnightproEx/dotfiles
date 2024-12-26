@@ -39,7 +39,7 @@ function __icon_map() {
    "Android Messages")
         icon_result=":android_messages:"
         ;;
-   "Android Studio")
+   "Android Studio" | "qemu-system-aarch64")
         icon_result=":android_studio:"
         ;;
    "Anytype")
@@ -198,7 +198,7 @@ function __icon_map() {
    "System Preferences" | "System Settings" | "系统设置" | "Réglages Système")
         icon_result=":gear:"
         ;;
-   "GitHub Desktop")
+   "GitHub Desktop" | "Sourcetree")
         icon_result=":git_hub:"
         ;;
    "Godot")
@@ -299,6 +299,9 @@ function __icon_map() {
         ;;
    "Maps" | "Google Maps")
         icon_result=":maps:"
+        ;;
+   "Marta")
+        icon_result=":marta:"
         ;;
    "Matlab")
         icon_result=":matlab:"
@@ -401,6 +404,9 @@ function __icon_map() {
         ;;
    "Opera")
         icon_result=":opera:"
+        ;;
+   "OrbStack")
+        icon_result=":orbstack:"
         ;;
    "OrcaSlicer")
         icon_result=":orcaslicer:"
@@ -614,6 +620,9 @@ function __icon_map() {
         ;;
    "Zed")
         icon_result=":zed:"
+        ;;
+   "Zen Browser")
+        icon_result=":zen_browser:"
         ;;
    "Zeplin")
         icon_result=":zeplin:"

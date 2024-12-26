@@ -77,10 +77,21 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPre", "BufNewFile" },
 		main = "ibl",
 		config = function()
-			require("ibl").setup()
+			require("ibl").setup({
+				indent = {
+					char = "▏",
+				},
+				scope = {
+					show_start = false,
+					show_end = false,
+				},
+			})
+			-- disable indentation on the first level
+			local hooks = require("ibl.hooks")
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
+			hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_tab_indent_level)
 		end,
 	},
 
@@ -122,37 +133,6 @@ return {
 			-- local cmp = require("cmp")
 			--
 			-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		end,
-	},
-
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			local lualine = require("lualine")
-			local lazy_status = require("lazy.status")
-
-			lualine.setup({
-				options = {
-					theme = "catppuccin",
-					icons_enabled = true,
-					component_separators = "|",
-					section_separators = "",
-				},
-				sections = {
-					lualine_c = {
-						{ "filename", path = 1 },
-					},
-					lualine_x = {
-						{
-							lazy_status.updates,
-							cond = lazy_status.has_updates,
-							color = { fg = "#ff9e64" },
-						},
-						{ "filetype" },
-					},
-				},
-			})
 		end,
 	},
 

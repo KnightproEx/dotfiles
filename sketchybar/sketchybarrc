@@ -61,11 +61,9 @@ defaults=(
   popup.blur_radius=20
   popup.background.shadow.drawing=on
   scroll_texts=on
-
 )
 
 sketchybar --default "${defaults[@]}"
-
 
 # Left
 source "$ITEM_DIR/apple.sh"

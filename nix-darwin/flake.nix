@@ -80,6 +80,9 @@
               "nginx"
             ];
             casks = [
+              # browser
+              "zen-browser"
+
               # productivity
               "nikitabobko/tap/aerospace"
               "raycast"
