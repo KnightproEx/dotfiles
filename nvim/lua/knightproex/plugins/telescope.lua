@@ -13,7 +13,6 @@ return {
 
 		telescope.setup({
 			defaults = {
-				-- layout_strategy = "horizontal",
 				layout_config = {
 					horizontal = {
 						prompt_position = "top",
@@ -64,5 +63,8 @@ return {
 			{ desc = "[Telescope] find buffers" }
 		)
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "[Telescope] Find todos" })
+		keymap.set("n", "<leader>fn", function()
+			require("noice").cmd("telescope")
+		end, { desc = "[Noice] show notification in telescope" })
 	end,
 }

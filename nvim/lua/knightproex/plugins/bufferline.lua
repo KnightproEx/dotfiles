@@ -4,13 +4,13 @@ return {
 	version = "*",
 	config = function()
 		local bufferline = require("bufferline")
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
+		local palette = require("catppuccin.palettes").get_palette()
 
 		bufferline.setup({
 			highlights = require("catppuccin.groups.integrations.bufferline").get({
 				custom = {
 					all = {
-						fill = { bg = mocha.base },
+						fill = { bg = palette.base },
 					},
 				},
 			}),
@@ -62,9 +62,7 @@ return {
 				show_duplicates_prefix = false,
 				right_mouse_command = false,
 				left_mouse_command = false,
-				indicator = {
-					style = "none",
-				},
+				indicator = { style = "none" },
 				max_name_length = 2000,
 				tab_size = 0,
 				name_formatter = function(--[[ buf ]])
@@ -81,7 +79,7 @@ return {
 				},
 				diagnostics = "nvim_lsp",
 				diagnostics_indicator = function(_, _, diagnostics_dict, _)
-					local s = " "
+					local s = ""
 					for e, n in pairs(diagnostics_dict) do
 						local sym = e == "error" and " " or (e == "warning" and " " or " ")
 						s = s .. n .. sym

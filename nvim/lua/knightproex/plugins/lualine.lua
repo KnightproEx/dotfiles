@@ -4,10 +4,10 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status")
-		local mocha = require("catppuccin.palettes").get_palette("mocha")
+		local palette = require("catppuccin.palettes").get_palette()
 
 		local custom_catppuccin = require("lualine.themes.catppuccin")
-		custom_catppuccin.normal.c.bg = mocha.base
+		custom_catppuccin.normal.c.bg = palette.base
 
 		lualine.setup({
 			options = {

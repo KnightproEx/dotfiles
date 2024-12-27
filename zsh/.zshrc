@@ -37,9 +37,10 @@ setopt hist_save_no_dups
 setopt hist_find_no_dups
 setopt hist_verify
 
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Powerlevel10k prompt
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -49,7 +50,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 # zinit ice depth=1; zinit light jeffreytse/zsh-vi-mode
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
@@ -70,11 +71,11 @@ zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-# Prompt
-# [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/omp.json)"
-fi
+# Powerlevel10k prompt
+[[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
+# if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+#   eval "$(oh-my-posh init zsh --config $HOME/.config/oh-my-posh/omp.json)"
+# fi
 
 # Key Bindings
 bindkey '^[[A' history-search-backward

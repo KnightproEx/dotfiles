@@ -14,7 +14,7 @@ return {
 			preset = "none",
 			["<A-space>"] = { "show", "show_documentation", "hide_documentation" },
 			["<C-e>"] = { "cancel", "fallback" },
-			["<CR>"] = { "accept", "fallback" },
+			["<CR>"] = { "select_and_accept", "fallback" },
 
 			["<Tab>"] = { "snippet_forward", "fallback" },
 			["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -42,18 +42,22 @@ return {
 			end,
 		},
 		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = "mono",
+			nerd_font_variant = "normal",
 		},
 		completion = {
-			list = {
-				selection = "auto_insert",
-			},
+			ghost_text = { enabled = true },
+			trigger = { show_on_accept_on_trigger_character = false },
 			menu = {
 				border = "single",
 				auto_show = function(ctx)
 					return ctx.mode ~= "cmdline"
 				end,
+				draw = {
+					columns = {
+						{ "label", "label_description", gap = 1 },
+						{ "kind_icon", "kind" },
+					},
+				},
 			},
 			documentation = {
 				auto_show = true,
@@ -63,7 +67,20 @@ return {
 		},
 		signature = { enabled = true, window = { border = "single" } },
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = function(--[[ ctx ]])
+				local success, node = pcall(vim.treesitter.get_node)
+				if vim.bo.filetype == "lua" then
+					return { "lsp", "path" }
+				elseif
+					success
+					and node
+					and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
+				then
+					return { "buffer" }
+				else
+					return { "lsp", "path", "snippets", "buffer" }
+				end
+			end,
 		},
 	},
 	opts_extend = { "sources.default" },

@@ -110,9 +110,5 @@ return {
 		vim.keymap.set("n", "<Esc>", function()
 			require("noice").cmd("dismiss")
 		end, { desc = "[Noice] dismiss notify popup" })
-
-		vim.keymap.set("n", "<leader>nt", function()
-			require("noice").cmd("telescope")
-		end, { desc = "[Noice] show notification in telescope" })
 	end,
 }

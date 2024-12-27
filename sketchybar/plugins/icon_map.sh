@@ -534,7 +534,7 @@ function __icon_map() {
    "Telegram")
         icon_result=":telegram:"
         ;;
-   "Terminal" | "终端")
+   "Terminal" | "终端" | "Ghostty")
         icon_result=":terminal:"
         ;;
    "Typora")

@@ -52,7 +52,6 @@
             fzf
             zoxide
             ripgrep
-            oh-my-posh
             jankyborders
             ngrok
             sketchybar
@@ -82,6 +81,9 @@
             casks = [
               # browser
               "zen-browser"
+
+              # Terminal Emulator
+              "ghostty"
 
               # productivity
               "nikitabobko/tap/aerospace"
@@ -149,12 +151,17 @@
                 autohide = true;
                 show-recents = false;
               };
+              finder = {
+                _FXShowPosixPathInTitle = true;
+              };
               NSGlobalDomain = {
                 KeyRepeat = 1;
-                InitialKeyRepeat = 20;
+                InitialKeyRepeat = 15;
                 ApplePressAndHoldEnabled = false;
+                AppleShowAllExtensions = true;
                 NSWindowShouldDragOnGesture = true;
                 NSAutomaticWindowAnimationsEnabled = false;
+                "com.apple.sound.beep.volume" = 0.0;
               };
             };
           };
@@ -185,9 +192,11 @@
           configuration
           home-manager.darwinModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.bh = import ./home.nix;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.bh = import ./home.nix;
+            };
           }
           nix-homebrew.darwinModules.nix-homebrew
           {

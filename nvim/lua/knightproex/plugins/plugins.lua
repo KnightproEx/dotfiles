@@ -10,15 +10,13 @@ return {
 			local catppuccin = require("catppuccin")
 			catppuccin.setup({
 				integrations = {
-					cmp = true,
-					gitsigns = true,
-					nvimtree = true,
-					treesitter = true,
 					noice = true,
 					notify = true,
-					telescope = true,
 					which_key = true,
 					alpha = true,
+					lsp_trouble = true,
+					nvim_surround = true,
+					mason = true,
 					indent_blankline = {
 						enabled = true,
 						scope_color = "lavender",

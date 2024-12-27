@@ -35,7 +35,8 @@ outer.top = 16
 outer.right = 16
 
 [mode.main.binding]
-alt-enter = 'exec-and-forget open -na wezterm'
+# alt-enter = 'exec-and-forget open -na wezterm'
+alt-enter = 'exec-and-forget open -na ghostty'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
