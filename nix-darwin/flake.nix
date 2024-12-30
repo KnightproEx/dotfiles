@@ -26,46 +26,53 @@
       configuration =
         { pkgs, config, ... }:
         {
-          environment.systemPackages = with pkgs; [
-            # GUI
-            arc-browser
-            discord
-            vscode
-            wezterm
-            postman
+          environment = {
+            systemPackages = with pkgs; [
+              # GUI
+              arc-browser
+              discord
+              vscode
+              postman
 
-            # Dev
-            nodejs_22
-            bun
-            cargo
-            pnpm
-            bacon
-            dotnet-sdk_8
+              # Dev
+              nodejs_22
+              bun
+              cargo
+              pnpm
+              bacon
+              dotnet-sdk_8
 
-            # CLI
-            neovim
-            tmux
-            mkalias
-            bat
-            fd
-            eza
-            fzf
-            zoxide
-            ripgrep
-            jankyborders
-            ngrok
-            sketchybar
+              # CLI
+              neovim
+              tmux
+              mkalias
+              bat
+              fd
+              eza
+              fzf
+              zoxide
+              ripgrep
+              jankyborders
+              ngrok
+              sketchybar
 
-            # LSP
-            nixd
+              # LSP
+              nixd
 
-            # Formatter
-            nixfmt-rfc-style
-            rustfmt
+              # Formatter
+              nixfmt-rfc-style
+              rustfmt
 
-            # Compiler
-            rustc
-          ];
+              # Compiler
+              rustc
+            ];
+
+            etc."pam.d/sudo_local".text = ''
+              # Managed by Nix Darwin
+              auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
+              auth       sufficient     pam_tid.so
+            '';
+          };
 
           homebrew = {
             enable = true;
@@ -84,6 +91,7 @@
 
               # Terminal Emulator
               "ghostty"
+              "wezterm"
 
               # productivity
               "nikitabobko/tap/aerospace"

@@ -3,7 +3,7 @@ local wezterm = require("wezterm")
 return {
 	window_decorations = "RESIZE",
 	font = wezterm.font("MonoLisa"),
-	font_size = 16,
+	font_size = 15,
 	line_height = 1.4,
 	scrollback_lines = 5000,
 	hide_tab_bar_if_only_one_tab = true,
@@ -24,7 +24,7 @@ return {
 			]=],
 	},
 	color_scheme = "Catppuccin Mocha",
-	front_end = "WebGpu",
+	-- front_end = "WebGpu",
 	window_padding = {
 		top = 10,
 		bottom = 0,
