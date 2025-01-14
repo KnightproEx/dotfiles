@@ -38,9 +38,6 @@
               bun
               cargo
 
-              # Sdk
-              dotnet-sdk_8
-
               # Compiler
               rustc
 
