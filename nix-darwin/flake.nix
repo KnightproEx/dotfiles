@@ -28,12 +28,6 @@
         {
           environment = {
             systemPackages = with pkgs; [
-              # GUI
-              arc-browser
-              discord
-              vscode
-              postman
-
               # TUI
               neovim
               tmux
@@ -70,7 +64,7 @@
               qmk
 
               # TODO: Move them to brew
-              sketchybar
+              # sketchybar
               jankyborders
 
               # LSP
@@ -88,29 +82,24 @@
             '';
           };
 
-          # security.pam.enableSudoTouchIdAuth = true;
-
           homebrew = {
             enable = true;
-            taps = [
-              "homebrew/services"
-            ];
+            # taps = [ ];
             brews = [
-              # dev
-              "appium"
               "php"
               "nginx"
               "awscli"
             ];
             casks = [
               # Browser
+              "arc"
               "zen-browser"
 
               # Terminal Emulator
               "ghostty"
               "wezterm"
 
-              # Rice
+              # Tool
               "nikitabobko/tap/aerospace"
               "raycast"
               "marta"
@@ -118,6 +107,7 @@
               # Messaging
               "messenger"
               "whatsapp"
+              "discord"
 
               # Config
               "qmk-toolbox"
@@ -126,12 +116,12 @@
               "displaylink"
 
               # Dev
+              "visual-studio-code"
               "openvpn-connect"
               "sourcetree"
-              "appium-inspector"
               "mysqlworkbench"
               "orbstack"
-              "android-studio"
+              "postman"
 
               # Font
               "font-sf-pro"
