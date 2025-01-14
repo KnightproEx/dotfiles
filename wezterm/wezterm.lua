@@ -24,7 +24,6 @@ return {
 			]=],
 	},
 	color_scheme = "Catppuccin Mocha",
-	-- front_end = "WebGpu",
 	window_padding = {
 		top = 10,
 		bottom = 0,

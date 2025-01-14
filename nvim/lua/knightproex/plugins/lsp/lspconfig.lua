@@ -2,16 +2,14 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		-- "hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-
 		{ "folke/neodev.nvim" },
-		{ "saghen/blink.cmp" },
+		-- { "saghen/blink.cmp" },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
-		-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local util = require("lspconfig.util")
 		local keymap = vim.keymap
 
@@ -65,8 +63,8 @@ return {
 			end,
 		})
 
-		-- local capabilities = cmp_nvim_lsp.default_capabilities()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
 		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
 
 		for type, icon in pairs(signs) do
@@ -76,18 +74,56 @@ return {
 
 		lspconfig["nixd"].setup({
 			settings = {
+				nixpkgs = {
+					expr = "import <nixpkgs> { }",
+				},
 				nixd = {
 					formatting = {
 						command = { "nixfmt" },
 					},
 				},
+				options = {
+					nixos = {
+						expr = '(builtin.getFlake "~/dotfiles/nix-darwin").nixosConfiguration.CONFIGNAME.options',
+					},
+					home_manager = {
+						expr = '(builtin.getFlake "~/dotfiles/nix-darwin").homeConfigurations.CONFIGNAME.options',
+					},
+				},
 			},
 		})
+
+		-- Terraform format on save
+		vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+			pattern = { "*.tf", "*.tfvars" },
+			callback = function()
+				vim.lsp.buf.format()
+			end,
+		})
+
+		-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+		-- 	pattern = "deployment.yaml",
+		-- 	callback = function()
+		-- 		vim.opt_local.filetype = "helm"
+		-- 	end,
+		-- })
 
 		mason_lspconfig.setup_handlers({
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
+				})
+			end,
+			["helm_ls"] = function()
+				lspconfig["helm_ls"].setup({
+					settings = {
+						helm_ls = {
+							yamlls = {
+								enabled = false,
+								path = "yaml-language-server",
+							},
+						},
+					},
 				})
 			end,
 			["rust_analyzer"] = function()
@@ -107,18 +143,28 @@ return {
 				lspconfig["yamlls"].setup({
 					settings = {
 						yaml = {
+							schemaStore = {
+								enable = true,
+								url = "https://www.schemastore.org/api/json/catalog.json",
+							},
 							schemas = {
 								["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
-									"**/docker-compose.yml",
-									"**/docker-compose.yaml",
-									"**/docker-compose.*.yml",
-									"**/docker-compose.*.yaml",
-									"**/compose.yml",
-									"**/compose.yaml",
-									"**/compose.*.yml",
-									"**/compose.*.yaml",
+									"*docker-compose*.{yml,yaml}",
+									"*compose*.{yml,yaml}",
 								},
-								["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+								kubernetes = "*.k8s.yaml",
+								["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+								["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+								["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+								["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+								["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+								["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+								["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+								["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+								["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+								["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+								-- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+								["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
 							},
 						},
 					},

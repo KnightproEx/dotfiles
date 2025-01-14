@@ -16,6 +16,10 @@ return {
 			sync_install = false,
 			ignore_install = { "javascript", "dart" },
 			auto_install = true,
+			ensure_installed = {
+				"hcl",
+				"terraform",
+			},
 			indent = {
 				enable = true,
 				disable = { "dart" },

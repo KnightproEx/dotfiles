@@ -26,6 +26,8 @@ return {
 				"dockerls",
 				"yamlls",
 				"rust_analyzer",
+				"helm_ls",
+				"terraformls",
 			},
 		})
 
@@ -34,6 +36,7 @@ return {
 				"prettier",
 				"stylua",
 				"php-cs-fixer",
+				"tflint",
 				-- "eslint_d",
 			},
 		})

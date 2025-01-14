@@ -34,27 +34,44 @@
               vscode
               postman
 
-              # Dev
-              nodejs_22
-              bun
-              cargo
-              pnpm
-              bacon
-              dotnet-sdk_8
-
-              # CLI
+              # TUI
               neovim
               tmux
-              mkalias
+
+              # Package Manager
+              nodejs_22
+              pnpm
+              bun
+              cargo
+
+              # Sdk
+              dotnet-sdk_8
+
+              # Compiler
+              rustc
+
+              # Dev Tool
+              ngrok
+              bacon
+              terraform
+              packer
+              kubeswitch
+              kubernetes-helm
+
+              # Other Tool
               bat
               fd
-              eza
               fzf
+              eza
               zoxide
+              tree
               ripgrep
-              jankyborders
-              ngrok
+              mkalias
+              qmk
+
+              # TODO: Move them to brew
               sketchybar
+              jankyborders
 
               # LSP
               nixd
@@ -62,9 +79,6 @@
               # Formatter
               nixfmt-rfc-style
               rustfmt
-
-              # Compiler
-              rustc
             ];
 
             etc."pam.d/sudo_local".text = ''
@@ -73,6 +87,8 @@
               auth       sufficient     pam_tid.so
             '';
           };
+
+          # security.pam.enableSudoTouchIdAuth = true;
 
           homebrew = {
             enable = true;
@@ -84,29 +100,32 @@
               "appium"
               "php"
               "nginx"
+              "awscli"
             ];
             casks = [
-              # browser
+              # Browser
               "zen-browser"
 
               # Terminal Emulator
               "ghostty"
               "wezterm"
 
-              # productivity
+              # Rice
               "nikitabobko/tap/aerospace"
               "raycast"
               "marta"
 
-              # messaging
+              # Messaging
               "messenger"
               "whatsapp"
 
-              # config
+              # Config
+              "qmk-toolbox"
+              "karabiner-elements"
               "logi-options+"
               "displaylink"
 
-              # dev
+              # Dev
               "openvpn-connect"
               "sourcetree"
               "appium-inspector"
@@ -114,7 +133,7 @@
               "orbstack"
               "android-studio"
 
-              # font
+              # Font
               "font-sf-pro"
             ];
             onActivation = {
@@ -128,8 +147,6 @@
             # (nerdfonts.override { fonts = [ "Hack" ]; })
             sketchybar-app-font
           ];
-
-          security.pam.enableSudoTouchIdAuth = true;
 
           system = {
             activationScripts.application.text =
@@ -170,6 +187,11 @@
                 NSWindowShouldDragOnGesture = true;
                 NSAutomaticWindowAnimationsEnabled = false;
                 "com.apple.sound.beep.volume" = 0.0;
+              };
+              CustomUserPreferences = {
+                "com.apple.security.authorization" = {
+                  ignoreArd = true;
+                };
               };
             };
           };

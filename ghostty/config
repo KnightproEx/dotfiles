@@ -1,6 +1,8 @@
 theme = catppuccin-mocha
 
-window-padding-y = 10,0
+window-padding-color = background
+window-padding-y = 8,0
+
 macos-titlebar-style = hidden
 cursor-style = block
 

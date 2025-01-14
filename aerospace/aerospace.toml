@@ -1,12 +1,12 @@
 after-login-command = []
 after-startup-command = [
-  'exec-and-forget sketchybar',
+  # 'exec-and-forget sketchybar',
   'exec-and-forget borders active_color=0xffe1e3e4 inactive_color=0x00000000 width=5.0',
 ]
-exec-on-workspace-change = [
-  '/bin/bash', '-c',
-  'sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
-]
+# exec-on-workspace-change = [
+#   '/bin/bash', '-c',
+#   'sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+# ]
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -25,18 +25,18 @@ PATH = '/run/current-system/sw/bin/:/opt/homebrew/bin:${PATH}'
 
 [key-mapping]
 preset = "qwerty"
-
+        
 [gaps]
 inner.horizontal = 4
 inner.vertical = 4
-outer.left = 16
-outer.bottom = 16
-outer.top = 16
-outer.right = 16
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
 [mode.main.binding]
-# alt-enter = 'exec-and-forget open -na wezterm'
-alt-enter = 'exec-and-forget open -na ghostty'
+# ctrl-alt-t = 'exec-and-forget open -na wezterm'
+ctrl-alt-t = 'exec-and-forget open -na ghostty'
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
@@ -96,9 +96,9 @@ run = ['layout floating']
 if.app-id = 'org.yanex.marta'
 run = ['layout floating']
 
-[[on-window-detected]]
-if.app-id = 'com.torusknot.SourceTreeNotMAS'
-run = ['layout floating']
+# [[on-window-detected]]
+# if.app-id = 'com.torusknot.SourceTreeNotMAS'
+# run = ['layout floating']
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
