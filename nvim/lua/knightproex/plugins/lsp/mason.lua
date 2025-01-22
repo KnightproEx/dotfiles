@@ -21,13 +21,14 @@ return {
 				"lua_ls",
 				"emmet_ls",
 				"prismals",
-				-- "intelephense",
-				"phpactor",
+				"intelephense",
 				"dockerls",
 				"yamlls",
 				"rust_analyzer",
 				"helm_ls",
 				"terraformls",
+				"bashls",
+				"pylsp",
 			},
 		})
 
@@ -35,9 +36,11 @@ return {
 			ensure_installed = {
 				"prettier",
 				"stylua",
-				"php-cs-fixer",
+				-- "php-cs-fixer",
+				"pint",
 				"tflint",
 				-- "eslint_d",
+				"shfmt",
 			},
 		})
 	end,

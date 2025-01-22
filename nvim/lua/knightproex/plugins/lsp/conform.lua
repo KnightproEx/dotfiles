@@ -43,15 +43,16 @@ return {
 					"$FILENAME",
 				},
 			},
-			["php-cs-fixer"] = {
-				command = "php-cs-fixer",
-				args = {
-					"fix",
-					"--rules=@PSR12",
-					"$FILENAME",
-				},
-				stdin = false,
-			},
+			-- php = {
+			-- 	command = "PHP_CS_FIXER_IGNORE_ENV=1 php-cs-fixer",
+			-- 	args = {
+			-- 		"fix",
+			-- 		"$FILENAME",
+			-- 		"--config",
+			-- 		"~/.php-cs-fixer.php",
+			-- 	},
+			-- 	stdin = false,
+			-- },
 		},
 		formatters_by_ft = {
 			-- ["javascript"] = biome_lsp_or_prettier,
@@ -73,12 +74,12 @@ return {
 			markdown = { "prettier" },
 			liquid = { "prettier" },
 			lua = { "stylua" },
-			php = { "php-cs-fixer" },
+			php = { "pint" },
 		},
 		format_on_save = {
 			lsp_fallback = true,
 			async = false,
-			timeout_ms = 1000,
+			timeout_ms = 10000,
 		},
 	},
 }

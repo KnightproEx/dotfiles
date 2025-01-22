@@ -46,6 +46,7 @@ return {
 		-- 		},
 		-- 	},
 		-- })
+
 		local clients_lsp = function()
 			local clients = vim.lsp.get_clients()
 			if next(clients) == nil then
@@ -67,11 +68,9 @@ return {
 			return "@recording " .. reg
 		end
 
-		local custom_catppuccin = require("lualine.themes.catppuccin")
-
 		require("lualine").setup({
 			options = {
-				theme = custom_catppuccin,
+				theme = catppuccin,
 				component_separators = "",
 				section_separators = "",
 				-- disabled_filetypes = { "alpha", "Outline", "NvimTree" },
@@ -85,17 +84,17 @@ return {
 					},
 					{
 						"diff",
-						symbols = { added = " ", modified = " ", removed = " " },
+						-- symbols = { added = " ", modified = " ", removed = " " },
 					},
 				},
 				lualine_c = {
-					{
-						"filetype",
-						colored = true,
-						icon_only = true,
-						icon = { align = "right" },
-						padding = { left = 1 },
-					},
+					-- {
+					-- 	"filetype",
+					-- 	colored = true,
+					-- 	icon_only = true,
+					-- 	icon = { align = "right" },
+					-- 	padding = { left = 1 },
+					-- },
 					{
 						"filename",
 						symbols = {
@@ -106,16 +105,27 @@ return {
 							-- alternate_file = "#",
 							-- directory = "",
 						},
-						padding = {},
+						-- padding = {},
 					},
+					{
+						recording,
+						color = { fg = "#ff9e64" },
+						padding = { left = 2 },
+					},
+				},
+				lualine_x = {
 					{
 						"diagnostics",
 						symbols = { error = " ", warn = " ", info = " ", hint = " " },
 						update_in_insert = true,
 					},
-					{ recording, color = { fg = "#ff9e64" } },
+					{
+						"filetype",
+						colored = true,
+						-- icon = { align = "right" },
+						-- padding = { left = 1 },
+					},
 				},
-				lualine_x = {},
 				lualine_y = { clients_lsp },
 				lualine_z = { { "location", icon = "" } },
 			},

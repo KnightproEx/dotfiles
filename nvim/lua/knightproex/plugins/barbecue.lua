@@ -7,9 +7,9 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	opts = {
-		attach_navic = false,
+		attach_navic = true,
 		show_modified = true,
-		show_navic = false,
+		show_navic = true,
 		-- custom_section = function()
 		-- 	local result = {}
 		-- 	local seve = vim.diagnostic.severity

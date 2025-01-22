@@ -28,6 +28,7 @@ return {
 						kind = "",
 						any = {
 							{ find = "no lines in buffer" },
+							{ find = "no manual entry for" },
 
 							-- Edit
 							{ find = "%d+ less lines" },

@@ -31,9 +31,10 @@
               # TUI
               neovim
               tmux
+              yazi
 
               # Package Manager
-              nodejs_22
+              nodejs
               pnpm
               bun
               cargo
@@ -42,14 +43,18 @@
               rustc
 
               # Dev Tool
-              ngrok
-              bacon
               terraform
               packer
               kubeswitch
               kubernetes-helm
+              bacon
+              k9s
+              lazygit
 
-              # Other Tool
+              # Monitoring Tool
+              btop
+
+              # Utilities
               bat
               fd
               fzf
@@ -59,10 +64,11 @@
               ripgrep
               mkalias
               qmk
-
-              # TODO: Move them to brew
-              # sketchybar
-              jankyborders
+              ffmpeg
+              imagemagick
+              fastfetch
+              jq
+              poppler
 
               # LSP
               nixd
@@ -81,11 +87,17 @@
 
           homebrew = {
             enable = true;
-            # taps = [ ];
+            taps = [
+              "felixkratz/formulae"
+              "nikitabobko/tap"
+            ];
             brews = [
-              "php"
               "nginx"
               "awscli"
+              "php"
+              "composer"
+              "sevenzip"
+              "borders"
             ];
             casks = [
               # Browser
@@ -97,9 +109,10 @@
               "wezterm"
 
               # Tool
-              "nikitabobko/tap/aerospace"
+              "aerospace"
               "raycast"
               "marta"
+              # "sketchybar"
 
               # Messaging
               "messenger"
@@ -122,6 +135,7 @@
 
               # Font
               "font-sf-pro"
+              "font-symbols-only-nerd-font"
             ];
             onActivation = {
               cleanup = "zap";
@@ -190,6 +204,8 @@
           nix = {
             configureBuildUsers = true;
             useDaemon = true;
+            # settings.auto-optimise-store = true;
+            # optimise.automatic = true;
           };
 
           nixpkgs = {

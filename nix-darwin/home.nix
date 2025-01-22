@@ -17,6 +17,7 @@
         mkOutOfStoreSymlink ~/dotfiles/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh;
       ".config/aerospace".source = mkOutOfStoreSymlink ~/dotfiles/aerospace;
       ".config/bat".source = mkOutOfStoreSymlink ~/dotfiles/bat;
+      ".config/btop".source = mkOutOfStoreSymlink ~/dotfiles/btop;
       ".config/nix".source = mkOutOfStoreSymlink ~/dotfiles/nix;
       ".config/nvim".source = mkOutOfStoreSymlink ~/dotfiles/nvim;
       ".config/p10k".source = mkOutOfStoreSymlink ~/dotfiles/p10k;
@@ -25,6 +26,9 @@
       ".config/wezterm".source = mkOutOfStoreSymlink ~/dotfiles/wezterm;
       ".config/ghostty".source = mkOutOfStoreSymlink ~/dotfiles/ghostty;
       ".config/sketchybar".source = mkOutOfStoreSymlink ~/dotfiles/sketchybar;
+      ".config/yazi".source = mkOutOfStoreSymlink ~/dotfiles/yazi;
+      ".config/lazygit".source = mkOutOfStoreSymlink ~/dotfiles/lazygit;
+      ".config/k9s".source = mkOutOfStoreSymlink ~/dotfiles/k9s;
     };
   };
 
