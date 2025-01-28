@@ -1,9 +1,9 @@
-{ config, pkgs, ... }:
+{ config, username, ... }:
 
 {
   home = {
-    username = "bh";
-    homeDirectory = "/Users/bh";
+    username = username;
+    homeDirectory = "/Users/${username}";
     stateVersion = "23.05";
     packages = [ ];
     sessionVariables = { };
