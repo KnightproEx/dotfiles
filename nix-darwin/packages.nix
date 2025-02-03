@@ -7,7 +7,7 @@
     yazi
 
     # Package Manager
-    nodejs
+    nodejs_20
     pnpm
     bun
     cargo

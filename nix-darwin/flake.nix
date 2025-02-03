@@ -24,25 +24,27 @@
     }:
     let
       username = "bh";
+      platform = "aarch64-darwin";
     in
     {
+      darwinPackages = self.darwinConfigurations.${username}.pkgs;
       darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self username; };
+        specialArgs = { inherit self username platform; };
         modules = [
-          ./default.nix
           ./configuration.nix
+          ./macos-setting.nix
           ./packages.nix
+          ./user.nix
           home-manager.darwinModules.home-manager
+          nix-homebrew.darwinModules.nix-homebrew
           {
             home-manager = {
+              backupFileExtension = "backup";
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit username; };
               users.${username} = import ./home.nix;
             };
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
             nix-homebrew = {
               enable = true;
               enableRosetta = true;
@@ -51,7 +53,5 @@
           }
         ];
       };
-
-      darwinPackages = self.darwinConfigurations.${username}.pkgs;
     };
 }

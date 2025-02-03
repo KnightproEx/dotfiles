@@ -2,16 +2,24 @@
   self,
   pkgs,
   config,
-  username,
+  platform,
   ...
 }:
 
 {
-  environment.etc."pam.d/sudo_local".text = ''
-    # Managed by Nix Darwin
-    auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
-    auth       sufficient     pam_tid.so
-  '';
+  services.nix-daemon.enable = true;
+
+  nix = {
+    configureBuildUsers = true;
+    useDaemon = true;
+    # settings.auto-optimise-store = true;
+    # optimise.automatic = true;
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = platform;
+  };
 
   system = {
     activationScripts.application.text =
@@ -36,26 +44,5 @@
 
     configurationRevision = self.rev or self.dirtyRev or null;
     stateVersion = 5;
-  };
-
-  services.nix-daemon.enable = true;
-  programs.zsh.enable = true;
-  home-manager.backupFileExtension = "backup";
-
-  nix = {
-    configureBuildUsers = true;
-    useDaemon = true;
-    # settings.auto-optimise-store = true;
-    # optimise.automatic = true;
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    hostPlatform = "aarch64-darwin";
-  };
-
-  users.users.${username} = {
-    name = username;
-    home = "/Users/${username}";
   };
 }
