@@ -99,6 +99,7 @@ alias nvchad="NVIM_APPNAME=nvchad nvim"
 alias grep="grep --color=auto"
 alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
 alias k="kubectl"
+alias tf="terraform"
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 
@@ -113,3 +114,6 @@ source <(switch completion zsh)
 source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 complete -C aws_completer aws
+complete -o nospace -C /run/current-system/sw/bin/terraform terraform
+
+autoload -U +X bashcompinit && bashcompinit
