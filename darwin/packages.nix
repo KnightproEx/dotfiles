@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   environment.systemPackages = with pkgs; [
     # TUI
@@ -53,6 +54,11 @@
 
   homebrew = {
     enable = true;
+    onActivation = {
+      cleanup = "zap";
+      autoUpdate = true;
+      upgrade = true;
+    };
     taps = [
       "felixkratz/formulae"
       "nikitabobko/tap"
@@ -103,11 +109,6 @@
       "font-sf-pro"
       "font-symbols-only-nerd-font"
     ];
-    onActivation = {
-      cleanup = "zap";
-      autoUpdate = true;
-      upgrade = true;
-    };
   };
 
   fonts.packages = with pkgs; [

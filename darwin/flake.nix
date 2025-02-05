@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin = {
-      url = "github:LnL7/nix-darwin";
+      url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -25,10 +25,11 @@
     let
       username = "bh";
       platform = "aarch64-darwin";
+      hostname = "Boons-MacBook-Pro";
     in
     {
       darwinPackages = self.darwinConfigurations.${username}.pkgs;
-      darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self username platform; };
         modules = [
           ./configuration.nix

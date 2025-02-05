@@ -2,22 +2,18 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export EDITOR=nvim
 
 # FZF
-export FZF_COMMON_OPTIONS="
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc
---color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8
---color=selected-bg:#45475a
---multi
---bind='ctrl-/:toggle-preview'
---bind='ctrl-u:preview-page-up'
---bind='ctrl-d:preview-page-down'
---preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=selected-bg:#45475a \
 --multi"
+export FZF_COMMON_OPTIONS="
+$FZF_DEFAULT_OPTS \
+--bind='ctrl-/:toggle-preview'
+--bind='ctrl-u:preview-page-up'
+--bind='ctrl-d:preview-page-down'
+--preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 command -v fd > /dev/null && export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 command -v fd > /dev/null && export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
@@ -25,7 +21,6 @@ command -v bat > /dev/null && export BAT_THEME=Catppuccin-Mocha
 command -v bat > /dev/null && export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
 
-export NIX_CONF_DIR=$HOME/.config/nix
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR
 export PATH=/run/current-system/sw/bin:$PATH
@@ -79,7 +74,6 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:*' switch-group '<' '>'
 zstyle ':fzf-tab:*' popup-min-size 60 8
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:diff:*' popup-min-size 80 12
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
@@ -111,7 +105,10 @@ source <(switcher init zsh)
 source <(kubectl completion zsh)
 source <(helm completion zsh)
 source <(switch completion zsh)
-source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+if [[ -r "$HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" ]]; then
+  source $HOME/.config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+fi
 
 complete -C aws_completer aws
 complete -o nospace -C /run/current-system/sw/bin/terraform terraform
