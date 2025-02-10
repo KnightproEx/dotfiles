@@ -6,6 +6,8 @@
     neovim
     tmux
     yazi
+    k9s
+    lazygit
 
     # Package Manager
     nodejs_20
@@ -13,17 +15,12 @@
     bun
     cargo
 
-    # Compiler
-    rustc
-
     # Dev Tool
     terraform
     packer
     kubeswitch
     kubernetes-helm
     bacon
-    k9s
-    lazygit
 
     # Monitoring Tool
     btop
@@ -37,12 +34,17 @@
     tree
     ripgrep
     mkalias
-    qmk
     ffmpeg
     imagemagick
     fastfetch
     jq
     poppler
+
+    # Tool
+    qmk
+
+    # Compiler
+    rustc
 
     # LSP
     nixd

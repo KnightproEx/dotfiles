@@ -24,8 +24,8 @@
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
       ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
-      ".config/sketchybar".source =
-        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sketchybar";
+      # ".config/sketchybar".source =
+      #   mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sketchybar";
       ".config/yazi".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi";
       ".config/lazygit".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/lazygit";
       ".config/k9s".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s";
