@@ -1,9 +1,23 @@
 return {
 	"folke/trouble.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons", "folke/todo-comments.nvim" },
-	opts = {
-		focus = true,
-	},
+	opts = function(_, opts)
+		return vim.tbl_deep_extend("force", opts or {}, {
+			picker = {
+				actions = require("trouble.sources.snacks").actions,
+				win = {
+					input = {
+						keys = {
+							["<c-t>"] = {
+								"trouble_open",
+								mode = { "n", "i" },
+							},
+						},
+					},
+				},
+			},
+		})
+	end,
 	cmd = "Trouble",
 	keys = {
 		{ "<leader>xw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Open trouble workspace diagnostics" },

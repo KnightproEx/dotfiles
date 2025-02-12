@@ -48,7 +48,6 @@ return {
 							{ find = "%d+ fewer lines" }, -- Deleting multiple lines
 							{ find = "%d+ more lines" }, -- Undoing deletion of multiple lines
 							{ find = "%d+ lines " }, -- Performing some other verb on multiple lines
-							{ find = "Already at newest change" }, -- Redoing
 							{ find = '"[^"]+" %d+L, %d+B' }, -- Saving
 
 							-- Save
