@@ -103,9 +103,13 @@
       "visual-studio-code"
       "openvpn-connect"
       "sourcetree"
-      "mysqlworkbench"
       "orbstack"
       "postman"
+
+      # Database Client
+      "mysqlworkbench"
+      "dbeaver-community"
+      "tableplus"
 
       # Font
       "font-sf-pro"
