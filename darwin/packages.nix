@@ -86,7 +86,6 @@
       "aerospace"
       "raycast"
       "marta"
-      # "sketchybar"
 
       # Messaging
       "messenger"
