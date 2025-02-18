@@ -95,17 +95,22 @@ return {
 					-- 	icon = { align = "right" },
 					-- 	padding = { left = 1 },
 					-- },
+					-- {
+					-- 	"filename",
+					-- 	symbols = {
+					-- 		modified = "",
+					-- 		readonly = "",
+					-- 		-- modified = "●",
+					-- 		-- readonly = "",
+					-- 		-- alternate_file = "#",
+					-- 		-- directory = "",
+					-- 	},
+					-- 	-- padding = {},
+					-- },
 					{
-						"filename",
-						symbols = {
-							modified = "",
-							readonly = "",
-							-- modified = "●",
-							-- readonly = "",
-							-- alternate_file = "#",
-							-- directory = "",
-						},
-						-- padding = {},
+						"diagnostics",
+						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+						update_in_insert = true,
 					},
 					{
 						recording,
@@ -114,11 +119,11 @@ return {
 					},
 				},
 				lualine_x = {
-					{
-						"diagnostics",
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
-						update_in_insert = true,
-					},
+					-- {
+					-- 	"diagnostics",
+					-- 	symbols = { error = " ", warn = " ", info = " ", hint = " " },
+					-- 	update_in_insert = true,
+					-- },
 					{
 						"filetype",
 						colored = true,

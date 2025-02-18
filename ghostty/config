@@ -4,6 +4,7 @@ window-padding-color = background
 window-padding-y = 8,0
 
 macos-titlebar-style = hidden
+quit-after-last-window-closed = true
 cursor-style = block
 cursor-text = 080808
 
