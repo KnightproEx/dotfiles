@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  fonts.packages = with pkgs; [
+    # (nerdfonts.override { fonts = [ "Hack" ]; })
+    sketchybar-app-font
+  ];
+  
   environment.systemPackages = with pkgs; [
     # TUI
     neovim
@@ -115,9 +120,4 @@
       "font-symbols-only-nerd-font"
     ];
   };
-
-  fonts.packages = with pkgs; [
-    # (nerdfonts.override { fonts = [ "Hack" ]; })
-    sketchybar-app-font
-  ];
 }

@@ -15,10 +15,12 @@
       persistent-others = [ ];
       wvous-br-corner = 1;
     };
+
     finder = {
       ShowPathbar = true;
       _FXShowPosixPathInTitle = true;
     };
+
     NSGlobalDomain = {
       KeyRepeat = 1;
       InitialKeyRepeat = 15;
@@ -28,6 +30,7 @@
       NSAutomaticWindowAnimationsEnabled = false;
       "com.apple.sound.beep.volume" = 0.0;
     };
+
     CustomUserPreferences = {
       "com.apple.security.authorization" = {
         ignoreArd = true;

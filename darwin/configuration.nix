@@ -39,6 +39,8 @@
   };
 
   system = {
+    stateVersion = 5;
+    configurationRevision = self.rev or self.dirtyRev or null;
     activationScripts.application.text =
       let
         env = pkgs.build.Env {
@@ -58,8 +60,5 @@
           ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
         done
       '';
-
-    configurationRevision = self.rev or self.dirtyRev or null;
-    stateVersion = 5;
   };
 }
