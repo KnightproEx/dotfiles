@@ -21,17 +21,17 @@ command -v bat > /dev/null && export BAT_THEME=Catppuccin-Mocha
 command -v bat > /dev/null && export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
 
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR
-export PATH=/run/current-system/sw/bin:$PATH
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+# export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$HOME/development/flutter/bin:$PATH
+export PATH=$PATH:/run/current-system/sw/bin
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
-export PATH=$HOME/development/flutter/bin:$PATH
 export PATH=$HOME/.config/herd-lite/bin:$PATH
+export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR
 
 # History
 HISTFILE=$HOME/.zhistory
