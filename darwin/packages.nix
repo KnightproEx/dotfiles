@@ -5,7 +5,7 @@
     # (nerdfonts.override { fonts = [ "Hack" ]; })
     sketchybar-app-font
   ];
-  
+
   environment.systemPackages = with pkgs; [
     # TUI
     neovim
@@ -91,6 +91,8 @@
       "aerospace"
       "raycast"
       "marta"
+      "vmware-fusion"
+      "utm"
 
       # Messaging
       "messenger"
@@ -101,7 +103,7 @@
       "qmk-toolbox"
       "karabiner-elements"
       "logi-options+"
-      "displaylink"
+      # "displaylink"
 
       # Dev
       "visual-studio-code"
@@ -109,6 +111,7 @@
       "sourcetree"
       "orbstack"
       "postman"
+      "android-studio"
 
       # Database Client
       "mysqlworkbench"

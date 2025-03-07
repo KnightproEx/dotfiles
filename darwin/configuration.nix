@@ -7,11 +7,7 @@
 }:
 
 {
-  services.nix-daemon.enable = true;
-
   nix = {
-    configureBuildUsers = true;
-    useDaemon = true;
     optimise.automatic = true;
 
     gc = {

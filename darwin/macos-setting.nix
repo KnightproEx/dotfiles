@@ -10,6 +10,7 @@
   system.defaults = {
     dock = {
       autohide = true;
+      autohide-delay = 0.0;
       show-recents = false;
       persistent-apps = [ ];
       persistent-others = [ ];
