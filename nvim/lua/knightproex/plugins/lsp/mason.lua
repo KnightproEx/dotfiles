@@ -29,6 +29,8 @@ return {
 				"terraformls",
 				"bashls",
 				"pylsp",
+				"gopls",
+				"sqlls",
 			},
 		})
 

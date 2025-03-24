@@ -27,6 +27,18 @@
     kubernetes-helm
     bacon
 
+    # SDK
+    go
+    rustc
+
+    # Go Tools
+    air
+    sqlc
+
+    # Database Migration Tools
+    goose
+    dbmate
+
     # Monitoring Tool
     btop
 
@@ -47,9 +59,6 @@
 
     # Tool
     qmk
-
-    # Compiler
-    rustc
 
     # LSP
     nixd
@@ -91,7 +100,6 @@
       "aerospace"
       "raycast"
       "marta"
-      "vmware-fusion"
       "utm"
 
       # Messaging
@@ -103,7 +111,6 @@
       "qmk-toolbox"
       "karabiner-elements"
       "logi-options+"
-      # "displaylink"
 
       # Dev
       "visual-studio-code"
