@@ -116,6 +116,7 @@
       "visual-studio-code"
       "openvpn-connect"
       "sourcetree"
+      "fork"
       "orbstack"
       "postman"
       "android-studio"
@@ -124,6 +125,7 @@
       "mysqlworkbench"
       "dbeaver-community"
       "tableplus"
+      "sequel-ace"
 
       # Font
       "font-sf-pro"
