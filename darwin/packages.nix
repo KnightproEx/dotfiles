@@ -82,7 +82,7 @@
     brews = [
       "nginx"
       "awscli"
-      "php"
+      "php@8.3"
       "composer"
       "sevenzip"
       "borders"
@@ -101,6 +101,7 @@
       "raycast"
       "marta"
       "utm"
+      "betterdisplay"
 
       # Messaging
       "messenger"
@@ -122,9 +123,8 @@
       "android-studio"
 
       # Database Client
-      "mysqlworkbench"
-      "dbeaver-community"
       "tableplus"
+      "beekeeper-studio"
       "sequel-ace"
 
       # Font

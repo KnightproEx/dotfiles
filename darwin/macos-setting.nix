@@ -27,7 +27,6 @@
       InitialKeyRepeat = 15;
       ApplePressAndHoldEnabled = false;
       AppleShowAllExtensions = true;
-      AppleInterfaceStyle = "Dark";
       NSWindowShouldDragOnGesture = true;
       NSAutomaticWindowAnimationsEnabled = false;
       "com.apple.sound.beep.volume" = 0.0;

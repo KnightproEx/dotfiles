@@ -31,6 +31,8 @@ export PATH=$HOME/Library/Flutter/bin:$PATH
 export PATH=$PATH:/run/current-system/sw/bin
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.config/herd-lite/bin:$PATH
+export PATH=$PATH:/opt/homebrew/opt/php@8.3/bin
+export PATH=$PATH:/opt/homebrew/opt/php@8.3/sbin
 export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR
 
 # History
