@@ -22,6 +22,7 @@
 
     # Dev Tool
     terraform
+    ansible
     packer
     kubeswitch
     kubernetes-helm
@@ -119,8 +120,9 @@
       "sourcetree"
       "fork"
       "orbstack"
-      "postman"
       "android-studio"
+      "postman"
+      "yaak"
 
       # Database Client
       "tableplus"

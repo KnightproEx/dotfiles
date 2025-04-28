@@ -15,6 +15,11 @@
       persistent-apps = [ ];
       persistent-others = [ ];
       wvous-br-corner = 1;
+      expose-group-apps = true;
+    };
+
+    spaces = {
+      spans-displays = true;
     };
 
     finder = {
