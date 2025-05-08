@@ -1,6 +1,10 @@
 # Dotfiles
 
+My dotfile repository
+
 ## Setup Guide
+
+My setup cheatsheet
 
 ## Install Nix
 
