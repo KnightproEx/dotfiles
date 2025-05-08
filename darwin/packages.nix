@@ -27,6 +27,7 @@
     kubeswitch
     kubernetes-helm
     bacon
+    openvpn
 
     # SDK
     go
@@ -128,6 +129,7 @@
       "tableplus"
       "beekeeper-studio"
       "sequel-ace"
+      "navicat-premium-lite"
 
       # Font
       "font-sf-pro"
