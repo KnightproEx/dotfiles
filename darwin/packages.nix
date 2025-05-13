@@ -15,7 +15,7 @@
     lazygit
 
     # Package Manager
-    nodejs_20
+    nodejs_23
     pnpm
     bun
     cargo
