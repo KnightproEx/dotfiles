@@ -15,7 +15,7 @@
     lazygit
 
     # Package Manager
-    nodejs_23
+    nodejs_24
     pnpm
     bun
     cargo
@@ -92,7 +92,7 @@
     casks = [
       # Browser
       "arc"
-      "zen-browser"
+      # "zen-browser"
 
       # Terminal Emulator
       "ghostty"
@@ -103,7 +103,10 @@
       "raycast"
       "marta"
       "utm"
-      "betterdisplay"
+      # "betterdisplay"
+
+      # Remote Desktop
+      "anydesk"
 
       # Messaging
       "messenger"
