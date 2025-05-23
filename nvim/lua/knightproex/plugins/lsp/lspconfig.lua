@@ -9,12 +9,15 @@ return {
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		local mason_lspconfig = require("mason-lspconfig")
 		local util = require("lspconfig.util")
 		local keymap = vim.keymap
 
 		vim.diagnostic.config({
 			float = { border = "rounded" },
+			jump = {
+				float = true,
+			},
+			virtual_text = true,
 		})
 
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -49,30 +52,42 @@ return {
 				opts.desc = "Show line diagnostics"
 				keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-				opts.desc = "Go to previous diagnostic"
-				keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+				-- opts.desc = "Go to previous diagnostic"
+				-- keymap.set("n", "[d", function()
+				-- 	vim.diagnostic.jump({ count = -1, float = true })
+				-- end, opts)
+				--
+				-- opts.desc = "Go to next diagnostic"
+				-- keymap.set("n", "]d", function()
+				-- 	vim.diagnostic.jump({ count = 1, float = true })
+				-- end, opts)
 
-				opts.desc = "Go to next diagnostic"
-				keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-				opts.desc = "Show documentation for what is under cursor"
-				keymap.set("n", "K", vim.lsp.buf.hover, opts)
+				-- opts.desc = "Show documentation for what is under cursor"
+				-- keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
 				opts.desc = "Restart LSP"
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
 			end,
 		})
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		-- local capabilities = require("blink.cmp").get_lsp_capabilities()
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.INFO] = " ",
+					[vim.diagnostic.severity.HINT] = "󰌵 ",
+				},
+				numhl = {
+					[vim.diagnostic.severity.ERROR] = "",
+					[vim.diagnostic.severity.WARN] = "",
+					[vim.diagnostic.severity.HINT] = "",
+					[vim.diagnostic.severity.INFO] = "",
+				},
+			},
+		})
 
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
-		lspconfig["nixd"].setup({
+		lspconfig.nixd.setup({
 			settings = {
 				nixpkgs = {
 					expr = "import <nixpkgs> { }",
@@ -101,132 +116,136 @@ return {
 			end,
 		})
 
-		-- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-		-- 	pattern = "deployment.yaml",
-		-- 	callback = function()
-		-- 		vim.opt_local.filetype = "helm"
-		-- 	end,
-		-- })
-
-		mason_lspconfig.setup_handlers({
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["helm_ls"] = function()
-				lspconfig["helm_ls"].setup({
-					settings = {
-						helm_ls = {
-							yamlls = {
-								enabled = false,
-								path = "yaml-language-server",
-							},
-						},
-					},
-				})
-			end,
-			["rust_analyzer"] = function()
-				return true
-			end,
-			["biome"] = function()
-				lspconfig["biome"].setup({
-					root_dir = function(fname)
-						return util.root_pattern("biome.json", "biome.jsonc")(fname)
-							or util.find_package_json_ancestor(fname)
-							or util.find_node_modules_ancestor(fname)
-							or util.find_git_ancestor(fname)
-					end,
-				})
-			end,
-			["yamlls"] = function()
-				lspconfig["yamlls"].setup({
-					settings = {
-						yaml = {
-							schemaStore = {
-								enable = true,
-								url = "https://www.schemastore.org/api/json/catalog.json",
-							},
-							schemas = {
-								["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
-									"*docker-compose*.{yml,yaml}",
-									"*compose*.{yml,yaml}",
-								},
-								kubernetes = "*.k8s.yaml",
-								["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-								["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-								["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-								["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-								["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-								["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-								["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-								["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-								["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-								["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-								-- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-								["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
-							},
-						},
-					},
-				})
-			end,
-			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							diagnostics = {
-								globals = { "vim" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-							telemetry = { enable = false },
-						},
-					},
-				})
-			end,
-			["ts_ls"] = function()
-				lspconfig["ts_ls"].setup({
-					handlers = {
-						["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
-							if result.diagnostics == nil then
-								return
-							end
-
-							local idx = 1
-							while idx <= #result.diagnostics do
-								local entry = result.diagnostics[idx]
-								local formatter = require("format-ts-errors")[entry.code]
-
-								entry.message = formatter and formatter(entry.message) or entry.message
-
-								if entry.code == 80001 then
-									table.remove(result.diagnostics, idx)
-								else
-									idx = idx + 1
-								end
-							end
-
-							vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
-						end,
-					},
-				})
+		vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+			pattern = "deployment.yaml",
+			callback = function()
+				vim.opt_local.filetype = "helm"
 			end,
 		})
 
-		-- 	vim.g.rustaceanvim = {
-		-- 		server = {
-		-- 			on_attach = function(_, bufnr)
-		-- 				-- vim.keymap.set("n", "<leader>a", function()
-		-- 				-- 	vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
-		-- 				-- 	-- or vim.lsp.buf.codeAction() if you don't want grouping.
-		-- 				-- end, { silent = true, buffer = bufnr })
-		-- 				-- vim.keymap.set("n", "K", function()
-		-- 				-- 	vim.cmd.RustLsp({ "hover", "actions" })
-		-- 				-- end, { silent = true, buffer = bufnr })
-		-- 			end,
-		-- 		},
-		-- 	}
+		lspconfig.helm_ls.setup({
+			settings = {
+				helm_ls = {
+					yamlls = {
+						enabled = false,
+						path = "yaml-language-server",
+					},
+				},
+			},
+		})
+
+		lspconfig.biome.setup({
+			root_dir = function(fname)
+				return util.root_pattern("biome.json", "biome.jsonc")(fname)
+					or util.find_package_json_ancestor(fname)
+					or util.find_node_modules_ancestor(fname)
+					or util.find_git_ancestor(fname)
+			end,
+		})
+
+		lspconfig.yamlls.setup({
+			settings = {
+				yaml = {
+					schemaStore = {
+						enable = true,
+						url = "https://www.schemastore.org/api/json/catalog.json",
+					},
+					schemas = {
+						["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = {
+							"*docker-compose*.{yml,yaml}",
+							"*compose*.{yml,yaml}",
+						},
+						kubernetes = "*.k8s.yaml",
+						["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+						["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+						["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+						["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+						["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+						["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+						["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+						["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+						["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+						["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+						["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+					},
+				},
+			},
+		})
+
+		vim.lsp.config("lua_ls", {
+			on_init = function(client)
+				if client.workspace_folders then
+					local path = client.workspace_folders[1].name
+					if
+						path ~= vim.fn.stdpath("config")
+						and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+					then
+						return
+					end
+				end
+
+				client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+					runtime = {
+						-- Tell the language server which version of Lua you're using (most
+						-- likely LuaJIT in the case of Neovim)
+						version = "LuaJIT",
+						-- Tell the language server how to find Lua modules same way as Neovim
+						-- (see `:h lua-module-load`)
+						path = {
+							"lua/?.lua",
+							"lua/?/init.lua",
+						},
+					},
+					-- Make the server aware of Neovim runtime files
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- Depending on the usage, you might want to add additional paths
+							-- here.
+							"${3rd}/luv/library",
+							-- '${3rd}/busted/library'
+						},
+						-- Or pull in all of 'runtimepath'.
+						-- NOTE: this is a lot slower and will cause issues when working on
+						-- your own configuration.
+						-- See https://github.com/neovim/nvim-lspconfig/issues/3189
+						-- library = {
+						--   vim.api.nvim_get_runtime_file('', true),
+						-- }
+					},
+				})
+			end,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { "vim" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+					telemetry = { enable = false },
+				},
+			},
+		})
+
+		vim.g.rustaceanvim = {
+			tools = {
+				float_win_config = {
+					border = "rounded",
+				},
+			},
+			server = {
+				on_attach = function(_, bufnr)
+					-- vim.keymap.set("n", "<leader>a", function()
+					-- 	vim.cmd.RustLsp("codeAction") -- supports rust-analyzer's grouping
+					-- 	-- or vim.lsp.buf.codeAction() if you don't want grouping.
+					-- end, { silent = true, buffer = bufnr })
+					vim.keymap.set("n", "K", function()
+						vim.cmd.RustLsp({ "hover", "actions" })
+					end, { silent = true, buffer = bufnr })
+				end,
+			},
+		}
 	end,
 }

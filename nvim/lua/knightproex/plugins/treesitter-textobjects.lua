@@ -21,6 +21,9 @@ return {
 						["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
 						["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
 
+						["ae"] = { query = "@attribute.outer", desc = "Select outer part of a attribute" },
+						["ie"] = { query = "@attribute.inner", desc = "Select inner part of a attribute" },
+
 						["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
 						["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
 

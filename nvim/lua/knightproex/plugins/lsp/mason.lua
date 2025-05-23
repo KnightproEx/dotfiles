@@ -1,7 +1,7 @@
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
@@ -12,6 +12,11 @@ return {
 		mason.setup()
 
 		mason_lspconfig.setup({
+			automatic_enable = {
+				exclude = {
+					"rust_analyzer",
+				},
+			},
 			ensure_installed = {
 				"ts_ls",
 				"biome",
@@ -43,6 +48,7 @@ return {
 				"tflint",
 				-- "eslint_d",
 				"shfmt",
+				"shellharden",
 			},
 		})
 	end,
