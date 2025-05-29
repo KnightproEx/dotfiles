@@ -119,6 +119,7 @@
       "qmk-toolbox"
       "karabiner-elements"
       "logi-options+"
+      "jordanbaird-ice"
 
       # Dev
       "visual-studio-code"
@@ -137,8 +138,8 @@
       "navicat-premium-lite"
 
       # Font
-      "font-sf-pro"
-      "font-symbols-only-nerd-font"
+      # "font-sf-pro"
+      # "font-symbols-only-nerd-font"
     ];
   };
 }

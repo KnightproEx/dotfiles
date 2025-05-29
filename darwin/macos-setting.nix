@@ -23,8 +23,12 @@
     };
 
     finder = {
-      ShowPathbar = true;
       _FXShowPosixPathInTitle = true;
+      _FXSortFoldersFirst = true;
+      ShowPathbar = true;
+      AppleShowAllExtensions = true;
+      QuitMenuItem = true;
+      NewWindowTarget = "Home";
     };
 
     NSGlobalDomain = {
