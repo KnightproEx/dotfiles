@@ -58,6 +58,8 @@
     fastfetch
     jq
     poppler
+    diff-so-fancy
+    gnupg
 
     # Tool
     qmk
