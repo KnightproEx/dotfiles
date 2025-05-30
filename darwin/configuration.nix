@@ -3,6 +3,7 @@
   pkgs,
   config,
   platform,
+  username,
   ...
 }:
 
@@ -26,6 +27,7 @@
         "nix-command"
         "flakes"
       ];
+      download-buffer-size = 524288000;
     };
   };
 
@@ -35,6 +37,7 @@
   };
 
   system = {
+    primaryUser = username;
     stateVersion = 5;
     configurationRevision = self.rev or self.dirtyRev or null;
     activationScripts.application.text =

@@ -1,1 +1,3 @@
 /tmux/plugins/**
+/raycast/extensions
+.DS_Store

@@ -89,6 +89,7 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 # Aliases
+alias sre="sudo darwin-rebuild switch --flake ~/dotfiles/darwin"
 alias ls="eza --icons=always"
 alias cat="bat"
 alias nvchad="NVIM_APPNAME=nvchad nvim"

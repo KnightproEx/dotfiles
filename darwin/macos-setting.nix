@@ -27,7 +27,6 @@
       _FXSortFoldersFirst = true;
       ShowPathbar = true;
       AppleShowAllExtensions = true;
-      QuitMenuItem = true;
       NewWindowTarget = "Home";
     };
 

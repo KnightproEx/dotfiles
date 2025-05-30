@@ -25,12 +25,19 @@
     let
       username = "bh";
       platform = "aarch64-darwin";
-      hostname = "Boons-MacBook-Pro";
+      hostname = "bh-mac";
     in
     {
       darwinPackages = self.darwinConfigurations.${username}.pkgs;
       darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self username platform; };
+        specialArgs = {
+          inherit
+            self
+            username
+            hostname
+            platform
+            ;
+        };
         modules = [
           ./configuration.nix
           ./macos-setting.nix

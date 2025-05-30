@@ -4,7 +4,7 @@
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
-    stateVersion = "23.05";
+    stateVersion = "25.05";
     packages = [ ];
     sessionVariables = { };
 
@@ -26,9 +26,11 @@
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
       ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
-      ".config/yazi".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi";
+      ".config/yazi/theme.toml".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi/theme.toml";
       ".config/lazygit".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/lazygit";
       ".config/k9s".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s";
+      ".config/fastfetch".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/fastfetch";
     };
   };
 
