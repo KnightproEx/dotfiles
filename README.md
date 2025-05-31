@@ -32,11 +32,11 @@ nix-shell -p git --run 'git clone https://github.com/KnightproEx/dotfiles.git ~/
 ### Without nix-darwin
 
 ```bash
-nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flakes ~/dotfiles/darwin
+sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flakes ~/dotfiles/darwin
 ```
 
 ### With nix-darwin
 
 ```bash
-darwin-rebuild switch --flake ~/dotfiles/darwin
+sudo darwin-rebuild switch --flake ~/dotfiles/darwin
 ```
