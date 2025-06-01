@@ -82,31 +82,29 @@ return {
 						icon = "",
 						color = { fg = catppuccin.normal.b.fg },
 					},
-					{
-						"diff",
-						-- symbols = { added = " ", modified = " ", removed = " " },
-					},
+					-- "diff",
 				},
 				lualine_c = {
-					-- {
-					-- 	"filetype",
-					-- 	colored = true,
-					-- 	icon_only = true,
-					-- 	icon = { align = "right" },
-					-- 	padding = { left = 1 },
-					-- },
-					-- {
-					-- 	"filename",
-					-- 	symbols = {
-					-- 		modified = "",
-					-- 		readonly = "",
-					-- 		-- modified = "●",
-					-- 		-- readonly = "",
-					-- 		-- alternate_file = "#",
-					-- 		-- directory = "",
-					-- 	},
-					-- 	-- padding = {},
-					-- },
+					{
+						"diff",
+						source = function()
+							local gitsigns = vim.b.gitsigns_status_dict
+							if gitsigns then
+								return {
+									added = gitsigns.added,
+									modified = gitsigns.changed,
+									removed = gitsigns.removed,
+								}
+							end
+						end,
+						symbols = {
+							added = "" .. " ",
+							modified = "" .. " ",
+							removed = "" .. " ",
+						},
+						colored = true,
+						always_visible = false,
+					},
 					{
 						"diagnostics",
 						symbols = { error = " ", warn = " ", info = " ", hint = " " },
@@ -119,16 +117,9 @@ return {
 					},
 				},
 				lualine_x = {
-					-- {
-					-- 	"diagnostics",
-					-- 	symbols = { error = " ", warn = " ", info = " ", hint = " " },
-					-- 	update_in_insert = true,
-					-- },
 					{
 						"filetype",
 						colored = true,
-						-- icon = { align = "right" },
-						-- padding = { left = 1 },
 					},
 				},
 				lualine_y = { clients_lsp },
