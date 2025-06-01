@@ -14,9 +14,9 @@
     ];
 
     file = with config.lib.file; {
-      ".zshrc".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh/.zshrc";
-      ".config/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh".source =
-        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh";
+      ".zprofile".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.zprofile";
+      ".config/shell".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/shell";
+      ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/zsh";
       ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
       ".config/bat".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/bat";
       ".config/btop".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/btop";
@@ -29,7 +29,9 @@
       ".config/yazi/theme.toml".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi/theme.toml";
       ".config/lazygit".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/lazygit";
-      ".config/k9s".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s";
+      ".config/k9s/skins".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s/skins";
+      ".config/k9s/config.yaml".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s/config.yaml";
       ".config/fastfetch".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/fastfetch";
     };
   };

@@ -38,7 +38,6 @@
     sqlc
 
     # Database Migration Tools
-    goose
     dbmate
 
     # Monitoring Tool
@@ -60,9 +59,13 @@
     poppler
     diff-so-fancy
     gnupg
-
-    # Tool
+    duf
+    openssl
+    cmake
+    pkg-config
+    curl
     qmk
+    tlrc
 
     # LSP
     nixd
@@ -94,7 +97,7 @@
     casks = [
       # Browser
       "arc"
-      # "zen-browser"
+      "zen-browser"
 
       # Terminal Emulator
       "ghostty"
@@ -124,7 +127,6 @@
       # Dev
       "visual-studio-code"
       "openvpn-connect"
-      "sourcetree"
       "fork"
       "orbstack"
       "android-studio"
@@ -134,8 +136,6 @@
       # Database Client
       "tableplus"
       "beekeeper-studio"
-      "sequel-ace"
-      "navicat-premium-lite"
 
       # Font
       # "font-sf-pro"
