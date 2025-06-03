@@ -137,6 +137,9 @@
       "tableplus"
       "beekeeper-studio"
 
+      # Note
+      "obsidian"
+
       # Font
       # "font-sf-pro"
       # "font-symbols-only-nerd-font"
