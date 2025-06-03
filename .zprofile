@@ -36,16 +36,24 @@ command -v bat > /dev/null && export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;
 command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
 
 # export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
+# export PATH=$PATH:/run/current-system/sw/bin
+
+# Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
+
+# Flutter
 export PATH=$HOME/Library/Flutter/bin:$PATH
-export PATH=$PATH:/run/current-system/sw/bin
+
+# Composer
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.config/herd-lite/bin:$PATH
+
+# PHP
 export PATH=$PATH:/opt/homebrew/opt/php@8.3/bin
 export PATH=$PATH:/opt/homebrew/opt/php@8.3/sbin
 export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR

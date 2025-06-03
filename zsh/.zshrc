@@ -55,7 +55,7 @@ eval "$(zoxide init --cmd cd zsh)"
 [ -f "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" ] && source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
 
 # Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
@@ -68,12 +68,13 @@ zinit cdreplay -q
 
 source <(fzf --zsh)
 source <(switcher init zsh)
+
+# Completion
 source <(kubectl completion zsh)
 source <(helm completion zsh)
-source <(switch completion zsh)
+source <(switcher completion zsh)
+complete -C aws_completer aws
+complete -o nospace -C /run/current-system/sw/bin/terraform terraform
 
 # OrbStack command-line tools and integration
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
-
-complete -C aws_completer aws
-complete -o nospace -C /run/current-system/sw/bin/terraform terraform
