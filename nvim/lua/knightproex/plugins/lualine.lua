@@ -2,50 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		-- local lualine = require("lualine")
-		-- local lazy_status = require("lazy.status")
-
 		local catppuccin = require("lualine.themes.catppuccin")
-
-		-- lualine.setup({
-		-- 	options = {
-		-- 		theme = catppuccin,
-		-- 		component_separators = "|",
-		-- 		section_separators = "",
-		-- 	},
-		-- 	sections = {
-		-- 		lualine_b = {
-		-- 			"branch",
-		-- 			"diff",
-		-- 		},
-		-- 		lualine_c = { "filename", "diagnostics" },
-		-- 		lualine_x = {
-		-- 			{
-		-- 				lazy_status.updates,
-		-- 				cond = lazy_status.has_updates,
-		-- 				color = { fg = "#ff9e64" },
-		-- 			},
-		-- 			{ "filetype" },
-		-- 			{
-		-- 				function()
-		-- 					local msg = "No Active Lsp"
-		-- 					local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-		-- 					local clients = vim.lsp.get_clients()
-		-- 					if next(clients) == nil then
-		-- 						return msg
-		-- 					end
-		-- 					for _, client in ipairs(clients) do
-		-- 						local filetypes = client.config.filetypes
-		-- 						if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-		-- 							return client.name
-		-- 						end
-		-- 					end
-		-- 					return msg
-		-- 				end,
-		-- 			},
-		-- 		},
-		-- 	},
-		-- })
 
 		local clients_lsp = function()
 			local clients = vim.lsp.get_clients()
@@ -65,7 +22,7 @@ return {
 			if reg == "" then
 				return ""
 			end
-			return "@recording " .. reg
+			return "⦿ recording " .. reg
 		end
 
 		require("lualine").setup({
@@ -82,7 +39,6 @@ return {
 						icon = "",
 						color = { fg = catppuccin.normal.b.fg },
 					},
-					-- "diff",
 				},
 				lualine_c = {
 					{
@@ -98,9 +54,9 @@ return {
 							end
 						end,
 						symbols = {
-							added = "" .. " ",
-							modified = "" .. " ",
-							removed = "" .. " ",
+							added = " ",
+							modified = " ",
+							removed = " ",
 						},
 						colored = true,
 						always_visible = false,
@@ -112,7 +68,7 @@ return {
 					},
 					{
 						recording,
-						color = { fg = "#ff9e64" },
+						color = { fg = "#fab387" },
 						padding = { left = 2 },
 					},
 				},
