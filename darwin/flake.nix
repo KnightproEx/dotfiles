@@ -3,15 +3,22 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -21,7 +28,8 @@
       nixpkgs,
       home-manager,
       nix-homebrew,
-    }:
+      sops-nix,
+    }@inputs:
     let
       username = "bh";
       platform = "aarch64-darwin";
@@ -33,6 +41,7 @@
         specialArgs = {
           inherit
             self
+            inputs
             username
             hostname
             platform
@@ -40,9 +49,6 @@
         };
         modules = [
           ./configuration.nix
-          ./macos-setting.nix
-          ./packages.nix
-          ./user.nix
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           {
@@ -50,7 +56,7 @@
               backupFileExtension = "backup";
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = { inherit username; };
+              extraSpecialArgs = { inherit inputs username; };
               users.${username} = import ./home.nix;
             };
             nix-homebrew = {

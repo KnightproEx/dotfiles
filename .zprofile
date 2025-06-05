@@ -14,6 +14,8 @@ export GOBIN="$GOPATH/bin"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export K9S_CONFIG_DIR="$XDG_CONFIG_HOME/k9s"
+export LESSHISTFILE="$XDG_CONFIG_HOME/less/history"
+export LESSKEY="$XDG_CONFIG_HOME/less/keys"
 
 # FZF options
 export FZF_DEFAULT_OPTS=" \

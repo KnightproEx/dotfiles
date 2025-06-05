@@ -1,86 +1,12 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
-  fonts.packages = with pkgs; [
-    # (nerdfonts.override { fonts = [ "Hack" ]; })
-    sketchybar-app-font
-  ];
-
-  environment.systemPackages = with pkgs; [
-    # TUI
-    neovim
-    tmux
-    yazi
-    k9s
-    lazygit
-
-    # Package Manager
-    nodejs_24
-    pnpm
-    bun
-    cargo
-
-    # Dev Tool
-    terraform
-    ansible
-    packer
-    kubeswitch
-    kubernetes-helm
-    bacon
-    openvpn
-
-    # SDK
-    go
-    rustc
-
-    # Go Tools
-    air
-    sqlc
-
-    # Database Migration Tools
-    dbmate
-
-    # Monitoring Tool
-    btop
-
-    # Utilities
-    bat
-    fd
-    fzf
-    eza
-    zoxide
-    tree
-    ripgrep
-    mkalias
-    ffmpeg
-    imagemagick
-    fastfetch
-    jq
-    poppler
-    diff-so-fancy
-    gnupg
-    duf
-    openssl
-    cmake
-    pkg-config
-    curl
-    qmk
-    tlrc
-
-    # LSP
-    nixd
-
-    # Formatter
-    nixfmt-rfc-style
-    rustfmt
-  ];
-
   homebrew = {
     enable = true;
     onActivation = {
       cleanup = "zap";
-      autoUpdate = true;
-      upgrade = true;
+      # autoUpdate = true;
+      # upgrade = true;
     };
     taps = [
       "felixkratz/formulae"
@@ -97,7 +23,7 @@
     casks = [
       # Browser
       "arc"
-      "zen-browser"
+      "zen"
 
       # Terminal Emulator
       "ghostty"

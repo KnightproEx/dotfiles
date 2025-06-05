@@ -1,6 +1,18 @@
-{ config, username, ... }:
+{
+  config,
+  username,
+  inputs,
+  ...
+}:
 
 {
+  imports = [
+    inputs.sops-nix.homeManagerModules.sops
+    ./home-manager/sops.nix
+    ./home-manager/git.nix
+    ./home-manager/zsh.nix
+  ];
+
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
@@ -33,18 +45,6 @@
       ".config/k9s/config.yaml".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/k9s/config.yaml";
       ".config/fastfetch".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/fastfetch";
-    };
-  };
-
-  programs = {
-    home-manager.enable = true;
-    zsh = {
-      enable = true;
-      initContent = ''
-        if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-        fi
-      '';
     };
   };
 }
