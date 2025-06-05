@@ -17,13 +17,69 @@ return {
 			return " " .. table.concat(c, "|")
 		end
 
-		local recording = function()
+		local recording_text = function()
 			local reg = vim.fn.reg_recording()
 			if reg == "" then
 				return ""
 			end
 			return "⦿ recording " .. reg
 		end
+
+		local recording = {
+			recording_text,
+			color = { fg = "#fab387" },
+			padding = { left = 2 },
+		}
+
+		local branch = {
+			"branch",
+			icon = "",
+			color = { fg = catppuccin.normal.b.fg },
+		}
+
+		local filename = {
+			"filename",
+			symbols = {
+				modified = "[+]",
+				readonly = "[-]",
+				unnamed = "[No Name]",
+				newfile = "[New]",
+			},
+		}
+
+		local diff = {
+			"diff",
+			source = function()
+				local gitsigns = vim.b.gitsigns_status_dict
+				if gitsigns then
+					return {
+						added = gitsigns.added,
+						modified = gitsigns.changed,
+						removed = gitsigns.removed,
+					}
+				end
+			end,
+			symbols = {
+				added = " ",
+				modified = " ",
+				removed = " ",
+			},
+			colored = true,
+			always_visible = false,
+		}
+
+		local diagnostics = {
+			"diagnostics",
+			symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			update_in_insert = true,
+		}
+
+		local filetype = {
+			"filetype",
+			colored = true,
+		}
+
+		local location = { "location", icon = "" }
 
 		require("lualine").setup({
 			options = {
@@ -33,53 +89,17 @@ return {
 				-- disabled_filetypes = { "alpha", "Outline", "NvimTree" },
 			},
 			sections = {
-				lualine_b = {
-					{
-						"branch",
-						icon = "",
-						color = { fg = catppuccin.normal.b.fg },
-					},
-				},
-				lualine_c = {
-					{
-						"diff",
-						source = function()
-							local gitsigns = vim.b.gitsigns_status_dict
-							if gitsigns then
-								return {
-									added = gitsigns.added,
-									modified = gitsigns.changed,
-									removed = gitsigns.removed,
-								}
-							end
-						end,
-						symbols = {
-							added = " ",
-							modified = " ",
-							removed = " ",
-						},
-						colored = true,
-						always_visible = false,
-					},
-					{
-						"diagnostics",
-						symbols = { error = " ", warn = " ", info = " ", hint = " " },
-						update_in_insert = true,
-					},
-					{
-						recording,
-						color = { fg = "#fab387" },
-						padding = { left = 2 },
-					},
-				},
-				lualine_x = {
-					{
-						"filetype",
-						colored = true,
-					},
-				},
+				lualine_b = { branch },
+				lualine_c = { filename, diff, diagnostics, recording },
+				lualine_x = { filetype },
 				lualine_y = { clients_lsp },
-				lualine_z = { { "location", icon = "" } },
+				lualine_z = { location },
+			},
+			inactive_sections = {
+				lualine_c = { filename, diff, diagnostics },
+				lualine_x = { filetype },
+				lualine_y = { clients_lsp },
+				lualine_z = { location },
 			},
 		})
 	end,

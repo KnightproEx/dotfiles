@@ -7,7 +7,7 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 o.timeout = true
 o.timeoutlen = 500
-o.laststatus = 3
+-- o.laststatus = 3
 o.cursorline = true
 
 opt.relativenumber = false
