@@ -35,10 +35,6 @@
     # Database Migration Tools
     dbmate
 
-    # Rice
-    fastfetch
-    btop
-
     # Utilities
     bat
     fd
@@ -74,5 +70,10 @@
     # Formatter
     nixfmt-rfc-style
     rustfmt
+
+    # Other
+    fastfetch
+    btop
+    cmatrix
   ];
 }

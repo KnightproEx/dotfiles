@@ -1,5 +1,6 @@
 # Source global shell alias & variable files
 [ -f "$XDG_CONFIG_HOME/shell/alias" ] && source "$XDG_CONFIG_HOME/shell/alias"
+# [ -f "$XDG_CONFIG_HOME/shell/var" ] && source "$XDG_CONFIG_HOME/shell/var"
 
 # Key bindings
 bindkey '^[[A' history-search-backward
