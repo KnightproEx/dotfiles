@@ -3,8 +3,7 @@ return {
 	name = "catppuccin",
 	priority = 1000,
 	config = function()
-		local catppuccin = require("catppuccin")
-		catppuccin.setup({
+		require("catppuccin").setup({
 			integrations = {
 				noice = true,
 				notify = true,
@@ -19,6 +18,7 @@ return {
 					colored_indent_levels = true,
 				},
 				native_lsp = {
+					enabled = true,
 					virtual_text = {
 						errors = { "italic" },
 						hints = { "italic" },

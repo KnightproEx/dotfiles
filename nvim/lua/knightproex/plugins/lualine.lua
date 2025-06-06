@@ -45,7 +45,7 @@ return {
 				unnamed = "[No Name]",
 				newfile = "[New]",
 			},
-			padding = { left = 0, right = 1 },
+			-- padding = { left = 0, right = 1 },
 		}
 
 		local diff = {
@@ -80,12 +80,12 @@ return {
 			colored = true,
 		}
 
-		local fileicon = {
-			"filetype",
-			colored = true,
-			icon_only = true,
-			padding = { left = 2, right = 0 },
-		}
+		-- local fileicon = {
+		-- 	"filetype",
+		-- 	colored = true,
+		-- 	icon_only = true,
+		-- 	padding = { left = 2, right = 0 },
+		-- }
 
 		local location = { "location", icon = "" }
 
@@ -100,7 +100,7 @@ return {
 			sections = {
 				lualine_b = { branch },
 				-- lualine_c = { fileicon, filename, diff, diagnostics, recording },
-				lualine_c = { fileicon, filename, recording },
+				lualine_c = { filename, recording },
 				-- lualine_x = { filetype },
 				lualine_x = { diff, diagnostics, filetype },
 				-- lualine_y = { clients_lsp },
@@ -110,7 +110,7 @@ return {
 			},
 			inactive_sections = {
 				-- lualine_c = { fileicon, filename, diff, diagnostics },
-				lualine_c = { fileicon, filename },
+				lualine_c = { filename },
 				-- lualine_x = { filetype },
 				lualine_x = { diff, diagnostics, filetype },
 				-- lualine_y = { clients_lsp },
