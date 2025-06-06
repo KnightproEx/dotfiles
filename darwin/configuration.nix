@@ -4,16 +4,23 @@
   config,
   platform,
   username,
+  hostname,
   ...
 }:
 
 {
   imports = [
-    ./user
     ./packages
     ./configuration/nix.nix
     ./configuration/macos.nix
   ];
+
+  networking.hostName = hostname;
+
+  users.users.${username} = {
+    name = username;
+    home = "/Users/${username}";
+  };
 
   nixpkgs = {
     config.allowUnfree = true;
@@ -22,7 +29,7 @@
 
   system = {
     primaryUser = username;
-    stateVersion = 5;
+    stateVersion = 6;
     configurationRevision = self.rev or self.dirtyRev or null;
     activationScripts.application.text =
       let
