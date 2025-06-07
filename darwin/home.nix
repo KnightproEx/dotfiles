@@ -44,6 +44,8 @@
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/config.nu";
       ".config/nushell/env.nu".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/env.nu";
+      ".config/starship/starship.toml".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/starship/starship.toml";
       # ".config/bat".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/bat";
       # ".config/btop".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/btop";
       # ".config/yazi/theme.toml".source =

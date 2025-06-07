@@ -23,6 +23,11 @@ $env.XDG_CONFIG_HOME = $env.HOME | path join .config
 $env.XDG_DATA_HOME = $env.HOME | path join .local/share
 $env.XDG_CACHE_HOME = $env.HOME | path join .cache
 $env.XDG_STATE_HOME = $env.HOME | path join .local/state
+$env.STARSHIP_CONFIG = $env.XDG_CONFIG_HOME | path join starship/starship.toml
+
+$env.config.hooks = {
+    pre_prompt: [{ print ""  }]
+}
 
 source ($nu.default-config-dir | path join "catppuccin_mocha.nu")
 source ~/.cache/carapace/init.nu
