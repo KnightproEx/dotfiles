@@ -35,13 +35,13 @@ $FZF_DEFAULT_OPTS \
 command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 command -v fd > /dev/null && export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 command -v fd > /dev/null && export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
-# command -v bat > /dev/null && export BAT_THEME=Catppuccin-Mocha
 command -v bat > /dev/null && export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
 
 # export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 # export PATH=$PATH:/run/current-system/sw/bin
 
+# TODO: Remove this
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/platform-tools
@@ -50,13 +50,16 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 
+# TODO: Remove this
 # Flutter
 export PATH=$HOME/Library/Flutter/bin:$PATH
 
+# TODO: Remove this
 # Composer
 export PATH=$HOME/.config/composer/vendor/bin:$PATH
 export PATH=$HOME/.config/herd-lite/bin:$PATH
 
+# TODO: Remove this
 # PHP
 export PATH=$PATH:/opt/homebrew/opt/php@8.3/bin
 export PATH=$PATH:/opt/homebrew/opt/php@8.3/sbin

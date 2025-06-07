@@ -2,6 +2,8 @@
 [ -f "$XDG_CONFIG_HOME/shell/alias" ] && source "$XDG_CONFIG_HOME/shell/alias"
 # [ -f "$XDG_CONFIG_HOME/shell/var" ] && source "$XDG_CONFIG_HOME/shell/var"
 
+ export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+
 # Key bindings
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
@@ -18,12 +20,24 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
-zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
-zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' fzf-bindings \
+  'ctrl-/:toggle-preview' \
+	'ctrl-u:preview-page-up' \
+  'ctrl-d:preview-page-down'
+# zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# zstyle ':fzf-tab:*' popup-min-size 60 8
+# zstyle ':fzf-tab:complete:-command-:*' popup-min-size 160 8
+# zstyle ':fzf-tab:*' fzf-flags --color=fg:1,fg+:2 --bind=tab:accept
+zstyle ':fzf-tab:*' fzf-flags --bind=tab:accept \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi
 zstyle ':fzf-tab:*' switch-group '<' '>'
-zstyle ':fzf-tab:*' popup-min-size 60 8
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+zstyle ':fzf-tab:complete:-command-:*' fzf-preview '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
 
 # Main options
 setopt appendhistory
@@ -50,7 +64,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Powerlevel10k prompt
 [[ ! -f ~/.config/p10k/p10k.zsh ]] || source ~/.config/p10k/p10k.zsh
-[ -f "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ] && source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+[ -f "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ] && source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 
 # Catppuccin ZSH syntax highlighting
 [ -f "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" ] && source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
@@ -59,23 +73,21 @@ eval "$(zoxide init --cmd cd zsh)"
 ZINIT_HOME="${XDG_DATA_HOME}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+
 source "${ZINIT_HOME}/zinit.zsh"
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+source <(carapace _carapace)
+source <(fzf --zsh)
+source <(switcher init zsh)
+# source <(kubectl completion zsh)
+# source <(helm completion zsh)
+source <(switch completion zsh)
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# complete -C aws_completer aws
+# complete -o nospace -C /run/current-system/sw/bin/terraform terraform
+ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit cdreplay -q
-
-source <(fzf --zsh)
-source <(switcher init zsh)
-
-# Completion
-source <(kubectl completion zsh)
-source <(helm completion zsh)
-source <(switcher completion zsh)
-complete -C aws_completer aws
-complete -o nospace -C /run/current-system/sw/bin/terraform terraform
-
-# OrbStack command-line tools and integration
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :

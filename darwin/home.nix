@@ -13,6 +13,8 @@
 
   xdg.enable = true;
 
+  programs.home-manager.enable = true;
+
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
@@ -36,6 +38,12 @@
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
       ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
+      ".config/nushell/catppuccin_mocha.nu".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/catppuccin_mocha.nu";
+      ".config/nushell/config.nu".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/config.nu";
+      ".config/nushell/env.nu".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/env.nu";
       # ".config/bat".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/bat";
       # ".config/btop".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/btop";
       # ".config/yazi/theme.toml".source =

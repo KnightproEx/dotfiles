@@ -2,6 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # Shell
+    nushell
+    starship
+    carapace
+    delta
+
     # TUI
     neovim
     tmux
