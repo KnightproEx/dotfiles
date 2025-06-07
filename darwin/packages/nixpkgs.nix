@@ -2,12 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Shell
-    nushell
-    starship
-    carapace
-    delta
-
     # TUI
     neovim
     tmux
@@ -33,6 +27,7 @@
     # SDK
     go
     rustc
+    cmake
 
     # Go
     air
@@ -42,6 +37,9 @@
     dbmate
 
     # Utilities
+    nushell
+    starship
+    carapace
     bat
     fd
     fzf
@@ -59,11 +57,10 @@
     openssl
     pkg-config
     curl
+    wget
+    wget2
     qmk
     tlrc
-
-    # Compile
-    cmake
 
     # Privacy
     gnupg
