@@ -1,4 +1,3 @@
-!.zshrc
-!.zprofile
+!.zsh*
 !.*ignore
 !.sops.yaml

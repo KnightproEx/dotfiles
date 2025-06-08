@@ -2,6 +2,14 @@
 
 {
   environment.systemPackages = with pkgs; [
+    # Terminal Emulator
+    kitty
+
+    # Editor
+    nixd
+    nixfmt-rfc-style
+    rustfmt
+
     # TUI
     neovim
     tmux
@@ -66,13 +74,6 @@
     gnupg
     age
     sops
-
-    # LSP
-    nixd
-
-    # Formatter
-    nixfmt-rfc-style
-    rustfmt
 
     # Other
     fastfetch

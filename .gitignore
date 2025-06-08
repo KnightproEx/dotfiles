@@ -1,5 +1,3 @@
-/tmux/plugins/**
-/raycast/extensions
+/tmux/plugins
 .DS_Store
 /zsh/.zcompdump
-/zsh/zsh_history

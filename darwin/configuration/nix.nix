@@ -1,8 +1,10 @@
-{ ... }:
+{ inputs, ... }:
 
 {
   nix = {
     optimise.automatic = true;
+
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     gc = {
       automatic = true;

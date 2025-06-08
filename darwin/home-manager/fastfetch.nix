@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 
 {
   programs = {
@@ -7,13 +7,12 @@
       settings = {
         "logo" = {
           "type" = "kitty-icat";
-          "height" = 15;
-          "width" = 50;
-          "padding" = {
-            "top" = 2;
-            "left" = 5;
-            "right" = 5;
+          "width" = 30;
+          padding = {
+            top = 2;
+            right = 3;
           };
+          "source" = "${config.xdg.configHome}/fastfetch/images/nix-darwin.png";
           "position" = "left";
         };
         "display" = {
@@ -49,22 +48,21 @@
             "keyColor" = "red";
           }
           {
-            "type" = "swap";
-            "key" = "│ ├SW";
-            "keyColor" = "red";
-          }
-          {
-            "type" = "display";
-            "key" = "│ ├ ";
-            "keyColor" = "red";
-            "format" = "MONITOR ({name})";
-            # "format" = "MONITOR ({name}) {width}x{height} @ {refresh-rate} Hz - {physical-width}x{physical-height} mm ({inch} inches; {ppi} ppi)";
-          }
-          {
             "type" = "memory";
             "key" = "└ └󰍛 ";
             "keyColor" = "red";
           }
+          # {
+          #   "type" = "swap";
+          #   "key" = "│ ├SW";
+          #   "keyColor" = "red";
+          # }
+          # {
+          #   "type" = "display";
+          #   "key" = "│ ├ ";
+          #   "keyColor" = "red";
+          #   "format" = "MONITOR ({name})";
+          # }
           {
             "type" = "custom";
             "format" = "└──────────────────────────────────┘";
@@ -77,7 +75,7 @@
           }
           {
             "type" = "os";
-            "key" = "􀣺 OS ";
+            "key" = " OS ";
             "keyColor" = "green";
           }
           {
@@ -85,16 +83,16 @@
             "key" = "│ ├ ";
             "keyColor" = "green";
           }
-          {
-            "type" = "packages";
-            "key" = "│ ├󰏖 ";
-            "keyColor" = "green";
-          }
-          {
-            "type" = "localip";
-            "key" = "│ ├IP";
-            "keyColor" = "green";
-          }
+          # {
+          #   "type" = "packages";
+          #   "key" = "│ ├󰏖 ";
+          #   "keyColor" = "green";
+          # }
+          # {
+          #   "type" = "localip";
+          #   "key" = "│ ├IP";
+          #   "keyColor" = "green";
+          # }
           {
             "type" = "shell";
             "key" = "└ └ ";
@@ -119,7 +117,7 @@
             "key" = "│ ├ ";
             "keyColor" = "blue";
             "type" = "command";
-            "text" = "pgrep yabai &> /dev/null && echo yabai || echo Quartz Compositor";
+            "text" = "pgrep AeroSpace &> /dev/null && echo AeroSpace || echo Quartz Compositor";
           }
           {
             "type" = "terminal";
@@ -136,27 +134,33 @@
             "format" = "└──────────────────────────────────┘";
             "outputColor" = "cyan";
           }
-          {
-            "type" = "custom";
-            # "format"= "┌───────────Uptime / Age───────────┐";
-            "format" = "┌──────────────Uptime──────────────┐";
-            "outputColor" = "cyan";
-          }
           # {
-          #   "type"= "command";
-          #   "key"= "  OS Age";
-          #   "keyColor"= "magenta";
-          #   "text"= "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
-          # };
+          #   "type" = "custom";
+          #   # "format"= "┌───────────Uptime / Age───────────┐";
+          #   "format" = "┌──────────────Uptime──────────────┐";
+          #   "outputColor" = "cyan";
+          # }
+          # {
+          #   "type" = "command";
+          #   "key" = "  OS Age";
+          #   "keyColor" = "magenta";
+          #   "text" =
+          #     "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days";
+          # }
+          # {
+          #   "type" = "uptime";
+          #   "key" = "  Uptime";
+          #   "keyColor" = "magenta";
+          # }
+          # {
+          #   "type" = "custom";
+          #   "format" = "└──────────────────────────────────┘";
+          #   "outputColor" = "cyan";
+          # }
           {
-            "type" = "uptime";
-            "key" = "  Uptime";
-            "keyColor" = "magenta";
-          }
-          {
-            "type" = "custom";
-            "format" = "└──────────────────────────────────┘";
-            "outputColor" = "cyan";
+            "type" = "colors";
+            "paddingLeft" = 2;
+            "symbol" = "circle";
           }
         ];
       };

@@ -9,7 +9,5 @@
     ./lazygit.nix
     ./sops.nix
     ./k9s.nix
-    ./yazi.nix
-    ./zsh.nix
   ];
 }

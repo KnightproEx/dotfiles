@@ -99,10 +99,15 @@ return {
 				},
 				options = {
 					nixos = {
-						expr = '(builtin.getFlake "~/dotfiles/nix-darwin").nixosConfiguration.CONFIGNAME.options',
+						expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.bh-mac.options',
 					},
 					home_manager = {
-						expr = '(builtin.getFlake "~/dotfiles/nix-darwin").homeConfigurations.CONFIGNAME.options',
+						-- expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations.bh@bh-mac.options',
+						-- expr = "(builtins.getFlake (builtins.toString ./.)).darwinConfigurations.bh-mac.options.home-manager.users.type.getSubOptions []",
+						expr = '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.bh-mac.options.home-manager.users.type.getSubOptions []',
+					},
+					nix_darwin = {
+						expr = '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.bh-mac.options',
 					},
 				},
 			},

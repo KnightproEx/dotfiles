@@ -6,11 +6,11 @@
 
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
-    secrets = {
-      "git/username" = { };
-      "git/email" = { };
-      "git/signingKey" = { };
-    };
+    # secrets = {
+    #   "git/username" = { };
+    #   "git/email" = { };
+    #   "git/signingKey" = { };
+    # };
 
     templates = {
       "git".content = ''
