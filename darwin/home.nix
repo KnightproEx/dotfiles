@@ -40,6 +40,10 @@
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi/theme.toml";
       ".config/fastfetch/images".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/fastfetch/images";
+      ".config/karabiner/assets/complex_modifications".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/karabiner/assets/complex_modifications";
+      ".config/karabiner/karabiner.json".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/karabiner/karabiner.json";
       ".config/nushell/catppuccin_mocha.nu".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nushell/catppuccin_mocha.nu";
       ".config/nushell/config.nu".source =
