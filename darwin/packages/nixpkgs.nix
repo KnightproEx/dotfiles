@@ -25,6 +25,7 @@
     stylua
     tflint
     shfmt
+    shellcheck
     shellharden
     nixfmt-rfc-style
     rustfmt

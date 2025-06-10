@@ -75,6 +75,7 @@ return {
 			liquid = { "prettier" },
 			lua = { "stylua" },
 			php = { "pint" },
+			sh = { "shfmt", "shellharden" },
 		},
 		format_on_save = {
 			lsp_fallback = true,
