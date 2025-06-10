@@ -51,9 +51,10 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
+          # TODO: Refactor this
           {
             home-manager = {
-              backupFileExtension = "backup";
+              backupFileExtension = "bak";
               useGlobalPkgs = true;
               useUserPackages = true;
               extraSpecialArgs = { inherit inputs username; };

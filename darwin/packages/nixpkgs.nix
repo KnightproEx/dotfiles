@@ -13,7 +13,9 @@
     lua-language-server
     bash-language-server
     yaml-language-server
+    dockerfile-language-server-nodejs
     terraform-ls
+    vscode-langservers-extracted
     emmet-ls
     helm-ls
     gopls
