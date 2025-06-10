@@ -2,10 +2,8 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim" },
-		-- { "saghen/blink.cmp" },
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -86,6 +84,14 @@ return {
 				},
 			},
 		})
+
+		lspconfig.ts_ls.setup({})
+		lspconfig.lua_ls.setup({})
+		lspconfig.terraformls.setup({})
+		lspconfig.emmet_ls.setup({})
+		lspconfig.bashls.setup({})
+		lspconfig.gopls.setup({})
+		lspconfig.tailwindcss.setup({})
 
 		lspconfig.nixd.setup({
 			settings = {

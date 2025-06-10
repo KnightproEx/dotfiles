@@ -42,58 +42,67 @@ return {
 			end,
 		},
 		appearance = {
-			use_nvim_cmp_as_default = true,
-			nerd_font_variant = "normal",
+			nerd_font_variant = "mono",
 		},
 		completion = {
 			-- ghost_text = { enabled = true },
 			trigger = { show_on_accept_on_trigger_character = false },
 			menu = {
-				border = "single",
+				border = "rounded",
 				auto_show = function(ctx)
 					return ctx.mode ~= "cmdline"
 				end,
+				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 				draw = {
 					treesitter = { "lsp" },
 					columns = {
-						{ "label", "label_description", gap = 1 },
-						{ "kind_icon", "kind" },
+						{ "kind_icon", "label", gap = 1 },
+					},
+					components = {
+						label = {
+							text = function(ctx)
+								return require("colorful-menu").blink_components_text(ctx)
+							end,
+							highlight = function(ctx)
+								return require("colorful-menu").blink_components_highlight(ctx)
+							end,
+						},
 					},
 				},
 			},
 			documentation = {
 				auto_show = true,
 				auto_show_delay_ms = 0,
-				window = { border = "single" },
+				window = {
+					border = "rounded",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+				},
+			},
+		},
+		cmdline = {
+			keymap = {
+				preset = "none",
+				["<A-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-e>"] = { "cancel", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
+
+				["<Tab>"] = { "show", "select_next", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+				["<C-p>"] = { "select_prev", "fallback" },
+				["<C-n>"] = { "select_next", "fallback" },
+				["<C-k>"] = { "select_prev", "fallback" },
+				["<C-j>"] = { "select_next", "fallback" },
+
+				["<C-b>"] = { "scroll_documentation_up", "fallback" },
+				["<C-f>"] = { "scroll_documentation_down", "fallback" },
+			},
+			completion = {
+				ghost_text = { enabled = false },
 			},
 		},
 		signature = { enabled = true, window = { border = "single" } },
-		sources = {
-			-- default = function(--[[ ctx ]])
-			-- 	local success, node = pcall(vim.treesitter.get_node)
-			-- 	if vim.bo.filetype == "lua" then
-			-- 		return { "lsp", "path" }
-			-- 	elseif
-			-- 		success
-			-- 		and node
-			-- 		and vim.tbl_contains({ "comment", "line_comment", "block_comment" }, node:type())
-			-- 	then
-			-- 		return { "buffer" }
-			-- 	else
-			-- 		return { "lsp", "path", "snippets", "buffer" }
-			-- 	end
-			-- end,
-			cmdline = function()
-				local type = vim.fn.getcmdtype()
-				if type == "/" or type == "?" then
-					return { "buffer" }
-				end
-				if type == ":" then
-					return { "cmdline" }
-				end
-				return {}
-			end,
-		},
+		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
 }

@@ -7,10 +7,27 @@
 
     # Editor
     nixd
+    biome
+    typescript-language-server
+    tailwindcss-language-server
+    lua-language-server
+    bash-language-server
+    yaml-language-server
+    terraform-ls
+    emmet-ls
+    helm-ls
+    gopls
+    rust-analyzer
+    prettier # prettierd
+    # eslint # eslint_d
+    stylua
+    tflint
+    shfmt
+    shellharden
     nixfmt-rfc-style
     rustfmt
 
-    # TUI
+    # TUI Tool
     neovim
     tmux
     yazi
@@ -26,11 +43,9 @@
     # Dev Tool
     terraform
     ansible
-    packer
     kubeswitch
     kubernetes-helm
     bacon
-    openvpn
 
     # SDK
     go
@@ -41,7 +56,7 @@
     air
     sqlc
 
-    # Database Migration Tools
+    # Database Migration Tool
     dbmate
 
     # Utilities
@@ -74,6 +89,7 @@
     gnupg
     age
     sops
+    openvpn
 
     # Other
     fastfetch

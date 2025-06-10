@@ -32,7 +32,6 @@
       # Tool
       "aerospace"
       "raycast"
-      "marta"
       "utm"
       # "betterdisplay"
 
