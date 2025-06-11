@@ -17,12 +17,12 @@
       options = "--delete-older-than 7d";
     };
 
-    settings = {
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      download-buffer-size = 524288000;
-    };
+    # settings = {
+    #   experimental-features = [
+    #     "nix-command"
+    #     "flakes"
+    #   ];
+    #   download-buffer-size = 524288000;
+    # };
   };
 }
