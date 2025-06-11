@@ -4,6 +4,9 @@ return {
 	priority = 1000,
 	config = function()
 		require("catppuccin").setup({
+			custom_highlights = {
+				FloatBorder = { fg = "#b4befe" },
+			},
 			integrations = {
 				noice = true,
 				notify = true,

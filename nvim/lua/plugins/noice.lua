@@ -13,13 +13,25 @@ return {
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
-				hover = { enabled = true },
+				hover = { enabled = true, silent = true },
 				signature = { enabled = true },
 			},
 			presets = {
 				bottom_search = true,
 				long_message_to_split = true,
 				lsp_doc_border = true,
+			},
+			views = {
+				cmdline_popup = {
+					position = {
+						row = 3,
+						col = "50%",
+					},
+					size = {
+						width = 60,
+						height = "auto",
+					},
+				},
 			},
 			routes = {
 				{

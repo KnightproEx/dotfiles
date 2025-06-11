@@ -3,6 +3,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim" },
+		-- { "folke/neodev.nvim" },
 	},
 }

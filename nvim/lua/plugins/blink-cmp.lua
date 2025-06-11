@@ -45,7 +45,6 @@ return {
 			nerd_font_variant = "mono",
 		},
 		completion = {
-			-- ghost_text = { enabled = true },
 			trigger = { show_on_accept_on_trigger_character = false },
 			menu = {
 				border = "rounded",
@@ -101,7 +100,7 @@ return {
 				ghost_text = { enabled = false },
 			},
 		},
-		signature = { enabled = true, window = { border = "single" } },
+		signature = { enabled = false },
 		fuzzy = { implementation = "prefer_rust_with_warning" },
 	},
 	opts_extend = { "sources.default" },
