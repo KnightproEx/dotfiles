@@ -30,9 +30,8 @@ return {
 				-- "terraformls",
 				-- "bashls",
 				-- "gopls",
-				"pylsp",
+				-- "pylsp",
 				"prismals",
-				"sqlls",
 			},
 		})
 	end,

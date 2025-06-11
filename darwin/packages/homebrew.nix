@@ -19,6 +19,7 @@
       "composer"
       "sevenzip"
       "borders"
+      "sql-language-server"
     ];
     casks = [
       # Browser

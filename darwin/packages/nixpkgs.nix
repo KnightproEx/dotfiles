@@ -14,6 +14,7 @@
     bash-language-server
     yaml-language-server
     dockerfile-language-server-nodejs
+    python313Packages.python-lsp-server
     terraform-ls
     vscode-langservers-extracted
     emmet-ls

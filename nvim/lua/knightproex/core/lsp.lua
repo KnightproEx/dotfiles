@@ -11,6 +11,7 @@ vim.lsp.enable({
 	"gopls",
 	"cssls",
 	"htmlls",
+	"pylsp",
 	"nixd",
 	"biome",
 })
