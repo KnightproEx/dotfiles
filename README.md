@@ -14,13 +14,6 @@ My setup cheatsheet
 sh <(curl -L https://nixos.org/nix/install)
 ```
 
-### Determinate
-
-```bash
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-  sh -s -- install
-```
-
 ## Git Clone without Git
 
 ```bash
