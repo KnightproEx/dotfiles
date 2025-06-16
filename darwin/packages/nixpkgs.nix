@@ -39,10 +39,10 @@
     lazygit
 
     # Package Manager
-    nodejs_24
+    nodejs_latest
     pnpm
-    bun
-    cargo
+    # bun
+    # cargo
 
     # Dev Tool
     terraform
