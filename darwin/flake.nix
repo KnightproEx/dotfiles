@@ -21,52 +21,49 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nix-darwin,
-      nixpkgs,
-      home-manager,
-      nix-homebrew,
-      sops-nix,
-    }@inputs:
-    let
-      username = "bh";
-      platform = "aarch64-darwin";
-      hostname = "bh-mac";
-    in
-    {
-      darwinPackages = self.darwinConfigurations.${username}.pkgs;
-      darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit
-            self
-            inputs
-            username
-            hostname
-            platform
-            ;
-        };
-        modules = [
-          ./configuration.nix
-          home-manager.darwinModules.home-manager
-          nix-homebrew.darwinModules.nix-homebrew
-          # TODO: Refactor this
-          {
-            home-manager = {
-              backupFileExtension = "bak";
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              extraSpecialArgs = { inherit inputs username; };
-              users.${username} = import ./home.nix;
-            };
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              user = username;
-            };
-          }
-        ];
+  outputs = {
+    self,
+    nix-darwin,
+    nixpkgs,
+    home-manager,
+    nix-homebrew,
+    sops-nix,
+  } @ inputs: let
+    username = "bh";
+    platform = "aarch64-darwin";
+    hostname = "bh-mac";
+  in {
+    darwinPackages = self.darwinConfigurations.${username}.pkgs;
+    darwinConfigurations.${hostname} = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit
+          self
+          inputs
+          username
+          hostname
+          platform
+          ;
       };
+      modules = [
+        ./configuration.nix
+        home-manager.darwinModules.home-manager
+        nix-homebrew.darwinModules.nix-homebrew
+        # TODO: Refactor this
+        {
+          home-manager = {
+            backupFileExtension = "bak";
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = {inherit inputs username;};
+            users.${username} = import ./home.nix;
+          };
+          nix-homebrew = {
+            enable = true;
+            enableRosetta = true;
+            user = username;
+          };
+        }
+      ];
     };
+  };
 }

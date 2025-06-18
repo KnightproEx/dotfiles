@@ -30,6 +30,7 @@
     shellharden
     nixfmt-rfc-style
     rustfmt
+    alejandra
 
     # TUI Tool
     neovim

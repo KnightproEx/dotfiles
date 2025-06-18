@@ -8,7 +8,7 @@ return {
 		},
 		nixd = {
 			formatting = {
-				command = { "nixfmt" },
+				command = { "alejandra" },
 			},
 		},
 		options = {
