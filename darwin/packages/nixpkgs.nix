@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     # Terminal Emulator
     kitty
@@ -28,7 +26,6 @@
     shfmt
     shellcheck
     shellharden
-    nixfmt-rfc-style
     rustfmt
     alejandra
 

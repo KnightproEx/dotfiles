@@ -3,9 +3,7 @@
   username,
   inputs,
   ...
-}:
-
-{
+}: {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
     ./home-manager
@@ -19,8 +17,8 @@
     username = username;
     homeDirectory = "/Users/${username}";
     stateVersion = "25.11";
-    packages = [ ];
-    sessionVariables = { };
+    packages = [];
+    sessionVariables = {};
 
     sessionPath = [
       "/run/current-system/sw/bin"
@@ -34,7 +32,7 @@
       ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
       ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/p10k";
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/tmux";
-      ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
+      # ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/ghostty";
       ".config/yazi/theme.toml".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi/theme.toml";

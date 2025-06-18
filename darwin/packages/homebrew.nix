@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   homebrew = {
     enable = true;
     onActivation = {
@@ -13,13 +11,9 @@
       "nikitabobko/tap"
     ];
     brews = [
-      "nginx"
       "awscli"
-      "php@8.3"
-      "composer"
       "sevenzip"
       "borders"
-      "sql-language-server"
     ];
     casks = [
       # Browser
@@ -28,16 +22,16 @@
 
       # Terminal Emulator
       "ghostty"
-      "wezterm"
+      # "wezterm"
 
       # Tool
       "aerospace"
       "raycast"
-      "utm"
+      # "utm"
       # "betterdisplay"
 
       # Remote Desktop
-      "anydesk"
+      # "anydesk"
 
       # Messaging
       "messenger"
@@ -45,23 +39,22 @@
       "discord"
 
       # Config
-      "qmk-toolbox"
       "karabiner-elements"
       "logi-options+"
       "jordanbaird-ice"
+      # "qmk-toolbox"
 
       # Dev
       "visual-studio-code"
-      "openvpn-connect"
+      # "openvpn-connect"
       "fork"
       "orbstack"
-      "android-studio"
-      "postman"
+      # "postman"
       "yaak"
 
       # Database Client
       "tableplus"
-      "beekeeper-studio"
+      # "beekeeper-studio"
 
       # Note
       "obsidian"

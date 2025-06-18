@@ -6,9 +6,7 @@
   username,
   hostname,
   ...
-}:
-
-{
+}: {
   imports = [
     ./packages
     ./configuration/nix.nix
@@ -31,14 +29,13 @@
     primaryUser = username;
     stateVersion = 6;
     configurationRevision = self.rev or self.dirtyRev or null;
-    activationScripts.application.text =
-      let
-        env = pkgs.build.Env {
-          name = "system-applications";
-          paths = config.environment.systemPackages;
-          pathsToLink = "/Applications";
-        };
-      in
+    activationScripts.application.text = let
+      env = pkgs.build.Env {
+        name = "system-applications";
+        paths = config.environment.systemPackages;
+        pathsToLink = "/Applications";
+      };
+    in
       pkgs.lib.mkForce ''
         echo "setting up /Applications..." >&2
         rm -rf /Application/Nix\ Apps

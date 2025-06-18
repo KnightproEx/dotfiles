@@ -62,6 +62,7 @@
         default = user.shell pkgs;
       }
     );
+
     nixosModules =
       {
         # This module is not meant to be imported by anyone but me

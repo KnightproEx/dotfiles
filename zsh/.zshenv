@@ -4,7 +4,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 
 export EDITOR=nvim
@@ -45,27 +44,3 @@ command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_
 
 # Path
 # export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
-
-# TODO: Remove this
-# Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-
-# TODO: Remove this
-# Flutter
-export PATH=$HOME/Library/Flutter/bin:$PATH
-
-# TODO: Remove this
-# Composer
-export PATH=$HOME/.config/composer/vendor/bin:$PATH
-export PATH=$HOME/.config/herd-lite/bin:$PATH
-
-# TODO: Remove this
-# PHP
-export PATH=$PATH:/opt/homebrew/opt/php@8.3/bin
-export PATH=$PATH:/opt/homebrew/opt/php@8.3/sbin
-export PHP_INI_SCAN_DIR=$HOME/.config/herd-lite/bin:$PHP_INI_SCAN_DIR
