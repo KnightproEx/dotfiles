@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   programs = {
     fastfetch = {
       enable = true;
@@ -83,11 +81,11 @@
             "key" = "│ ├ ";
             "keyColor" = "green";
           }
-          # {
-          #   "type" = "packages";
-          #   "key" = "│ ├󰏖 ";
-          #   "keyColor" = "green";
-          # }
+          {
+            "type" = "packages";
+            "key" = "│ ├󰏖 ";
+            "keyColor" = "green";
+          }
           # {
           #   "type" = "localip";
           #   "key" = "│ ├IP";
