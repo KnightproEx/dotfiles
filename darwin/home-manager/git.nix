@@ -1,11 +1,9 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   programs.git = {
     enable = true;
 
     includes = [
-      { path = config.sops.templates."git".path; }
+      {path = config.sops.templates."git".path;}
     ];
 
     signing = {
@@ -96,6 +94,10 @@
       interactive = {
         diffFilter = "diff-so-fancy --patch";
         singleKey = true;
+      };
+
+      init = {
+        defaultBranch = "main";
       };
 
       push = {
