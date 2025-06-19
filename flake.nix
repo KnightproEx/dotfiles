@@ -4,8 +4,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
-
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,60 +19,67 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #apple-silicon-support.url = "github:tpwrules/nixos-apple-silicon";
-
-    # https://github.com/tpwrules/nixos-apple-silicon/pull/284#issuecomment-2733107093
-    # apple-silicon-support.url = "github:sioodmy/nixos-apple-silicon";
-
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+    darwin = {
+      url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zen-browser = {
+      # url = "github:youwen5/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    walker.url = "github:abenz1267/walker";
+    xremap-flake.url = "github:xremap/nix-flake";
+    yazi.url = "github:sxyazi/yazi";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
-    user = import ./user;
+  outputs = {
+    self,
+    nix-darwin,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    user = "bh";
+    hostname = "nix-machine";
 
-    forAllSystems = nixpkgs.lib.genAttrs [
-      "aarch64-linux"
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-darwin"
-    ];
+    linuxSystems = ["x86_64-linux" "aarch64-linux"];
+    darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
   in {
-    packages = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in (user.packages pkgs)
+    nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
+      system:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs user hostname;
+          };
+          modules = [
+            ./hosts/nixos/configuration.nix
+          ];
+        }
     );
 
-    formatter = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        pkgs.alejandra
+    darwinPackages = self.darwinConfigurations.${user}.pkgs;
+    darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
+      system:
+        nix-darwin.lib.darwinSystem {
+          specialArgs = {
+            inherit
+              self
+              inputs
+              user
+              hostname
+              system
+              ;
+          };
+          modules = [
+            ./hosts/darwin/configuration.nix
+          ];
+        }
     );
-
-    devShells = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in {
-        default = user.shell pkgs;
-      }
-    );
-
-    nixosModules =
-      {
-        # This module is not meant to be imported by anyone but me
-        # it's just so I can easily avoid ../../../../../ mess
-        system = import ./system;
-
-        user = user.module;
-
-        # place for my home brew modules
-      }
-      // import ./modules;
-
-    nixosConfigurations = import ./hosts inputs;
   };
 }
