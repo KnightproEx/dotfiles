@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-swww init &
+swww-daemon &
+
+swww img ~/dotfiles/wallpaper/1276993.jpg
 
 copyq &
 
