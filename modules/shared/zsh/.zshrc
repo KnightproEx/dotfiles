@@ -50,6 +50,7 @@ setopt hist_verify
 unsetopt prompt_sp
 
 # History options
+[ -d $XDG_STATE_HOME/zsh ] || mkdir $XDG_STATE_HOME/zsh
 HISTFILE="$XDG_STATE_HOME/zsh/zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
