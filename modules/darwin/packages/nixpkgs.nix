@@ -10,10 +10,10 @@
       nushell
       starship
       mkalias
-
+      yazi
       duf
       pkg-config
       curl
     ]
-    ++ import ../shared/packages.nix {inherit pkgs;};
+    ++ import ../../shared/packages.nix {inherit pkgs;};
 }
