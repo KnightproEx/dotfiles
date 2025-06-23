@@ -32,7 +32,7 @@
       ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
       ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
-      ".config/kitty/kitty.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty/kitty.conf";
+      ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
       # ".config/wezterm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/wezterm";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ghostty";
       ".config/yazi/theme.toml".source =

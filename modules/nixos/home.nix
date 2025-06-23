@@ -54,7 +54,7 @@
     ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
     ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
     ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
-    ".config/kitty/kitty.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty/kitty.conf";
+    ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
     ".config/hypr/hyprland.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/hyprland.conf";
     ".config/hypr/scripts".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/scripts";
     ".config/yazi/theme.toml".source =
