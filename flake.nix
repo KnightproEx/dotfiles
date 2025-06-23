@@ -48,7 +48,7 @@
 
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
-    forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
+    # forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
   in {
     nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
       system:
@@ -68,11 +68,11 @@
       system:
         nix-darwin.lib.darwinSystem {
           specialArgs = {
+            user = "boonhuikhong";
+            hostname = "BPSG-MAC0031";
             inherit
               self
               inputs
-              user
-              hostname
               system
               ;
           };
