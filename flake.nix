@@ -47,7 +47,7 @@
     hostname = "nix-machine";
 
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
-    darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
+    darwinSystems = ["aarch64-darwin" "x86_64-darwin" "work"];
     # forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
   in {
     nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
@@ -67,15 +67,26 @@
     darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (
       system:
         nix-darwin.lib.darwinSystem {
-          specialArgs = {
-            user = "boonhuikhong";
-            hostname = "BPSG-MAC0031";
-            inherit
-              self
-              inputs
-              system
-              ;
-          };
+          specialArgs =
+            if system == "work"
+            then {
+              user = "boonhuikhong";
+              hostname = "BPSG-MAC0031";
+              system = "aarch64-darwin";
+              inherit
+                self
+                inputs
+                ;
+            }
+            else {
+              inherit
+                user
+                hostname
+                self
+                inputs
+                system
+                ;
+            };
           modules = [
             ./hosts/darwin/configuration.nix
           ];

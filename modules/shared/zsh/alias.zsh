@@ -12,5 +12,41 @@ alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
 alias lg="lazygit"
 alias k="kubectl"
 alias tf="terraform"
-alias sre="sudo nixos-rebuild switch --flake ~/dotfiles#x86_64-linux"
-alias dsre="sudo darwin-rebuild switch --flake ~/dotfiles#aarch64-darwin"
+
+function sre() { 
+  HARDWARE_PLATFORM=$(uname -m)
+  OS_NAME=$(uname -s)
+
+  case "$OS_NAME" in
+      Linux*)
+          echo "Running on Linux"
+          OS="linux"
+          ;;
+      Darwin*)
+          echo "Running on macOS"
+          OS="darwin"
+          ;;
+  esac
+
+  case "$HARDWARE_PLATFORM" in
+      x86_64)
+          echo "Running on a 64-bit Intel/AMD architecture"
+          ARCH="x86_64"
+          ;;
+      arm64|armv7l|aarch64)
+          echo "Running on an ARM-based architecture"
+          ARCH="aarch64"
+          ;;
+      *)
+  esac
+
+  DEFAULT="$ARCH-$OS"
+
+  if [[ $OS == "linux" ]] then
+    sudo nixos-rebuild switch --flake ~/dotfiles#x${1:-$DEFAULT}
+  elif [[ $OS == "darwin" ]] then
+    sudo darwin-rebuild switch --flake ~/dotfiles#${1:-$DEFAULT}
+  else
+    echo "USAGE: sre <nixos|darwin>"
+  fi
+}
