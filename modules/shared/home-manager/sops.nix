@@ -11,6 +11,7 @@
       "git/signingKey" = {};
     };
 
+    # TODO: Unique signing key for each machine
     templates = {
       "git".content = ''
         [user]

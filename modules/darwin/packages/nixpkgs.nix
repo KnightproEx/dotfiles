@@ -14,6 +14,11 @@
       duf
       pkg-config
       curl
+
+      python310
+      openjdk17
+
+      cargo-nextest
     ]
     ++ import ../../shared/packages.nix {inherit pkgs;};
 }

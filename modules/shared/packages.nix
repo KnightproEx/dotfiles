@@ -48,6 +48,11 @@ with pkgs; [
   gnumake
   rustc
   clangStdenv
+  libxml2
+  pkg-config
+  llvm
+  clang
+  pre-commit
 
   # Privacy
   gnupg

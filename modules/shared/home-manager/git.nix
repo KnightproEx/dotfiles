@@ -7,7 +7,6 @@
     ];
 
     signing = {
-      format = "ssh";
       signByDefault = true;
     };
 

@@ -50,12 +50,19 @@ setopt hist_verify
 unsetopt prompt_sp
 
 # History options
-[ -d $XDG_STATE_HOME/zsh ] || mkdir $XDG_STATE_HOME/zsh
 HISTFILE="$XDG_STATE_HOME/zsh/zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTDUP=erase
 HISTCONTROL=ignoreboth
+
+# Mkdir if not exists
+[ -d $XDG_STATE_HOME/zsh ] || mkdir $XDG_STATE_HOME/zsh
+if [[ -d $GNUPGHOME ]] then
+  mkdir -p $GNUPGHOME
+  chown -R $(whoami) $GNUPGHOME
+  chmod 700 $GNUPGHOME
+fi
 
 [ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(zoxide init --cmd cd zsh)"
