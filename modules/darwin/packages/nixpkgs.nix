@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs;
     [
       # Package Manager
-      pnpm
+      # pnpm
       # bun
       # cargo
 
