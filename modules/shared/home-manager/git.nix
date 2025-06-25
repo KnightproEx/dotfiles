@@ -53,6 +53,9 @@
         "git@github.com" = {
           insteadOf = "gh";
         };
+        "git@github-personal" = {
+          insteadOf = "ghp";
+        };
       };
 
       core = {
