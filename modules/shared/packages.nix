@@ -40,7 +40,8 @@ with pkgs; [
   go
   air
   sqlc
-  nodejs_latest
+  # nodejs_latest
+  nodejs_22
 
   # Compiler
   gcc
@@ -48,11 +49,7 @@ with pkgs; [
   gnumake
   rustc
   clangStdenv
-  libxml2
-  pkg-config
-  llvm
   clang
-  pre-commit
 
   # Privacy
   gnupg

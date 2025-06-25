@@ -14,6 +14,11 @@
       "awscli"
       "sevenzip"
       "borders"
+
+      "libxmlsec1"
+      "librdkafka"
+      "llvm@16"
+      "postgresql@12"
     ];
     casks = [
       # Browser

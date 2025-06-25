@@ -12,13 +12,16 @@
       mkalias
       yazi
       duf
-      pkg-config
       curl
 
+      pre-commit
+      libxml2
+      pkg-config
       python310
       openjdk17
-
       cargo-nextest
+      rustup
+      bazelisk
     ]
     ++ import ../../shared/packages.nix {inherit pkgs;};
 }
