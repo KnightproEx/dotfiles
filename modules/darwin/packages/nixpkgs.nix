@@ -14,6 +14,7 @@
       duf
       curl
 
+      (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
       pre-commit
       libxml2
       pkg-config
@@ -22,6 +23,7 @@
       cargo-nextest
       rustup
       bazelisk
+      fvm
     ]
     ++ import ../../shared/packages.nix {inherit pkgs;};
 }

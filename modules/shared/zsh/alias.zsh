@@ -50,3 +50,5 @@ function sre() {
     echo "USAGE: sre <nixos|darwin>"
   fi
 }
+
+alias gauth="echo 'gcloud auth login' && gcloud auth login && echo 'gcloud auth application-default login' && gcloud auth application-default login"

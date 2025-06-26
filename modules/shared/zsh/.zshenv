@@ -48,11 +48,15 @@ command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_
 
 # Path
 # export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
+
+export PATH="$HOME/fvm/default/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm@16/bin:$PATH"
 export CC="/opt/homebrew/opt/llvm@16/bin/clang"
 export CXX="$CC++"
 export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/llvm@16/lib"
 export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/llvm@16/include"
 export PATH=$PATH:$(brew --prefix)/opt/postgresql@12/bin
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+# export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix)/lib:$(brew --prefix)/opt/libiconv/lib
+# export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"

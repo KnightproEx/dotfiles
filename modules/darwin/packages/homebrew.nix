@@ -19,6 +19,8 @@
       "librdkafka"
       "llvm@16"
       "postgresql@12"
+      "libiconv"
+      "protobuf"
     ];
     casks = [
       # Browser
@@ -63,6 +65,8 @@
 
       # Note
       "obsidian"
+
+      "android-studio"
 
       # Font
       # "font-sf-pro"
