@@ -23,6 +23,7 @@
     extraSpecialArgs = {inherit inputs user;};
     users.${user} = import ../../modules/darwin/home.nix;
   };
+
   nix-homebrew = {
     enable = true;
     enableRosetta = true;

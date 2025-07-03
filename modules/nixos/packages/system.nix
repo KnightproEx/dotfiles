@@ -22,28 +22,17 @@
   environment.systemPackages = with pkgs;
     [
       inputs.yazi.packages.${system}.default
-      blueman
-      networkmanagerapplet
-      pavucontrol
-      dbeaver-bin
-      cava
-      beekeeper-studio
 
       # Wayland
-      (waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      }))
+      # (waybar.overrideAttrs (oldAttrs: {
+      #   mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      # }))
       # eww
 
       # dunst
       # libnotify
 
       # hyprpaper
-      swww
-      copyq
-      kdePackages.dolphin
-
-      ghostty
 
       # pnpm
       # bun
@@ -51,7 +40,6 @@
       # python314
 
       # Dev Tool
-      awscli2
     ]
-    ++ import ../shared/packages.nix {inherit pkgs;};
+    ++ import ../../shared/packages/system.nix {inherit pkgs;};
 }

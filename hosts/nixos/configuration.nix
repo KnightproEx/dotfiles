@@ -7,7 +7,7 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.default
-    ../../modules/nixos/packages.nix
+    ../../modules/nixos/packages/system.nix
     ../../modules/nixos/user.nix
     ../../modules/nixos/bootloader.nix
     ../../modules/nixos/hardware-configuration.nix

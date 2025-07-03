@@ -8,18 +8,7 @@
   home.username = "${user}";
   home.homeDirectory = "/home/${user}";
   home.stateVersion = "25.05";
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    discord
-
-    # Browser
-    vivaldi
-
-    hyprpanel
-    # TODO:
-    # cliphist
-    wl-clipboard-rs
-  ];
+  home.packages = import ../nixos/packages/home.nix {inherit pkgs;};
 
   nixpkgs.overlays = [inputs.hyprpanel.overlay];
   nixpkgs.config = {

@@ -1,55 +1,12 @@
 {pkgs}:
 with pkgs; [
-  # Terminal
-  kitty
-  tmux
-  cmatrix
-  btop
-  fastfetch
-
-  # Utilities
-  git
-  wget
-  bat
-  fd
-  fzf
-  eza
-  zoxide
-  tree
-  ripgrep
-  ffmpeg
-  imagemagick
-  jq
-  poppler
-  unzip
-  diff-so-fancy
-  tlrc
-  openssl
-  carapace
-
-  # Dev
-  # terraform
-  ansible
-  kubectl
-  kubeswitch
-  kubernetes-helm
-  k9s
-  lazygit
-  bacon
-  dbmate
-  go
-  air
-  sqlc
-  # nodejs_latest
-  nodejs_22
-
   # Compiler
-  gcc
   cmake
   gnumake
   rustc
   clangStdenv
   clang
+  gcc
 
   # Privacy
   gnupg
@@ -62,6 +19,7 @@ with pkgs; [
   vscode
   nixd
   biome
+  rust-analyzer
   typescript-language-server
   tailwindcss-language-server
   lua-language-server
@@ -74,14 +32,13 @@ with pkgs; [
   emmet-ls
   helm-ls
   gopls
-  rust-analyzer
   prettier # prettierd
   # eslint # eslint_d
   stylua
   tflint
+  rustfmt
   shfmt
   shellcheck
   shellharden
   alejandra
-  rustfmt
 ]

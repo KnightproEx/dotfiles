@@ -48,8 +48,22 @@
 
     linuxSystems = ["x86_64-linux" "aarch64-linux"];
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
-    # forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
+    forAllSystems = nixpkgs.lib.genAttrs (linuxSystems ++ darwinSystems);
   in {
+    legacyPackages = forAllSystems (
+      system:
+        import inputs.nixpkgs {
+          inherit system;
+          # overlays = builtins.attrValues overlays;
+          config.allowUnfree = true;
+        }
+    );
+
+    devShells = forAllSystems (system: {
+      pythonVenv = nixpkgs.legacyPackages.${system}.callPackage ./shells/pythonVenv.nix {};
+      node = nixpkgs.legacyPackages.${system}.callPackage ./shells/node.nix {};
+    });
+
     nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (
       system:
         nixpkgs.lib.nixosSystem {

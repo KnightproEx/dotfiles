@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   user,
   inputs,
@@ -17,7 +18,8 @@
     username = user;
     homeDirectory = "/Users/${user}";
     stateVersion = "25.11";
-    packages = [];
+    packages = import ../darwin/packages/home.nix {inherit pkgs;};
+
     sessionVariables = {};
 
     sessionPath = [
