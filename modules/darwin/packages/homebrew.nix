@@ -56,7 +56,7 @@
       # "openvpn-connect"
       "fork"
       "orbstack"
-      # "postman"
+      "postman"
       "yaak"
 
       # Database Client

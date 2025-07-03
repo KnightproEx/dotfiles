@@ -60,3 +60,5 @@ export PATH=$PATH:$(brew --prefix)/opt/postgresql@12/bin
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix)/lib:$(brew --prefix)/opt/libiconv/lib
 # export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"
+
+export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"

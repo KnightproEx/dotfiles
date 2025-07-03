@@ -28,7 +28,7 @@ with pkgs; [
   carapace
 
   # Dev
-  terraform
+  # terraform
   ansible
   kubectl
   kubeswitch

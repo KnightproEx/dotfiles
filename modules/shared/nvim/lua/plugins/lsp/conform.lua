@@ -60,7 +60,7 @@ return {
 			["less"] = { "biome" },
 			["html"] = { "biome" },
 			graphql = { "biome" },
-			yaml = { "prettier" },
+			-- yaml = { "prettier" },
 			markdown = { "prettier" },
 			liquid = { "prettier" },
 			lua = { "stylua" },

@@ -24,6 +24,10 @@
       rustup
       bazelisk
       fvm
+      httpie
+      git-lfs
+      kustomize
+      pre-commit
     ]
     ++ import ../../shared/packages.nix {inherit pkgs;};
 }

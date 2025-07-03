@@ -39,10 +39,8 @@
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/yazi/theme.toml";
       ".config/fastfetch/images".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/fastfetch/images";
-      ".config/karabiner/assets/complex_modifications".source =
-        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/karabiner/assets/complex_modifications";
-      ".config/karabiner/karabiner.json".source =
-        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/karabiner/karabiner.json";
+      ".config/karabiner".source =
+        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/karabiner";
       ".config/nushell/catppuccin_mocha.nu".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nushell/catppuccin_mocha.nu";
       ".config/nushell/config.nu".source =
