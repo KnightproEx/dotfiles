@@ -9,6 +9,7 @@
 
   services.xremap = {
     withHypr = true;
+    watch = true;
     userName = "${user}";
     config = {
       modmap = [
