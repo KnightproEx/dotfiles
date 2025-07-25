@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   environment.etc."pam.d/sudo_local".text = ''
     # Managed by Nix Darwin
     auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so ignore_ssh
@@ -12,8 +10,8 @@
       autohide = true;
       autohide-delay = 0.0;
       show-recents = false;
-      persistent-apps = [ ];
-      persistent-others = [ ];
+      persistent-apps = [];
+      persistent-others = [];
       wvous-br-corner = 1;
       expose-group-apps = true;
     };

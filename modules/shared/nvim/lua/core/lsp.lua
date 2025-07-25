@@ -44,12 +44,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local opts = { buffer = ev.buf, silent = true }
 		local keymap = vim.keymap
 
-		opts.desc = "See available code actions"
-		keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
-		opts.desc = "Smart rename"
-		keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
 		opts.desc = "Show line diagnostics"
 		keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 

@@ -15,7 +15,6 @@ with pkgs;
     fvm
     httpie
     git-lfs
-    kustomize
     pre-commit
   ]
   ++ import ../../shared/packages/home.nix {inherit pkgs;}

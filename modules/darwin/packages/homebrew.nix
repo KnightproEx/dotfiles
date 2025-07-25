@@ -56,7 +56,6 @@
       # "openvpn-connect"
       "fork"
       "orbstack"
-      "podman-desktop"
       "postman"
       "yaak"
 

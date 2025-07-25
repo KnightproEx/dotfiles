@@ -13,7 +13,7 @@ alias lg="lazygit"
 alias k="kubectl"
 alias tf="terraform"
 
-function sre() { 
+sre() { 
   HARDWARE_PLATFORM=$(uname -m)
   OS_NAME=$(uname -s)
 
@@ -52,3 +52,7 @@ function sre() {
 }
 
 alias gauth="echo 'gcloud auth login' && gcloud auth login && echo 'gcloud auth application-default login' && gcloud auth application-default login"
+
+bastion() {
+  ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ProxyCommand='gcloud compute start-iap-tunnel bastion-mysstg-vpc-zone-name 22 --project=bigpay-ppc-mysstg05-id --zone=asia-southeast1-a --listen-on-stdin' -A boonhui_khong_bigpayme_com@jumpoff
+}

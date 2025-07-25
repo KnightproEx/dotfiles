@@ -1,11 +1,11 @@
-export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 
 # Key bindings
 bindkey -e
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
+# bindkey '^[[A' history-search-backward
+# bindkey '^[[B' history-search-forward
+# bindkey '^P' history-search-backward
+# bindkey '^N' history-search-forward
 
 # Load modules
 autoload -Uz compinit && compinit
@@ -89,7 +89,7 @@ source "$ZINIT_HOME/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-source <(carapace _carapace)
+# source <(carapace _carapace)
 source <(fzf --zsh)
 source <(switcher init zsh)
 source <(switch completion zsh)

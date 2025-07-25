@@ -1,5 +1,7 @@
 {pkgs}:
 with pkgs; [
+  tmux
+
   # Compiler
   cmake
   gnumake

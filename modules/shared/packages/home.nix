@@ -1,10 +1,10 @@
 {pkgs}:
 with pkgs; [
   nerd-fonts.jetbrains-mono
+  nerd-fonts.symbols-only
 
   # Terminal
   kitty
-  tmux
   cmatrix
   btop
   fastfetch
@@ -33,8 +33,10 @@ with pkgs; [
   # terraform
   ansible
   kubectl
+  kubeconform
   kubeswitch
   kubernetes-helm
+  kustomize
   k9s
   lazygit
   bacon

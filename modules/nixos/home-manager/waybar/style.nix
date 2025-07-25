@@ -1,6 +1,4 @@
-{ ... }:
-
-let
+{...}: let
   custom = {
     font = "MonoLisa";
     font_size = "12px";
@@ -20,8 +18,7 @@ let
     opacity = "1";
     indicator_height = "2px";
   };
-in
-{
+in {
   programs.waybar.style = with custom; ''
     * {
       border: none;

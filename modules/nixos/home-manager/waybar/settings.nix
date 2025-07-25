@@ -1,6 +1,4 @@
-{ ... }:
-
-let
+{...}: let
   custom = {
     font = "MonoLisa";
     font_size = "12px";
@@ -19,8 +17,7 @@ let
     opacity = "1";
     indicator_height = "2px";
   };
-in
-{
+in {
   programs.waybar.settings.mainBar = with custom; {
     position = "top";
     layer = "top";
@@ -34,7 +31,7 @@ in
       "hyprland/workspaces"
       "tray"
     ];
-    modules-center = [ "clock" ];
+    modules-center = ["clock"];
     modules-right = [
       "cpu"
       "memory"
@@ -75,11 +72,11 @@ in
         sort-by-number = true;
       };
       persistent-workspaces = {
-        "1" = [ ];
-        "2" = [ ];
-        "3" = [ ];
-        "4" = [ ];
-        "5" = [ ];
+        "1" = [];
+        "2" = [];
+        "3" = [];
+        "4" = [];
+        "5" = [];
       };
     };
     cpu = {
@@ -115,7 +112,7 @@ in
       format = "{icon} {volume}%";
       format-muted = "<span foreground='${blue}'> </span> {volume}%";
       format-icons = {
-        default = [ "<span foreground='${blue}'> </span>" ];
+        default = ["<span foreground='${blue}'> </span>"];
       };
       scroll-step = 2;
       on-click = "pamixer -t";
