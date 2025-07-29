@@ -34,11 +34,10 @@ return {
 				command = "biome",
 				args = {
 					"check",
-					"unsafe",
+					"--unsafe",
 					"--formatter-enabled=true",
-					"--organize-imports-enabled=true",
+					"--linter-enabled=true",
 					"--write",
-					"--skip-errors",
 					"--stdin-file-path",
 					"$FILENAME",
 				},
