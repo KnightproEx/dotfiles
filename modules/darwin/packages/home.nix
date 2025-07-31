@@ -1,11 +1,8 @@
 {pkgs, ...}:
 with pkgs;
   [
-    nodejs_22
     yazi
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
-    pre-commit
-    # libxml2
     pkg-config
     python310
     openjdk17

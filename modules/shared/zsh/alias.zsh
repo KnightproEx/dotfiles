@@ -52,6 +52,7 @@ sre() {
 }
 
 alias gauth="echo 'gcloud auth login' && gcloud auth login && echo 'gcloud auth application-default login' && gcloud auth application-default login"
+alias pauth="gcloud auth print-access-token | podman login asia-docker.pkg.dev -u oauth2accesstoken --password-stdin && gcloud auth print-access-token | podman login gcr.io -u oauth2accesstoken --password-stdin"
 
 bastion() {
   ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ProxyCommand='gcloud compute start-iap-tunnel bastion-mysstg-vpc-zone-name 22 --project=bigpay-ppc-mysstg05-id --zone=asia-southeast1-a --listen-on-stdin' -A boonhui_khong_bigpayme_com@jumpoff

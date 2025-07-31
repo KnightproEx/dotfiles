@@ -21,6 +21,7 @@
       "postgresql@12"
       "libiconv"
       "protobuf"
+      "podman"
     ];
     casks = [
       # Browser
@@ -29,7 +30,6 @@
 
       # Terminal Emulator
       "ghostty"
-      # "wezterm"
 
       # Tool
       "aerospace"
