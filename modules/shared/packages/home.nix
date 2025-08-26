@@ -31,6 +31,8 @@ with pkgs; [
 
   # Dev
   # terraform
+  # nodejs_24
+  nodejs_22
   ansible
   kubectl
   kubeconform
@@ -44,6 +46,7 @@ with pkgs; [
   go
   air
   sqlc
+  gh
 
   # Utilities
   nushell
