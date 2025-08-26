@@ -15,6 +15,7 @@
       "sevenzip"
       "borders"
 
+      # Work
       "libxmlsec1"
       "librdkafka"
       "llvm@16"
@@ -36,6 +37,7 @@
       "raycast"
       # "utm"
       # "betterdisplay"
+      "playcover-community"
 
       # Remote Desktop
       # "anydesk"
@@ -53,20 +55,15 @@
 
       # Dev
       "visual-studio-code"
-      # "openvpn-connect"
+      "android-studio"
       "fork"
       "orbstack"
       "postman"
       "yaak"
+      # "openvpn-connect"
 
       # Database Client
       "tableplus"
-      # "beekeeper-studio"
-
-      # Note
-      "obsidian"
-
-      "android-studio"
 
       # Font
       # "font-sf-pro"

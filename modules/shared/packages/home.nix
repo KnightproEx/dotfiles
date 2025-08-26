@@ -22,6 +22,7 @@ with pkgs; [
   ffmpeg
   imagemagick
   jq
+  yq
   poppler
   unzip
   diff-so-fancy
@@ -31,6 +32,8 @@ with pkgs; [
 
   # Dev
   # terraform
+  # nodejs_24
+  nodejs_22
   ansible
   kubectl
   kubeconform
@@ -44,6 +47,7 @@ with pkgs; [
   go
   air
   sqlc
+  gh
 
   # Utilities
   nushell

@@ -16,6 +16,17 @@ vim.lsp.enable({
 	"biome",
 })
 
+vim.lsp.config("rust-analyzer", {
+	settings = {
+		rust_analyzer = {
+			lruCapacity = 16384,
+			checkOnSave = {
+				command = "check",
+			},
+		},
+	},
+})
+
 vim.diagnostic.config({
 	float = { border = "rounded" },
 	jump = {

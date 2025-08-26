@@ -31,7 +31,6 @@
     };
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
-    walker.url = "github:abenz1267/walker";
     xremap-flake.url = "github:xremap/nix-flake";
     yazi.url = "github:sxyazi/yazi";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";

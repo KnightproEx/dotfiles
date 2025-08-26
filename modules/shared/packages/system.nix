@@ -21,7 +21,7 @@ with pkgs; [
   vscode
   nixd
   biome
-  rust-analyzer
+  # rust-analyzer
   typescript-language-server
   tailwindcss-language-server
   lua-language-server
