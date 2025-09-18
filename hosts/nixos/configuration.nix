@@ -85,6 +85,9 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
     enableSSHSupport = true;
+    settings = {
+      max-cache-ttl = 86400;
+    };
   };
 
   programs.steam = {
