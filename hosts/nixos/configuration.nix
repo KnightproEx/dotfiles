@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   inputs,
   user,
@@ -17,7 +18,16 @@
   security.pam.services.swaylock = {};
 
   nix.settings.experimental-features = ["nix-command flakes"];
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-unwrapped"
+        "steam-run"
+      ];
+  };
 
   networking.hostName = hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -75,6 +85,13 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-gnome3;
     enableSSHSupport = true;
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
   };
 
   # List services that you want to enable:
