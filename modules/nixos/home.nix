@@ -13,13 +13,15 @@
   nixpkgs.overlays = [inputs.hyprpanel.overlay];
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "beekeeper-studio-5.3.4"
+    ];
   };
 
   fonts.fontconfig.enable = true;
 
   imports = [
     inputs.sops-nix.homeManagerModules.sops
-    inputs.walker.homeManagerModules.default
     inputs.zen-browser.homeModules.default
     ../../modules/nixos/home-manager
   ];

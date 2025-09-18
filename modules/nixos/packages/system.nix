@@ -24,9 +24,9 @@
       inputs.yazi.packages.${system}.default
 
       # Wayland
-      # (waybar.overrideAttrs (oldAttrs: {
-      #   mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      # }))
+      (waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      }))
       # eww
 
       # dunst

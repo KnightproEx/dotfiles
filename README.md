@@ -46,3 +46,14 @@ sudo nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- sw
 ```bash
 sudo darwin-rebuild switch --flake ~/dotfiles/darwin
 ```
+
+## TODO
+
+- [ ] Rofi
+- [ ] Waybar
+- [ ] Bottom bar
+- [ ] Wifi/Bluetooth utility
+- [ ] Audio utility
+- [ ] Notification utility
+- [ ] Clipboard utility
+- [ ] Theme (Gtk)

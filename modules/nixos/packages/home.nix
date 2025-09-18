@@ -4,11 +4,11 @@ with pkgs;
     ghostty
 
     discord
-    hypypanel
+    hyprpanel
 
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-    }))
+    # (waybar.overrideAttrs (oldAttrs: {
+    #   mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    # }))
     blueman
     networkmanagerapplet
     pavucontrol

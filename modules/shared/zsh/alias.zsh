@@ -43,7 +43,7 @@ sre() {
   DEFAULT="$ARCH-$OS"
 
   if [[ $OS == "linux" ]] then
-    sudo nixos-rebuild switch --flake ~/dotfiles#x${1:-$DEFAULT}
+    sudo nixos-rebuild switch --flake ~/dotfiles#${1:-$DEFAULT}
   elif [[ $OS == "darwin" ]] then
     sudo darwin-rebuild switch --flake ~/dotfiles#${1:-$DEFAULT}
   else

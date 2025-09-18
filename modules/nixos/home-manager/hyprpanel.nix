@@ -3,7 +3,7 @@
   programs.hyprpanel = {
     enable = true;
     systemd.enable = true;
-    overwrite.enable = true;
+    # overwrite.enable = true;
     # hyprland.enable = true;
 
     settings = {
