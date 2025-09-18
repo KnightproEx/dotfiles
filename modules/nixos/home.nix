@@ -41,12 +41,17 @@
 
   home.file = with config.lib.file; {
     ".zshenv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/.zshenv";
+    # TODO: Separate zshenv into both nixos and darwin-work
     ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
     ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
     ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
     ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
     ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
     ".config/hypr/hyprland.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/hyprland.conf";
+    ".config/hypr/variable.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/variable.conf";
+    ".config/hypr/monitor.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/monitor.conf";
+    ".config/hypr/program.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/program.conf";
+    ".config/hypr/keybinding.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/keybinding.conf";
     ".config/hypr/scripts".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/scripts";
     ".config/yazi/theme.toml".source =
       mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/yazi/theme.toml";
