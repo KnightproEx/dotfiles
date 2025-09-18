@@ -29,18 +29,19 @@ with pkgs; [
   tlrc
   openssl
   carapace
+  tree-sitter
+  luarocks
+  nushell
+  starship
+  duf
+  curl
+  direnv
 
   # Dev
   # terraform
   # nodejs_24
   nodejs_22
   ansible
-  kubectl
-  kubeconform
-  kubeswitch
-  kubernetes-helm
-  kustomize
-  k9s
   lazygit
   bacon
   dbmate
@@ -49,9 +50,12 @@ with pkgs; [
   sqlc
   gh
 
-  # Utilities
-  nushell
-  starship
-  duf
-  curl
+  # K8s
+  kubectl
+  kubeconform
+  kubeswitch
+  kubernetes-helm
+  fluxcd
+  kustomize
+  k9s
 ]

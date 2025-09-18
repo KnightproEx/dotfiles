@@ -19,6 +19,14 @@ return {
 			ensure_installed = {
 				"hcl",
 				"terraform",
+				"regex",
+				"javascript",
+				"latex",
+				"norg",
+				"scss",
+				"svelte",
+				"typst",
+				"vue",
 			},
 			indent = {
 				enable = true,

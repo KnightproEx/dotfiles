@@ -20,6 +20,7 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.clipboard:append("unnamedplus")
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.scrolloff = 999
