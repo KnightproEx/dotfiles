@@ -1,3 +1,4 @@
+# TODO:
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;

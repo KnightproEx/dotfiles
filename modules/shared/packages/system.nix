@@ -7,7 +7,6 @@ with pkgs; [
   gnumake
   rustc
   clangStdenv
-  clang
   gcc
 
   # Privacy
