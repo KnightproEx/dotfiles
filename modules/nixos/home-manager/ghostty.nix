@@ -2,7 +2,7 @@
   programs.ghostty = {
     enable = true;
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       window-padding-color = "background";
       window-padding-y = "4,0";
       window-decoration = false;
