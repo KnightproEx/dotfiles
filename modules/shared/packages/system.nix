@@ -26,7 +26,7 @@ with pkgs; [
   lua-language-server
   bash-language-server
   yaml-language-server
-  dockerfile-language-server-nodejs
+  dockerfile-language-server
   python313Packages.python-lsp-server
   terraform-ls
   vscode-langservers-extracted

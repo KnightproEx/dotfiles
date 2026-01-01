@@ -10,45 +10,7 @@
       signByDefault = true;
     };
 
-    aliases = {
-      co = "commit";
-      ca = "commit -a";
-      cm = "commit -m";
-      cam = "commit -am";
-      cme = "commit --amend";
-      came = "commit -a --amend";
-      cmn = "commit --amend --no-edit";
-      camn = "commit -a --amend --no-edit";
-
-      pb = "pull --rebase";
-
-      ph = "push";
-      pf = "push --force-with-lease";
-
-      st = "status -sb";
-
-      df = "diff --output-indicator-new=' ' --output-indicator-old=' '";
-
-      ap = "add -p";
-      lg = "log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'";
-      lgg = "log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit";
-
-      rb = "rebase";
-      rba = "rebase --abort";
-      rbc = "rebase --continue";
-      rbi = "rebase --interactive";
-      rbs = "rebase --skip";
-
-      mg = "merge";
-      mga = "merge --abort";
-      mgc = "merge --continue";
-
-      cp = "cherry-pick";
-      cpa = "cherry-pick --abort";
-      cpc = "cherry-pick --continue";
-    };
-
-    extraConfig = {
+    settings = {
       url = {
         "git@github.com" = {
           insteadOf = "gh";
@@ -56,6 +18,44 @@
         "git@github-personal" = {
           insteadOf = "ghp";
         };
+      };
+
+      alias = {
+        co = "commit";
+        ca = "commit -a";
+        cm = "commit -m";
+        cam = "commit -am";
+        cme = "commit --amend";
+        came = "commit -a --amend";
+        cmn = "commit --amend --no-edit";
+        camn = "commit -a --amend --no-edit";
+
+        pb = "pull --rebase";
+
+        ph = "push";
+        pf = "push --force-with-lease";
+
+        st = "status -sb";
+
+        df = "diff --output-indicator-new=' ' --output-indicator-old=' '";
+
+        ap = "add -p";
+        lg = "log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'";
+        lgg = "log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit";
+
+        rb = "rebase";
+        rba = "rebase --abort";
+        rbc = "rebase --continue";
+        rbi = "rebase --interactive";
+        rbs = "rebase --skip";
+
+        mg = "merge";
+        mga = "merge --abort";
+        mgc = "merge --continue";
+
+        cp = "cherry-pick";
+        cpa = "cherry-pick --abort";
+        cpc = "cherry-pick --continue";
       };
 
       core = {

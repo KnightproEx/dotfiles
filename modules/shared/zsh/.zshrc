@@ -1,15 +1,6 @@
-# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-
 # Key bindings
 bindkey -e
-# bindkey '^[[A' history-search-backward
-# bindkey '^[[B' history-search-forward
-# bindkey '^P' history-search-backward
-# bindkey '^N' history-search-forward
-
-# Load modules
-autoload -Uz compinit && compinit
-# autoload -U +X bashcompinit && bashcompinit
+bindkey '^X^E' edit-command-line
 
 # Completion options
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -69,31 +60,34 @@ if [[ -d $GNUPGHOME ]] then
 fi
 
 [ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init --cmd cd zsh)"
-
-# Alias
-[ -f "$ZDOTDIR/alias.zsh" ] && source "$ZDOTDIR/alias.zsh"
-
-# Powerlevel10k prompt
-[ -f "$XDG_CONFIG_HOME/p10k/p10k.zsh" ] && source "$XDG_CONFIG_HOME/p10k/p10k.zsh" 
-[ -f "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" ] && source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
-
-# Catppuccin ZSH syntax highlighting
-[ -f "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" ] && source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh"
+eval "$(zoxide init --cmd cd zsh)" || :
 
 # Zinit
 ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "$ZINIT_HOME/zinit.zsh"
+
+source "$ZDOTDIR/alias.zsh" || :
+source "$XDG_CONFIG_HOME/zsh-darwin/alias.zsh" || :
+source "$XDG_CONFIG_HOME/p10k/p10k.zsh" || :
+source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" || :
+source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" || :
+source "$ZINIT_HOME/zinit.zsh" || :
+
+# Load modules
+autoload -Uz compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit
+autoload -Uz edit-command-line
+autoload -Uz add-zsh-hook
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+zle -N edit-command-line
 
-# source <(carapace _carapace)
-source <(fzf --zsh)
-source <(switcher init zsh)
-source <(switch completion zsh)
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+source <(fzf --zsh) || :
+source <(switcher init zsh) || :
+source <(switch completion zsh) || :
+source <(step completion zsh) || :
+source ~/.orbstack/shell/init.zsh || :
 
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting

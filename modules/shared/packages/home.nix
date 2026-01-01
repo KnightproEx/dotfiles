@@ -36,6 +36,8 @@ with pkgs; [
   duf
   curl
   direnv
+  watch
+  step-cli
 
   # Dev
   # terraform
@@ -58,4 +60,5 @@ with pkgs; [
   fluxcd
   kustomize
   k9s
+  linkerd
 ]

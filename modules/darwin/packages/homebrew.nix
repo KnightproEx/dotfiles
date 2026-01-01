@@ -37,13 +37,11 @@
       "raycast"
       # "utm"
       # "betterdisplay"
-      "playcover-community"
 
       # Remote Desktop
       # "anydesk"
 
       # Messaging
-      "messenger"
       "whatsapp"
       "discord"
 

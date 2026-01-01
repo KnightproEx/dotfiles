@@ -30,6 +30,7 @@
     file = with config.lib.file; {
       ".zshenv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/.zshenv";
       ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
+      ".config/zsh-darwin".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/zsh";
       ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
       ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
       ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
