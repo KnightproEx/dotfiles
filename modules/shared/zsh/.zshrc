@@ -59,20 +59,22 @@ if [[ -d $GNUPGHOME ]] then
   chmod 700 $GNUPGHOME
 fi
 
-[ -f "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init --cmd cd zsh)" || :
-
 # Zinit
 ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
 source "$ZDOTDIR/alias.zsh" || :
-source "$XDG_CONFIG_HOME/zsh-darwin/alias.zsh" || :
+source "$XDG_CONFIG_HOME/zsh-darwin/darwin.zsh" || :
 source "$XDG_CONFIG_HOME/p10k/p10k.zsh" || :
 source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" || :
 source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" || :
 source "$ZINIT_HOME/zinit.zsh" || :
+
+eval "$(brew shellenv 2>/dev/null || :)"
+eval "$(zoxide init --cmd cd zsh 2>/dev/null || :)"
+eval "$(/usr/libexec/path_helper)"
+eval "$(direnv hook zsh)"
 
 # Load modules
 autoload -Uz compinit && compinit

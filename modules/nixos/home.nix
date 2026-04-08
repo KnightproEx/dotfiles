@@ -41,12 +41,13 @@
 
   home.file = with config.lib.file; {
     ".zshenv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/.zshenv";
-    # TODO: Separate zshenv into both nixos and darwin-work
+    ".ssh/config".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/ssh/config";
     ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
     ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
     ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
     ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
     ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
+    ".config/direnv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/direnv";
     ".config/hypr/hyprland.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/hyprland.conf";
     ".config/hypr/variable.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/variable.conf";
     ".config/hypr/monitor.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/monitor.conf";

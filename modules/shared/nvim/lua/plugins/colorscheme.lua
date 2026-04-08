@@ -7,6 +7,25 @@ return {
 			custom_highlights = {
 				FloatBorder = { fg = "#b4befe" },
 			},
+      lsp_styles = {
+        virtual_text = {
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
+          ok = { "italic" },
+        },
+        underlines = {
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+          ok = { "undercurl" },
+        },
+        inlay_hints = {
+          background = true,
+        },
+      },
 			integrations = {
 				noice = true,
 				notify = true,
@@ -20,23 +39,9 @@ return {
 					scope_color = "lavender",
 					colored_indent_levels = true,
 				},
-				native_lsp = {
-					enabled = true,
-					virtual_text = {
-						errors = { "italic" },
-						hints = { "italic" },
-						warnings = { "italic" },
-						information = { "italic" },
-						ok = { "italic" },
-					},
-					underlines = {
-						errors = { "undercurl" },
-						hints = { "undercurl" },
-						warnings = { "undercurl" },
-						information = { "undercurl" },
-						ok = { "undercurl" },
-					},
-				},
+        blink_cmp = {
+          style = 'bordered',
+        },
 			},
 		})
 		vim.cmd.colorscheme("catppuccin-mocha")

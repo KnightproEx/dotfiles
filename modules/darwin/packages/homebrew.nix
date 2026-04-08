@@ -13,13 +13,17 @@
     brews = [
       "awscli"
       "sevenzip"
-      "borders"
+      # "borders"
+
+      # Networking
+      "mtr"
 
       # Work
       "libxmlsec1"
       "librdkafka"
       "llvm@16"
-      "postgresql@12"
+      "openjdk@17"
+      "postgresql@17"
       "libiconv"
       "protobuf"
       "podman"
@@ -62,6 +66,12 @@
 
       # Database Client
       "tableplus"
+
+      # LaTeX
+      "mactex"
+
+      # Note
+      "obsidian"
 
       # Font
       # "font-sf-pro"

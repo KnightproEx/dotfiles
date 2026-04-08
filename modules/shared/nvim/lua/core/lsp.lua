@@ -30,7 +30,13 @@ vim.lsp.config("rust-analyzer", {
 vim.diagnostic.config({
 	float = { border = "rounded" },
 	jump = {
-		float = true,
+		on_jump = function()
+			vim.diagnostic.open_float({
+				border = "rounded",
+				scope = "cursor",
+				focus = false,
+			})
+		end,
 	},
 	virtual_text = true,
 	signs = {

@@ -4,8 +4,7 @@ with pkgs;
     yazi
     (google-cloud-sdk.withExtraComponents [google-cloud-sdk.components.gke-gcloud-auth-plugin])
     pkg-config
-    python310
-    openjdk17
+    python311
     cargo-nextest
     rustup
     bazelisk

@@ -2,20 +2,18 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local catppuccin = require("lualine.themes.catppuccin")
-
-		local clients_lsp = function()
-			local clients = vim.lsp.get_clients()
-			if next(clients) == nil then
-				return ""
-			end
-
-			local c = {}
-			for _, client in pairs(clients) do
-				table.insert(c, client.name)
-			end
-			return " " .. table.concat(c, "|")
-		end
+		-- local clients_lsp = function()
+		-- 	local clients = vim.lsp.get_clients()
+		-- 	if next(clients) == nil then
+		-- 		return ""
+		-- 	end
+		--
+		-- 	local c = {}
+		-- 	for _, client in pairs(clients) do
+		-- 		table.insert(c, client.name)
+		-- 	end
+		-- 	return " " .. table.concat(c, "|")
+		-- end
 
 		local recording_text = function()
 			local reg = vim.fn.reg_recording()
@@ -34,7 +32,6 @@ return {
 		local branch = {
 			"branch",
 			icon = "",
-			color = { fg = catppuccin.normal.b.fg },
 		}
 
 		local filename = {
@@ -87,11 +84,10 @@ return {
 		-- 	padding = { left = 2, right = 0 },
 		-- }
 
-		local location = { "location", icon = "" }
+		-- local location = { "location", icon = "" }
 
 		require("lualine").setup({
 			options = {
-				theme = catppuccin,
 				component_separators = "",
 				section_separators = "",
 				-- disabled_filetypes = { "alpha", "Outline", "NvimTree" },

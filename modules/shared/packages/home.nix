@@ -36,21 +36,25 @@ with pkgs; [
   duf
   curl
   direnv
+  devenv
   watch
   step-cli
 
   # Dev
-  # terraform
+  terraform
   # nodejs_24
   nodejs_22
   ansible
   lazygit
   bacon
+  flyway
   dbmate
   go
   air
   sqlc
+  sqlx-cli
   gh
+  tigerbeetle
 
   # K8s
   kubectl

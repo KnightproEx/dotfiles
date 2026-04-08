@@ -25,7 +25,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"
 
 # FZF options
-export FZF_DEFAULT_OPTS=" \
+export FZF_DEFAULT_OPTS="\
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
@@ -34,31 +34,40 @@ export FZF_DEFAULT_OPTS=" \
 --height=60% \
 --tmux=center,100%,90% \
 --multi"
-export FZF_COMMON_OPTIONS="
+export FZF_COMMON_OPTIONS="\
 $FZF_DEFAULT_OPTS \
 --bind='ctrl-/:toggle-preview'
 --bind='ctrl-u:preview-page-up'
 --bind='ctrl-d:preview-page-down'
 --preview '([[ -d {} ]] && tree -C {}) || ([[ -f {} ]] && bat --style=full --color=always {}) || echo {}'"
-command -v fd > /dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
-command -v fd > /dev/null && export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
-command -v fd > /dev/null && export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
+
+if command -v fd >/dev/null; then
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND='fd --type f --type d --hidden --follow --exclude .git'
+fi
+
 command -v bat > /dev/null && export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 command -v bat > /dev/null && command -v tree > /dev/null && export FZF_DEFAULT_OPTS="$FZF_COMMON_OPTIONS"
 
 # Path
-# export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
+typeset -U path
+path=(
+  # $XDG_CONFIG_HOME/scripts
+  # $(brew --prefix)/opt/libiconv/bin
+  $(brew --prefix)/opt/openjdk@17/bin
+  $(brew --prefix)/opt/llvm@16/bin
+  $(brew --prefix)/opt/postgresql@17/bin
+  $HOME/fvm/default/bin
+  $HOME/Library/Android/sdk/platform-tools
+  $path
+)
+export PATH
 
-export PATH="$HOME/fvm/default/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm@16/bin:$PATH"
-export CC="/opt/homebrew/opt/llvm@16/bin/clang"
+export CC="$(brew --prefix)/opt/llvm@16/bin/clang"
 export CXX="$CC++"
-export LDFLAGS="$LDFLAGS -L/opt/homebrew/opt/llvm@16/lib"
-export CPPFLAGS="$CPPFLAGS -I/opt/homebrew/opt/llvm@16/include"
-export PATH=$PATH:$(brew --prefix)/opt/postgresql@12/bin
-# export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export LDFLAGS="$LDFLAGS -L $(brew --prefix)/opt/llvm@16/lib"
+export CPPFLAGS="$CPPFLAGS -I $(brew --prefix)/opt/llvm@16/include"
 export LIBRARY_PATH=$LIBRARY_PATH:$(brew --prefix)/lib:$(brew --prefix)/opt/libiconv/lib
 # export LDFLAGS="-L/opt/homebrew/opt/libiconv/lib"
 # export CPPFLAGS="-I/opt/homebrew/opt/libiconv/include"
-
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"

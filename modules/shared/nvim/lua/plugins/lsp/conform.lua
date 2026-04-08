@@ -25,50 +25,50 @@
 -- end
 
 return {
-	-- "stevearc/conform.nvim",
-	-- event = { "BufReadPre", "BufNewFile" },
-	-- ---@class ConformOpts
-	-- opts = {
-	-- 	formatters = {
-	-- 		biome = {
-	-- 			command = "biome",
-	-- 			args = {
-	-- 				"check",
-	-- 				"--unsafe",
-	-- 				"--formatter-enabled=true",
-	-- 				"--linter-enabled=true",
-	-- 				"--write",
-	-- 				"--stdin-file-path",
-	-- 				"$FILENAME",
-	-- 			},
-	-- 		},
-	-- 	},
-	-- 	formatters_by_ft = {
-	-- 		-- ["javascript"] = biome_lsp_or_prettier,
-	-- 		-- ["javascriptreact"] = biome_lsp_or_prettier,
-	-- 		-- ["typescript"] = biome_lsp_or_prettier,
-	-- 		-- ["typescriptreact"] = biome_lsp_or_prettier,
-	-- 		-- ["javascript"] = { "biome" },
-	-- 		-- ["javascriptreact"] = { "biome" },
-	-- 		-- ["typescript"] = { "biome" },
-	-- 		-- ["typescriptreact"] = { "biome" },
-	-- 		-- ["json"] = { "biome" },
-	-- 		-- ["jsonc"] = { "biome" },
-	-- 		-- ["css"] = { "biome" },
-	-- 		-- ["scss"] = { "biome" },
-	-- 		-- ["less"] = { "biome" },
-	-- 		-- ["html"] = { "biome" },
-	-- 		-- graphql = { "biome" },
-	-- 		-- yaml = { "prettier" },
-	-- 		markdown = { "prettier" },
-	-- 		liquid = { "prettier" },
-	-- 		lua = { "stylua" },
-	-- 		sh = { "shfmt", "shellharden" },
-	-- 	},
-	-- 	format_on_save = {
-	-- 		lsp_fallback = true,
-	-- 		async = false,
-	-- 		timeout_ms = 10000,
-	-- 	},
-	-- },
+	"stevearc/conform.nvim",
+	event = { "BufReadPre", "BufNewFile" },
+	---@class ConformOpts
+	opts = {
+		formatters = {
+			biome = {
+				command = "biome",
+				args = {
+					"check",
+					"--unsafe",
+					"--formatter-enabled=true",
+					"--linter-enabled=true",
+					"--write",
+					"--stdin-file-path",
+					"$FILENAME",
+				},
+			},
+		},
+		formatters_by_ft = {
+			-- ["javascript"] = biome_lsp_or_prettier,
+			-- ["javascriptreact"] = biome_lsp_or_prettier,
+			-- ["typescript"] = biome_lsp_or_prettier,
+			-- ["typescriptreact"] = biome_lsp_or_prettier,
+			-- ["javascript"] = { "biome" },
+			-- ["javascriptreact"] = { "biome" },
+			-- ["typescript"] = { "biome" },
+			-- ["typescriptreact"] = { "biome" },
+			-- ["json"] = { "biome" },
+			-- ["jsonc"] = { "biome" },
+			-- ["css"] = { "biome" },
+			-- ["scss"] = { "biome" },
+			-- ["less"] = { "biome" },
+			-- ["html"] = { "biome" },
+			-- graphql = { "biome" },
+			-- yaml = { "prettier" },
+			markdown = { "prettier" },
+			liquid = { "prettier" },
+			lua = { "stylua" },
+			sh = { "shfmt", "shellharden" },
+		},
+		format_on_save = {
+			lsp_fallback = true,
+			async = false,
+			timeout_ms = 10000,
+		},
+	},
 }

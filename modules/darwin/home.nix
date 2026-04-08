@@ -29,6 +29,7 @@
 
     file = with config.lib.file; {
       ".zshenv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/.zshenv";
+      ".ssh/config".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ssh/config";
       ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
       ".config/zsh-darwin".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/zsh";
       ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
@@ -37,6 +38,7 @@
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
       ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ghostty";
+      ".config/direnv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/direnv";
       ".config/yazi/theme.toml".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/yazi/theme.toml";
       ".config/fastfetch/images".source =

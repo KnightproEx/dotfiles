@@ -1,10 +1,7 @@
-local util = require("lspconfig.util")
-
 return {
 	cmd = { "tailwindcss-language-server", "--stdio" },
-	-- filetypes copied and adjusted from tailwindcss-intellisense
 	filetypes = {
-		-- html
+		-- HTML & templates
 		"aspnetcorerazor",
 		"astro",
 		"astro-markdown",
@@ -13,11 +10,11 @@ return {
 		"django-html",
 		"htmldjango",
 		"edge",
-		"eelixir", -- vim ft
+		"eelixir",
 		"elixir",
 		"ejs",
 		"erb",
-		"eruby", -- vim ft
+		"eruby",
 		"gohtml",
 		"gohtmltmpl",
 		"haml",
@@ -39,7 +36,7 @@ return {
 		"razor",
 		"slim",
 		"twig",
-		-- css
+		-- CSS
 		"css",
 		"less",
 		"postcss",
@@ -47,14 +44,14 @@ return {
 		"scss",
 		"stylus",
 		"sugarss",
-		-- js
+		-- JS/TS
 		"javascript",
 		"javascriptreact",
 		"reason",
 		"rescript",
 		"typescript",
 		"typescriptreact",
-		-- mixed
+		-- Mixed frameworks
 		"vue",
 		"svelte",
 		"templ",
@@ -71,13 +68,7 @@ return {
 				invalidTailwindDirective = "error",
 				recommendedVariantOrder = "warning",
 			},
-			classAttributes = {
-				"class",
-				"className",
-				"class:list",
-				"classList",
-				"ngClass",
-			},
+			classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
 			includeLanguages = {
 				eelixir = "html-eex",
 				elixir = "phoenix-heex",
@@ -89,20 +80,20 @@ return {
 		},
 	},
 	before_init = function(_, config)
-		if not config.settings then
-			config.settings = {}
-		end
-		if not config.settings.editor then
-			config.settings.editor = {}
-		end
+		config.settings = config.settings or {}
+		config.settings.editor = config.settings.editor or {}
 		if not config.settings.editor.tabSize then
 			config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
 		end
 	end,
 	workspace_required = true,
+
 	root_dir = function(bufnr, on_dir)
+		local filename = vim.api.nvim_buf_get_name(bufnr)
+
+		-- Possible config files for Tailwind projects
 		local root_files = {
-			-- Generic
+			-- Generic Tailwind / PostCSS
 			"tailwind.config.js",
 			"tailwind.config.cjs",
 			"tailwind.config.mjs",
@@ -126,9 +117,15 @@ return {
 			"app/assets/stylesheets/application.tailwind.css",
 			"app/assets/tailwind/application.css",
 		}
-		local fname = vim.api.nvim_buf_get_name(bufnr)
-		root_files = util.insert_package_json(root_files, "tailwindcss", fname)
-		root_files = util.root_markers_with_field(root_files, { "mix.lock" }, "tailwind", fname)
-		on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
+
+		-- Search upward for any of the root files
+		local found = vim.fs.find(root_files, { path = filename, upward = true, type = "file" })[1]
+
+		if found then
+			on_dir(vim.fs.dirname(found))
+		else
+			-- fallback to current working directory
+			on_dir(vim.fn.getcwd())
+		end
 	end,
 }
