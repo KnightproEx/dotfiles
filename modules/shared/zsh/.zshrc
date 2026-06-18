@@ -50,10 +50,11 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTDUP=erase
 HISTCONTROL=ignoreboth
+ZSH_DISABLE_COMPFIX=true
 
 # Mkdir if not exists
 [ -d $XDG_STATE_HOME/zsh ] || mkdir $XDG_STATE_HOME/zsh
-if [[ -d $GNUPGHOME ]] then
+if [[ -d $GNUPGHOME ]]; then
   mkdir -p $GNUPGHOME
   chown -R $(whoami) $GNUPGHOME
   chmod 700 $GNUPGHOME
@@ -64,6 +65,20 @@ ZINIT_HOME="$XDG_DATA_HOME/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
+eval "$(brew shellenv 2>/dev/null || :)"
+eval "$(zoxide init --cmd cd zsh 2>/dev/null || :)"
+eval "$(direnv hook zsh 2>/dev/null || :)"
+eval "$(devenv hook zsh 2>/dev/null || :)"
+eval "$(/usr/libexec/path_helper)"
+
+# Load modules
+autoload -Uz compinit && compinit
+autoload -Uz edit-command-line
+autoload -Uz add-zsh-hook
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+zle -N edit-command-line
+
 source "$ZDOTDIR/alias.zsh" || :
 source "$XDG_CONFIG_HOME/zsh-darwin/darwin.zsh" || :
 source "$XDG_CONFIG_HOME/p10k/p10k.zsh" || :
@@ -71,27 +86,14 @@ source "$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh" || :
 source "$XDG_CONFIG_HOME/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" || :
 source "$ZINIT_HOME/zinit.zsh" || :
 
-eval "$(brew shellenv 2>/dev/null || :)"
-eval "$(zoxide init --cmd cd zsh 2>/dev/null || :)"
-eval "$(/usr/libexec/path_helper)"
-eval "$(direnv hook zsh)"
+source <(fzf --zsh 2>/dev/null) || :
+source <(switcher init zsh 2>/dev/null) || :
+source <(switch completion zsh 2>/dev/null) || :
+source <(step completion zsh 2>/dev/null) || :
+source ~/.orbstack/shell/init.zsh 2>/dev/null
 
-# Load modules
-autoload -Uz compinit && compinit
-# autoload -U +X bashcompinit && bashcompinit
-autoload -Uz edit-command-line
-autoload -Uz add-zsh-hook
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-zle -N edit-command-line
-
-source <(fzf --zsh) || :
-source <(switcher init zsh) || :
-source <(switch completion zsh) || :
-source <(step completion zsh) || :
-source ~/.orbstack/shell/init.zsh || :
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions

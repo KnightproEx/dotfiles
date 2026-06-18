@@ -8,9 +8,14 @@
     };
     taps = [
       "felixkratz/formulae"
-      "nikitabobko/tap"
+      # "nikitabobko/tap"
+      "BarutSRB/tap"
     ];
+    masApps = {
+      Amphetamine = 937984704;
+    };
     brews = [
+      "mas"
       "awscli"
       "sevenzip"
       # "borders"
@@ -27,17 +32,21 @@
       "libiconv"
       "protobuf"
       "podman"
+      "tree-sitter-cli"
     ];
     casks = [
       # Browser
       "arc"
       "zen"
+      "brave-browser"
+      "helium-browser"
 
       # Terminal Emulator
       "ghostty"
 
       # Tool
-      "aerospace"
+      # "aerospace"
+      "omniwm"
       "raycast"
       # "utm"
       # "betterdisplay"

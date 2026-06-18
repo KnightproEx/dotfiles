@@ -47,7 +47,6 @@
     ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
     ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
     ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
-    ".config/direnv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/direnv";
     ".config/hypr/hyprland.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/hyprland.conf";
     ".config/hypr/variable.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/variable.conf";
     ".config/hypr/monitor.conf".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/nixos/hypr/monitor.conf";

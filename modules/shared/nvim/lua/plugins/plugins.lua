@@ -12,10 +12,10 @@ return {
 		event = "VeryLazy",
 	},
 
-  {
-    'nvim-mini/mini.icons',
-    version = "*",
-  },
+	{
+		"nvim-mini/mini.icons",
+		version = "*",
+	},
 
 	{
 		"kylechui/nvim-surround",
@@ -84,6 +84,7 @@ return {
 		config = function()
 			require("auto-session").setup({
 				suppressed_dirs = { "~/", "~/Downloads", "~/Documents", "~/Desktop/" },
+				auto_restore_enabled = false,
 			})
 		end,
 	},

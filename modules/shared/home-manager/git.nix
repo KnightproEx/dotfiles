@@ -3,7 +3,7 @@
     enable = true;
 
     includes = [
-      {path = config.sops.templates."git".path;}
+      {path = config.sops.templates."git-work".path;}
     ];
 
     signing = {
@@ -56,6 +56,8 @@
         cp = "cherry-pick";
         cpa = "cherry-pick --abort";
         cpc = "cherry-pick --continue";
+
+        wt = "!f() { git worktree add \"$1\" -B \"$1\" } f";
       };
 
       core = {

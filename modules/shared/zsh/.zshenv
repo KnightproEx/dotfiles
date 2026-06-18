@@ -23,6 +23,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export K9S_CONFIG_DIR="$XDG_CONFIG_HOME/k9s"
 export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export LESSKEY="$XDG_CONFIG_HOME/less/keys"
+export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
 # FZF options
 export FZF_DEFAULT_OPTS="\

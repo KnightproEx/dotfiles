@@ -22,16 +22,15 @@ with pkgs; [
   ffmpeg
   imagemagick
   jq
-  yq
+  yq-go
   poppler
   unzip
   diff-so-fancy
   tlrc
   openssl
   carapace
-  tree-sitter
   luarocks
-  nushell
+  # nushell
   starship
   duf
   curl
@@ -39,6 +38,7 @@ with pkgs; [
   devenv
   watch
   step-cli
+  nix-direnv
 
   # Dev
   terraform
@@ -62,6 +62,7 @@ with pkgs; [
   kubeswitch
   kubernetes-helm
   fluxcd
+  argocd
   kustomize
   k9s
   linkerd

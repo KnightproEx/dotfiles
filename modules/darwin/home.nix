@@ -32,13 +32,13 @@
       ".ssh/config".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ssh/config";
       ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
       ".config/zsh-darwin".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/zsh";
-      ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
+      ".config/omniwm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/omniwm";
+      # ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
       ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
       ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";
       ".config/kitty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/kitty";
       ".config/ghostty".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ghostty";
-      ".config/direnv".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/direnv";
       ".config/yazi/theme.toml".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/yazi/theme.toml";
       ".config/fastfetch/images".source =

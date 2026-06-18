@@ -1,5 +1,14 @@
 return {
-	cmd = { "biome", "lsp-proxy" },
+	cmd = function(dispatchers, config)
+		local cmd = "biome"
+		if (config or {}).root_dir then
+			local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", cmd)
+			if vim.fn.executable(local_cmd) == 1 then
+				cmd = local_cmd
+			end
+		end
+		return vim.lsp.rpc.start({ cmd, "lsp-proxy" }, dispatchers)
+	end,
 	filetypes = {
 		"astro",
 		"css",
@@ -18,7 +27,8 @@ return {
 	root_dir = function(bufnr, on_dir)
 		local filename = vim.api.nvim_buf_get_name(bufnr)
 
-		-- Root marker files
+		-- Biome config files
+		local biome_files = { "biome.json", "biome.jsonc" }
 		local root_markers = {
 			"package-lock.json",
 			"yarn.lock",
@@ -26,25 +36,14 @@ return {
 			"bun.lockb",
 			"bun.lock",
 			"deno.lock",
-			".git",
 		}
+		-- Set a lower priority to avoid spawning multiple servers on monorepos
+		local biome_config_files = { "biome.json", "biome.jsonc" }
+		-- Give the root markers equal priority by wrapping them in a table
+		root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, biome_config_files, { ".git" } }
+			or vim.list_extend(root_markers, vim.list_extend(biome_config_files, { ".git" }))
 
-		-- Biome config files
-		local biome_files = { "biome.json", "biome.jsonc" }
-
-		-- Search upward from current file for either biome config or root markers
-		local found_root = vim.fs.find(
-			vim.list_extend(biome_files, root_markers),
-			{ path = filename, upward = true, type = "file" }
-		)[1]
-
-		if not found_root then
-			-- fallback to cwd
-			on_dir(vim.fn.getcwd())
-			return
-		end
-
-		local project_root = vim.fs.dirname(found_root)
+		local project_root = vim.fs.root(bufnr, root_markers) or vim.fn.getcwd()
 
 		-- Ensure the buffer is actually using Biome
 		local biome_used = vim.fs.find(biome_files, {

@@ -106,16 +106,17 @@
             "key" = "│ ├ ";
             "keyColor" = "blue";
           }
-          {
-            "type" = "wm";
-            "key" = "│ ├ ";
-            "keyColor" = "blue";
-          }
+          # {
+          #   "type" = "wm";
+          #   "key" = "│ ├ ";
+          #   "keyColor" = "blue";
+          # }
           {
             "key" = "│ ├ ";
             "keyColor" = "blue";
             "type" = "command";
-            "text" = "pgrep AeroSpace &> /dev/null && echo AeroSpace || echo Quartz Compositor";
+            # "text" = "pgrep AeroSpace &> /dev/null && echo AeroSpace || echo Quartz Compositor";
+            "text" = "pgrep Omni &> /dev/null && echo Omniwm || echo Quartz Compositor";
           }
           {
             "type" = "terminal";

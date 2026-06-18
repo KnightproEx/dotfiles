@@ -3,6 +3,8 @@
 palette = "catppuccin_mocha"
 add_newline = false
 
+continuation_prompt = "❯❯ "
+
 format = """
 $directory\
 $git_branch\
