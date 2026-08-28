@@ -32,8 +32,8 @@
       ".ssh/config".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/ssh/config";
       ".config/zsh".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/zsh";
       ".config/zsh-darwin".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/zsh";
-      ".config/omniwm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/omniwm";
-      # ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
+      # ".config/omniwm".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/omniwm";
+      ".config/aerospace".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/darwin/aerospace";
       ".config/nvim".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nvim";
       ".config/p10k".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/p10k";
       ".config/tmux".source = mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/tmux";

@@ -3,19 +3,29 @@
     enable = true;
     onActivation = {
       cleanup = "zap";
-      # autoUpdate = true;
+      autoUpdate = true;
       # upgrade = true;
     };
     taps = [
-      "felixkratz/formulae"
-      # "nikitabobko/tap"
-      "BarutSRB/tap"
+      {
+        name = "felixkratz/formulae";
+        trusted = true;
+      }
+      {
+        name = "nikitabobko/tap";
+        trusted = true;
+      }
+      # {
+      #   name = "BarutSRB/tap";
+      #   trusted = true;
+      # }
+      # {
+      #   name = "Sikarugir-App/sikarugir";
+      #   trusted = true;
+      # }
     ];
-    masApps = {
-      Amphetamine = 937984704;
-    };
     brews = [
-      "mas"
+      # "mas"
       "awscli"
       "sevenzip"
       # "borders"
@@ -38,18 +48,20 @@
       # Browser
       "arc"
       "zen"
-      "brave-browser"
+      # "brave-browser"
       "helium-browser"
 
       # Terminal Emulator
       "ghostty"
 
       # Tool
-      # "aerospace"
-      "omniwm"
+      "aerospace"
       "raycast"
+      "vorssaint"
+      # "omniwm"
       # "utm"
       # "betterdisplay"
+      # "sikarugir"
 
       # Remote Desktop
       # "anydesk"

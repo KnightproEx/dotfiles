@@ -8,6 +8,7 @@ with pkgs; [
   rustc
   clangStdenv
   gcc
+  lua
 
   # Privacy
   gnupg

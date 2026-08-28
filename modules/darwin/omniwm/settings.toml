@@ -50,7 +50,7 @@ hotkeysEnabled = true
 hyperKeyHoldThresholdMilliseconds = 0
 hyperTrigger = "Left Option"
 ipcEnabled = false
-preventSleepEnabled = true
+preventSleepEnabled = false
 spacesTrackingEnabled = true
 updateChecksEnabled = true
 
@@ -97,9 +97,9 @@ backgroundOpacity = 0.1
 deduplicateAppIcons = false
 enabled = true
 height = 24.0
-hideEmptyWorkspaces = false
+hideEmptyWorkspaces = true
 labelFontSize = 12.0
-notchAware = true
+notchAware = false
 position = "overlappingMenuBar"
 reserveLayoutSpace = false
 showFloatingWindows = false
@@ -107,6 +107,12 @@ showLabels = true
 windowLevel = "popup"
 xOffset = 0.0
 yOffset = 0.0
+
+[workspaceBar.textColor]
+alpha = 1.0
+blue = 1.0
+green = 1.0
+red = 1.0
 
 [[appRules]]
 assignToWorkspace = "1"
@@ -118,6 +124,24 @@ layout = "tile"
 assignToWorkspace = "2"
 bundleId = "com.mitchellh.ghostty"
 id = "7876C9EF-437E-4D4F-9C27-B1B02F4AABCE"
+layout = "tile"
+
+[[appRules]]
+assignToWorkspace = "3"
+bundleId = "company.thebrowser.Browser"
+id = "9BBFAE6F-6B65-49D5-A7DA-0F4DE7109A0B"
+layout = "tile"
+
+[[appRules]]
+assignToWorkspace = "8"
+bundleId = "com.tinyspeck.slackmacgap"
+id = "70E3CD58-A9C8-45C7-A368-902680E949CE"
+layout = "tile"
+
+[[appRules]]
+assignToWorkspace = "9"
+bundleId = "net.whatsapp.WhatsApp"
+id = "EA34C996-7ECD-4220-B2F3-F9D6268308C2"
 layout = "tile"
 
 [[hotkeys]]
@@ -573,11 +597,11 @@ binding = "Unassigned"
 id = "setWindowWidth.increase10Percent"
 
 [[hotkeys]]
-binding = "Hyper+Shift+Minus"
+binding = "Unassigned"
 id = "setWindowHeight.decrease10Percent"
 
 [[hotkeys]]
-binding = "Hyper+Shift+Equal"
+binding = "Unassigned"
 id = "setWindowHeight.increase10Percent"
 
 [[hotkeys]]

@@ -56,47 +56,4 @@ return {
 			:totable()
 		require("nvim-treesitter").install(parsersToInstall)
 	end,
-	-- config = function()
-	-- 	local treesitter = require("nvim-treesitter.configs")
-	--
-	-- 	treesitter.setup({
-	-- 		highlight = {
-	-- 			enable = true,
-	-- 		},
-	-- 		sync_install = false,
-	-- 		ignore_install = { "javascript", "dart" },
-	-- 		auto_install = true,
-	-- 		ensure_installed = {
-	-- 			"hcl",
-	-- 			"terraform",
-	-- 			"regex",
-	-- 			"javascript",
-	-- 			"latex",
-	-- 			"norg",
-	-- 			"scss",
-	-- 			"svelte",
-	-- 			"typst",
-	-- 			"vue",
-	-- 			"css",
-	-- 			"html",
-	-- 			"javascript",
-	-- 			"tsx",
-	-- 		},
-	-- 		indent = {
-	-- 			enable = true,
-	-- 			disable = { "dart" },
-	-- 		},
-	-- 		autotag = {
-	-- 			enable = true,
-	-- 		},
-	-- 		incremental_selection = {
-	-- 			enable = true,
-	-- 			keymaps = {
-	-- 				node_incremental = "v",
-	-- 				scope_incremental = false,
-	-- 				node_decremental = "V",
-	-- 			},
-	-- 		},
-	-- 	})
-	-- end,
 }

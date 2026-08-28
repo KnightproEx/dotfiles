@@ -21,6 +21,7 @@ with pkgs; [
   ripgrep
   ffmpeg
   imagemagick
+  mermaid-cli
   jq
   yq-go
   poppler
