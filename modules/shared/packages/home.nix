@@ -8,9 +8,11 @@ with pkgs; [
   cmatrix
   btop
   fastfetch
+  lazygit
 
   # Utilities
   git
+  gh
   wget
   bat
   fd
@@ -29,10 +31,10 @@ with pkgs; [
   diff-so-fancy
   tlrc
   openssl
-  carapace
+  # carapace
   luarocks
   # nushell
-  starship
+  # starship
   duf
   curl
   direnv
@@ -42,29 +44,27 @@ with pkgs; [
   nix-direnv
 
   # Dev
-  terraform
+  # terraform
   # nodejs_24
-  nodejs_22
-  ansible
-  lazygit
-  bacon
-  flyway
-  dbmate
-  go
-  air
-  sqlc
-  sqlx-cli
-  gh
-  tigerbeetle
+  # nodejs_22
+  # ansible
+  # bacon
+  # flyway
+  # dbmate
+  # go
+  # air
+  # sqlc
+  # sqlx-cli
+  # tigerbeetle
 
   # K8s
   kubectl
-  kubeconform
+  # kubeconform
   kubeswitch
   kubernetes-helm
-  fluxcd
-  argocd
+  # fluxcd
+  # argocd
   kustomize
   k9s
-  linkerd
+  # linkerd
 ]

@@ -51,8 +51,8 @@
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nushell/config.nu";
       ".config/nushell/env.nu".source =
         mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/nushell/env.nu";
-      ".config/starship/starship.toml".source =
-        mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/starship/starship.toml";
+      # ".config/starship/starship.toml".source =
+      #   mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/shared/starship/starship.toml";
     };
   };
 }

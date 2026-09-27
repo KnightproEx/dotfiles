@@ -25,31 +25,32 @@
       # }
     ];
     brews = [
-      # "mas"
-      "awscli"
+      # "awscli"
       "sevenzip"
       # "borders"
+      # "mas"
 
       # Networking
       "mtr"
 
       # Work
-      "libxmlsec1"
-      "librdkafka"
-      "llvm@16"
-      "openjdk@17"
-      "postgresql@17"
-      "libiconv"
-      "protobuf"
-      "podman"
+      # "libxmlsec1"
+      # "librdkafka"
+      # "llvm@16"
+      # "openjdk@17"
+      # "libiconv"
+      # "protobuf"
       "tree-sitter-cli"
+      # "postgresql@17"
+      # "podman"
+      # "ollama"
     ];
     casks = [
       # Browser
-      "arc"
-      "zen"
-      # "brave-browser"
+      # "arc"
+      # "zen"
       "helium-browser"
+      # "brave-browser"
 
       # Terminal Emulator
       "ghostty"
@@ -68,31 +69,31 @@
 
       # Messaging
       "whatsapp"
-      "discord"
+      # "discord"
 
       # Config
       "karabiner-elements"
-      "logi-options+"
+      # "logi-options+"
       "jordanbaird-ice"
       # "qmk-toolbox"
 
       # Dev
-      "visual-studio-code"
-      "android-studio"
-      "fork"
+      # "visual-studio-code"
+      # "android-studio"
+      # "fork"
       "orbstack"
-      "postman"
-      "yaak"
+      # "postman"
+      # "yaak"
       # "openvpn-connect"
 
       # Database Client
-      "tableplus"
+      # "tableplus"
 
       # LaTeX
-      "mactex"
+      # "mactex"
 
       # Note
-      "obsidian"
+      # "obsidian"
 
       # Font
       # "font-sf-pro"

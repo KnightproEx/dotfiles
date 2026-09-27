@@ -3,12 +3,12 @@ with pkgs; [
   tmux
 
   # Compiler
-  cmake
-  gnumake
-  rustc
-  clangStdenv
-  gcc
-  lua
+  # cmake
+  # gnumake
+  # rustc
+  # clangStdenv
+  # gcc
+  # lua
 
   # Privacy
   gnupg
@@ -18,7 +18,7 @@ with pkgs; [
 
   # Editor
   neovim
-  vscode
+  # vscode
   nixd
   biome
   # rust-analyzer

@@ -41,7 +41,6 @@ return {
 			"ini",
 			"json",
 			"nu",
-			"terraform",
 			"helm",
 			"jinja",
 			"python",

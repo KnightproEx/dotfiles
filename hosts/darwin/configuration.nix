@@ -5,7 +5,6 @@
   config,
   system,
   user,
-  hostname,
   ...
 }: {
   imports = [
@@ -29,8 +28,6 @@
     enableRosetta = false;
     user = user;
   };
-
-  networking.hostName = hostname;
 
   users.users.${user} = {
     name = user;
